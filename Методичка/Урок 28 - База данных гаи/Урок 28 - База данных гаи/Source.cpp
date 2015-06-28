@@ -48,40 +48,24 @@ struct Base {
 	Node* root = nullptr;
 
 	Node* sorted;
+
 	Base() {
 		for (int i = 0; i < 20;i++) {
 			addPenalty(generateCar());
 		}
 	}
-
-
-	void addToSort(Node* node) {
-		static int i = 0;
-		if (node != nullptr) {
-			addToSort(node->left);
-			sorted[i] = *node;
-			i++;
-			addToSort(node->right);
-		}
-
-	}
-
-	void sort() {
-		sorted = new Node[size];
-		addToSort(root);
-	}
-
-	void showSort() {
-		for (int i = 0;i < size;i++) {
-			cout << sorted[i].n << endl;
+	Base(int size) {
+		for (int i = 0; i < size;i++) {
+			addPenalty(generateCar());
 		}
 	}
+
 	Node* generateCar() {
 		int n = rand() % 10000;
-		
+
 		string viol[10] = { "Превышение скорости",
-		"Проезд на красный свет",
-		"Парковка в неположенном месте",
+			"Проезд на красный свет",
+			"Парковка в неположенном месте",
 			"Проезд через 2 сплошные",
 			"Обгон в неположенном месте" ,
 			"Создание аварийной ситуации" ,
@@ -95,12 +79,35 @@ struct Base {
 
 		int violCount = rand() % 4;
 
-		for (int i=0;i < violCount;i++) {
+		for (int i = 0;i < violCount;i++) {
 			car->addViolation(viol[rand() % 10]);
 		}
 
 		return car;
 	}
+
+	void addToSort(Node* node) {
+		static int i = 0;
+		if (node != nullptr) {
+			addToSort(node->left);
+			sorted[i] = *node;
+			i++;
+			addToSort(node->right);
+		}
+
+	}
+	void sort() {
+		sorted = new Node[size];
+		addToSort(root);
+
+	}
+	void showSort() {
+		for (int i = 0;i < size;i++) {
+			cout << sorted[i].n << endl;
+		}
+	}
+
+	
 
 	void addPenalty(int n, string violation) {
 		Node* newNode = new Node(n, violation);
@@ -237,19 +244,29 @@ struct Base {
 
 	}
 
-
 	void showInRange(int from, int to) {
-		Node* current = root;
+		int f = 0;
 		
 		
-
-		while (current->right->n < from) {
-			cout << current->n << endl;
-			if (current->n < from) current = current->right;
-			else current = current->left;
+		while (++f) {
+			if (sorted[f].n > from)
+			{
+				break;
+			}
 		}
-		cout << endl;
-		cout << current->n << endl;
+		int t = f;
+		while (++t) {
+			if (sorted[t].n > to)
+			{
+				t;
+				break;
+			}
+		}
+
+		while (f < t) {
+			sorted[f++].show();
+		}
+
 	}
 
 
@@ -258,7 +275,7 @@ struct Base {
 int main() {
 	setlocale(LC_ALL, "rus");
 
-	Base a;
+	Base a = 10000;
 	
 
 
@@ -267,10 +284,10 @@ int main() {
 
 
 	a.show(a.root);
-	a[1234].show();
+
 	a.sort();
-	a.showSort();
-	cout << a.size << endl;
-	//a.showInRange(4000, 0);
+//	a.showSort();
+
+	a.showInRange(4000, 4500);
 	return 0;
 }
