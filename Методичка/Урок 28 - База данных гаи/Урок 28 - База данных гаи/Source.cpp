@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #define MORE 1
 #define LESS 0
@@ -30,12 +31,11 @@ struct Base {
 
 		}
 		void show() {
-
+		
 			if (n == -1) cout << "Номер не найден" << endl;
 			else {
 				cout << "Номер машины: " << n << endl;
 				cout << "Нарушения: " << endl;
-
 				for (int i = 0; i <= violationCount;i++) {
 					cout << violation[i] << endl;
 				}
@@ -57,11 +57,14 @@ struct Base {
 	Base(int size) {
 		for (int i = 0; i < size;i++) {
 			addPenalty(generateCar());
+		
 		}
 	}
 
 	Node* generateCar() {
+	
 		int n = rand() % 10000;
+
 
 		string viol[10] = { "Превышение скорости",
 			"Проезд на красный свет",
@@ -161,6 +164,7 @@ struct Base {
 		}
 	}
 	void addPenalty(Node* car) {
+	
 		Node* newNode = car;
 		if (root == nullptr)
 		{
@@ -170,53 +174,68 @@ struct Base {
 		}
 		else {
 
-			Node* current = root;
-			Node* prev = current;
+			
+			
+			
+
+				Node* current = root;
+				Node* prev = current;
+
+				int compare = 0;
+
+				while (current != nullptr) {
+
+					prev = current;
+
+					if (current->n == car->n) {
+						static int i;
+					
+						while (current->n == car->n) {
+							car = generateCar();
+					
+						}
+					}
+
+					
 
 
-			int compare = 0;
 
-			while (current != nullptr) {
 
-				prev = current;
+					if (current->n < car->n)
+					{
+						compare = MORE;
+						current = current->right;
+					}
+
+					else 
+					{
+						compare = LESS;
+						current = current->left;
+					}
 				
-				if (current->n == car->n)
-				{
-					current = car;
+
 				}
 
+				current = newNode;
 
+				if (compare == MORE) {
+					prev->right = current;
 
-
-				if (current->n < car->n)
-				{
-					compare = MORE;
-					current = current->right;
 				}
-
-				else
-				{
-					compare = LESS;
-					current = current->left;
+				else {
+					prev->left = current;
 				}
-
-			}
-
-			current = newNode;
-
-			if (compare == MORE) {
-				prev->right = current;
-			}
-			else {
-				prev->left = current;
-			}
-			size++;
+				size++;
+			
 		}
+	
 	}
 	void show(Node* node) {
 		if (node != nullptr) {
 			show(node->left);
+
 			node->show();
+
 			show(node->right);
 		}
 
@@ -269,13 +288,64 @@ struct Base {
 
 	}
 
+	
+
+	void save(string path) {
+		ofstream fout(path);
+		for (int i = 0;i < size;i++) {
+			fout << "Номер машины: " << sorted[i].n << endl;
+			fout << "Нарушения: " << endl;
+			for (int j = 0; j <= sorted[i].violationCount;j++) {
+				fout << sorted[i].violation[j] << endl;
+			}
+			fout << endl;
+		}
+
+	}
+
+	void saveInRange(string path, int from, int to) {
+		ofstream fout(path);
+
+		int f = 0;
+
+
+		while (++f) {
+			if (sorted[f].n > from)
+			{
+				break;
+			}
+		}
+		int t = f;
+		while (++t) {
+			if (sorted[t].n > to)
+			{
+				break;
+			}
+		}
+
+		while (f < t) {
+
+			
+				
+				fout << "Номер машины: " << sorted[f].n << endl;
+				fout << "Нарушения: " << endl;
+				for (int j = 0; j <= sorted[f].violationCount;j++) {
+					fout << sorted[f].violation[j] << endl;
+				}
+				fout << endl;
+				f++;
+			
+		}
+
+	}
+
 
 };
 
 int main() {
 	setlocale(LC_ALL, "rus");
 
-	Base a = 10000;
+	Base a = 1000;
 	
 
 
@@ -283,11 +353,13 @@ int main() {
 
 
 
-	a.show(a.root);
+	//a.show(a.root);
 
 	a.sort();
-//	a.showSort();
+	//a.showSort();
 
 	a.showInRange(4000, 4500);
+	a.save("c:\\base.txt");
+	a.saveInRange("c:\\in range 4000 5000.txt", 4000, 5000);
 	return 0;
 }
