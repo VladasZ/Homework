@@ -5,7 +5,7 @@
 using namespace std;
 
 
-struct Company {
+struct Company		 {
 
 
 	// Поля компании
@@ -18,23 +18,7 @@ struct Company {
 
 
 
-	/*Company() //:
-	/*name(brandParts[rand() % 10] + brandParts[rand() % 10] + brandParts[rand() % 10]),
-	owner(names[rand() % 20] + lastNames[rand() % 20]),
-	phone(rand() * 10000 + rand()),
-	line(lines[rand() % 20])
 
-
-	{
-
-	name =  (brandParts[rand() % 10]) + (brandParts[rand() % 10]) + (brandParts[rand() % 10]) ;
-	owner = names[rand() % 20] + lastNames[rand() % 20];
-	phone = rand() * 10000 + rand();
-	line = lines[rand() % 20];
-
-
-
-	}*/
 
 	Company generateCompany() {
 		Company newCompany;
