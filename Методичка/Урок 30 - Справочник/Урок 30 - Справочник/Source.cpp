@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
 
@@ -11,7 +12,7 @@ struct Company		 {
 	// Поля компании
 	string name;
 	string owner;
-	int phone;
+	string phone;
 	string line;
 
 
@@ -50,8 +51,6 @@ struct Company		 {
 			"Dylan" ,
 			"Nathan"
 		};
-
-
 		string lastNames[20]{
 
 
@@ -70,8 +69,6 @@ struct Company		 {
 
 
 		};
-
-
 		string lines[20]{
 			"Типография",
 			"Хлебзавод",
@@ -97,9 +94,12 @@ struct Company		 {
 
 		};
 
+		string numbers[10]{
+			"1","2","3","4","5","6","7","8","9", "0" };
+
 		newCompany.name = (brandParts[rand() % 10]) + (brandParts[rand() % 10]) + (brandParts[rand() % 10]);
 		newCompany.owner = names[rand() % 20] + lastNames[rand() % 20];
-		newCompany.phone = rand() * 10000 + rand();
+		newCompany.phone = numbers[rand()%10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] ;
 		newCompany.line = lines[rand() % 20];
 
 
@@ -140,13 +140,60 @@ struct Catalog {
 
 	}
 
+	Catalog(string path) {
+
+		ifstream fin(path, ios::in | ios::_Nocreate);
+
+		string _size;
+		getline(fin, _size);
+		size = stoi(_size);
+
+		company = new Company[size];
+
+		for (int i = 0;i < size;i++) {
+			getline(fin, company[i].name);
+			getline(fin, company[i].owner);
+			getline(fin, company[i].line);
+			getline(fin, company[i].phone);
+		}
+
+
+
+
+		fin.close();
+
+
+	}
+
 	void show() {
 		for (int i = 0; i < size; i++) {
 			company[i].show();
 		}
 	}
 
+	void save(string path) {
 
+
+		ofstream fout(path, ios::out);
+		
+		fout << size << endl;
+
+		for (int i = 0;i < size;i++) {
+			fout << company[i].name << endl;
+			fout << company[i].owner << endl;
+			fout << company[i].line << endl;
+			fout << company[i].phone << endl;
+
+
+		}
+
+
+
+
+		fout.close();
+
+
+	}
 
 
 };
@@ -156,9 +203,25 @@ int main() {
 	setlocale(0, "rus");
 
 
-
+	// Создаем новый каталог
 	Catalog a;
 
-	a.show();
+	// Сохраняем его
+	a.save("c:\\txt.txt");
+	
+	
 
+	// Создаем новый каталог из файла
+	Catalog c ("c:\\txt.txt");
+
+
+	// Просматриваем новый каталог
+	c.show();
+
+	
 }
+
+
+
+
+	
