@@ -125,10 +125,11 @@ struct Company		 {
 struct Catalog {
 
 	Company* company;
-	size_t size;
+	size_t size = 0;
+	string path = "banana";
 
 	Catalog() :size(20) {
-		Company* newCatalog = new Company[20];
+		Company* newCatalog = new Company[size];
 
 
 		for (int i = 0;i < 20; i++) {
@@ -172,7 +173,7 @@ struct Catalog {
 	}
 
 	void save(string path) {
-
+		this->path = path;
 
 		ofstream fout(path, ios::out);
 		
@@ -195,6 +196,31 @@ struct Catalog {
 
 	}
 
+	void add(string name, string owner, string phone, string line)
+	{
+
+		Company* newCompany = new Company;
+		newCompany->name = name;
+		newCompany->owner = owner;
+		newCompany->phone = phone;
+		newCompany->line = line;
+
+
+		Company* temp = company;
+		company = new Company[size + 1];
+
+		for (int i = 0;i < size;i++) {
+			company[i] = temp[i];
+		}
+
+		company[size++] = *newCompany;
+
+
+
+		if (path != "banana") save(path);
+
+	}
+
 
 };
 
@@ -209,7 +235,8 @@ int main() {
 	// Сохраняем его
 	a.save("c:\\txt.txt");
 	
-	
+	// добавляем новый элемент в справочник
+	a.add("ИП Ромашка", "Вася иванов", "375299999999", "Садоводство");
 
 	// Создаем новый каталог из файла
 	Catalog c ("c:\\txt.txt");
