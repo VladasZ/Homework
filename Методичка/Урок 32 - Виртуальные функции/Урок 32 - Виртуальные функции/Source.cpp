@@ -10,53 +10,53 @@ using namespace std;
 
 int main(){
 
-	////Ñîòðóäíèêè
-	//
-	//Employer* president = new President;
-	//Employer* manager = new Manager;
-	//Employer* worker = new Worker;
-	//
+	//Ã‘Ã®Ã²Ã°Ã³Ã¤Ã­Ã¨ÃªÃ¨
+	
+	Employer* president = new President;
+	Employer* manager = new Manager;
+	Employer* worker = new Worker;
+	
 
-	//president->print();
-	//manager->print();
-	//worker->print();
+	president->print();
+	manager->print();
+	worker->print();
 
-	//cout << endl;
+	cout << endl;
 
-	//// Î÷åðåäü è ñòåê
+	// ÃŽÃ·Ã¥Ã°Ã¥Ã¤Ã¼ Ã¨ Ã±Ã²Ã¥Ãª
 
-	//List* a = new Queue;
-	//List* b = new Stack;
+	List* a = new Queue;
+	List* b = new Stack;
 
-	//a->push(3);
-	//a->push(2);
-	//			
-	//cout << a->pull() << endl;
-	//
-	//a->show();
+	a->push(3);
+	a->push(2);
+				
+	cout << a->pull() << endl;
+	
+	a->show();
 
-	//cout << endl;
-	//
-	//b->push(3);
-	//b->push(7);
+	cout << endl;
+	
+	b->push(3);
+	b->push(7);
 
-	//cout << b->pull() << endl;
+	cout << b->pull() << endl;
 
-	//b->show();
+	b->show();
 
-	//cout << endl;
+	cout << endl;
 
-	//// Ïëîùàäè ôèãóð
+	// ÃÃ«Ã®Ã¹Ã Ã¤Ã¨ Ã´Ã¨Ã£Ã³Ã°
 
-	//Square* rectangle = new Rectangle(10, 15);
-	//Square* circle = new Circle(7);
-	//Square* rightTriangle = new RightTriangle(3, 6);
-	//Square* trapeze = new Trapeze(10, 18, 13);
+	Square* rectangle = new Rectangle(10, 15);
+	Square* circle = new Circle(7);
+	Square* rightTriangle = new RightTriangle(3, 6);
+	Square* trapeze = new Trapeze(10, 18, 13);
 
-	//cout << "Square of rectangle = " << rectangle->square() << endl;
-	//cout << "Square of circle = " << circle->square() << endl;
-	//cout << "Square of rightTriangle = " << rightTriangle->square() << endl;
-	//cout << "Square of trapeze = " << trapeze->square() << endl;
+	cout << "Square of rectangle = " << rectangle->square() << endl;
+	cout << "Square of circle = " << circle->square() << endl;
+	cout << "Square of rightTriangle = " << rightTriangle->square() << endl;
+	cout << "Square of trapeze = " << trapeze->square() << endl;
 
 	Field field;
 
