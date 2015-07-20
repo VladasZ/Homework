@@ -1,139 +1,11 @@
 #include <iostream>
 #include <vector>
-//#include "Employer.cpp"
-//#include "List.cpp"
-//#include "Square.cpp"
-//#include "Foxes and Rabbits.cpp"
-
-#define HIGH 20
-#define LENGTH 70
-
+#include "Employer.cpp"
+#include "List.cpp"
+#include "Square.cpp"
 
 
 using namespace std;
-
-class Empty;
-
-class Creature{
-public:
-	vector <Creature*> neighbors;
-	int age;
-	virtual char look() = 0;
-	virtual void move(int x, int y) = 0;
-};
-
-Creature* afield[HIGH][LENGTH];
-
-vector <Creature*> lookAround(int x, int y)
-{
-	vector <Creature*> neighbors(8);
-	int i = 0;
-
-	for (int j = x - 1; j < x + 1; j++){
-		for (int t = y - 1; t < x + 1; t++){
-			//if (j == x && t == x) x++;
-			neighbors[i++] = afield[x][y];
-		}
-	}
-
-	//cout << neighbors[3]->look() << endl;
-	
-
-	return neighbors;
-}
-
-class Fox : public Creature{
-public:
-	vector <Creature*> neighbors;
-	int rabbitsEaten;
-
-	virtual char look(){ return 'F'; }
-	virtual void move(int x, int y){};
-};
-
-class Rabbit : public Creature{
-public:
-	vector <Creature*> neighbors;
-	virtual char look(){ return 'R'; }
-	virtual void move(int x, int y)
-	{
-		neighbors = lookAround(x, y);
-
-	};
-};
-
-class Grass : public Creature{
-public:
-	vector <Creature*> neighbors;
-	virtual char look(){ return 'G'; }
-	virtual void move(int x, int y)
-	{
-		neighbors = lookAround(x, y);
-
-	};
-};
-
-class Empty : public Creature{
-public:
-	vector <Creature*> neighbors;
-	virtual char look(){ return '-'; }
-	virtual void move(int x, int y)
-	{
-		neighbors = lookAround(x, y);
-
-	};
-};
-
-class Field{
-public:
-
-	Field(){
-		for (int i = 0; i < HIGH; i++){
-			for (int j = 0; j < LENGTH; j++){
-				int _rand = rand() % 4;
-				switch (_rand)
-				{
-				case 0:
-					afield[i][j] = new Fox;
-					break;
-				case 1:
-					afield[i][j] = new Rabbit;
-					break;
-				case 2:
-					afield[i][j] = new Empty;
-					break;
-				case 3:
-					afield[i][j] = new Grass;
-					break;
-				default:
-					break;
-				}
-			}
-		}
-	}
-	void show(){
-		system("cls");
-		for (int i = 0; i < HIGH; i++){
-			for (int j = 0; j < LENGTH; j++){
-
-				cout << afield[i][j]->look();
-
-			}
-			cout << endl;
-		}
-	}
-
-	void move(){
-		for (int i = 1; i < HIGH - 1; i++){
-			for (int j = 1; j < LENGTH - 1; j++){
-
-				afield[i][j]->move(i, j);
-
-			}
-
-		}
-	}
-};
 
 int main(){
 
@@ -186,29 +58,9 @@ int main(){
 	cout << "Square of trapeze = " << trapeze->square() << endl;
 
 
-	Field a;
-
-	a.show();
 
 
-
-
-	afield[5][5]->move(5, 5);
-
-	vector <Creature*> neighbors(8);
-
-	neighbors = lookAround(5, 5);
-
-
-
-	//cout << neighbors[3]->look() << endl;
-
-
-
-	for(int i = 0; i < 4; i++){
-		cout << neighbors[i]->look() << endl;
-	}
-
+	
 
 	return 0;
 }
