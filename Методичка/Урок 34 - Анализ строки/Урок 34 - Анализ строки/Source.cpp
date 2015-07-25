@@ -1,5 +1,7 @@
 #include <iostream>
-#include <string>    
+#include <string>   
+#include "checkHooks.cpp"
+
 
 
 using namespace std;
@@ -53,14 +55,33 @@ string binaryCalculation(string expr){
 	return str_res;
 }
 
-char* calculate(char* expression){
-
-	for (int i = 0; i < strlen(expression); i++){
-
+int calculate(string expr){
+	Stack a = expr;
+	if (!a.checkHooks())
+	{
+		cout << "Hooks error!" << endl;
+		return 0;
 	}
+
+
+	/*for (int i = 0; i < strlen(expr); i++){
+		if (expr[i] == '*')
+		{
+			if (expr[i-1] == ')')
+		}*/
+	//}
 	return 0;
 }
 
 int main(){
-	binaryCalculation("434*434");
+	
+
+	calculate("6565(454()(54))54(54)");
+
+	
+
+
+
+
+
 }
