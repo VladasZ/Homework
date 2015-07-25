@@ -7,7 +7,7 @@
 using namespace std;
 
 string binaryCalculation(string expr){
-	cout << expr << " = ";
+	//cout << expr << " = ";
 	int res;
 	int a, b, signPos; 
 	string str_a, str_b, str_res;
@@ -50,12 +50,14 @@ string binaryCalculation(string expr){
 	// котвертируем int обратно в string
 	str_res = to_string(res);
 
-	cout << str_res;
+	//cout << str_res;
 	
 	return str_res;
 }
 
 int calculate(string expr){
+	
+	// Проверяем правильность расстановки скобок
 	Stack a = expr;
 	if (!a.checkHooks())
 	{
@@ -63,25 +65,159 @@ int calculate(string expr){
 		return 0;
 	}
 
+	// если в строке только один знак сразу возвращаем ответ
+	int signCount = 0;
+	for (int i = 0; i < expr.size(); i++){
+		if (expr[i]<'0' || expr[i]>'9') signCount++;
+	}
 
-	/*for (int i = 0; i < strlen(expr); i++){
+	if (signCount == 1) return stoi(binaryCalculation(expr));
+
+	
+
+
+
+	int leftBorder = 0, rightBorder = 0;
+	string binExpr;
+	for (int i = 0; i < expr.size(); i++)
+	{
 		if (expr[i] == '*')
 		{
-			if (expr[i-1] == ')')
-		}*/
-	//}
+			if (expr[i - 1] == ')')
+			{
+				// определяем границы бинарной оберации
+				rightBorder = i - 2;
+				for (int j = i - 2; j >= 0; j--)
+				{
+					if (expr[j] == '(')
+					{
+						leftBorder = j+1;
+						break;
+					}
+				}
+				cout << leftBorder << ' ' << rightBorder << endl;
+				// запоминаем бинарную операцию
+				for (int j = leftBorder; j <= rightBorder; j++)
+				{
+					binExpr.push_back(expr[j]);
+				}
+				cout << binExpr << endl;
+				leftBorder--;
+				rightBorder++;
+				// удаляем бинарную операцию и скобки если они есть из строки
+				if (expr[leftBorder-1] == '(') leftBorder--;
+				if (expr[rightBorder] == ')') {
+					rightBorder++; cout << "bla" << endl;
+				}
+			
+				cout << leftBorder << ' ' << rightBorder << endl;
+				expr.erase(leftBorder, rightBorder-leftBorder);
+
+				cout << expr << endl;
+
+				// вставляем на место бинарной операции ее значение
+
+				expr.insert(leftBorder, binaryCalculation(binExpr));
+				cout << expr << endl;
+
+			}
+
+			if (expr[i + 1] == '(')
+			{
+				// определяем границы бинарной оберации
+				leftBorder = i + 2;
+				for (int j = i + 2; j <= expr.size(); j++)
+				{
+					if (expr[j] == ')')
+					{
+						rightBorder = j - 1;
+						break;
+					}
+				}
+				cout << leftBorder << ' ' << rightBorder << endl;
+				// запоминаем бинарную операцию
+				for (int j = leftBorder; j <= rightBorder; j++)
+				{
+					binExpr.push_back(expr[j]);
+				}
+				cout << binExpr << endl;
+				leftBorder--;
+				rightBorder++;
+				// удаляем бинарную операцию и скобки если они есть из строки
+				if (expr[leftBorder - 1] == '(') leftBorder--;
+				if (expr[rightBorder] == ')') {
+					rightBorder++; cout << "bla" << endl;
+				}
+
+				cout << leftBorder << ' ' << rightBorder << endl;
+				expr.erase(leftBorder, rightBorder - leftBorder);
+
+				cout << expr << endl;
+
+				// вставляем на место бинарной операции ее значение
+
+				expr.insert(leftBorder, binaryCalculation(binExpr));
+				cout << expr << endl;
+			} 
+			
+			if (1){
+				// определяем границы бинарной оберации
+				
+				for (int j = i - 2; j >= 0; j--)
+				{
+					if (expr[j]<'0' || expr[j]>'9')
+					{
+						leftBorder = j + 1;
+						break;
+					}
+				}
+				for (int j = i + 2; j <= expr.size(); j++)
+				{
+					if (expr[j]<'0' || expr[j]>'9')
+					{
+						rightBorder = j - 1;
+						break;
+					}
+				}
+				cout << leftBorder << ' ' << rightBorder << endl;
+				// запоминаем бинарную операцию
+				for (int j = leftBorder; j <= rightBorder; j++)
+				{
+					binExpr.push_back(expr[j]);
+				}
+				cout << binExpr << endl;
+				//leftBorder--;
+				rightBorder++;
+				// удаляем бинарную операцию и скобки если они есть из строки
+				
+
+				//cout << leftBorder << ' ' << rightBorder << endl;
+				expr.erase(leftBorder, rightBorder - leftBorder);
+
+				cout << expr << endl;
+
+				// вставляем на место бинарной операции ее значение
+
+				expr.insert(leftBorder, binaryCalculation(binExpr));
+				cout << expr << endl;
+				//i = 0;
+			}
+
+
+		}
+	}
+
+	//binaryCalculation(expr);
+
 	return 0;
 }
 
 int main(){
 	
 
-	calculate("6565(454()(54))54(54)");
+	cout << calculate("(4*4)") << endl;
 
 	
-
-
-
 
 
 }
