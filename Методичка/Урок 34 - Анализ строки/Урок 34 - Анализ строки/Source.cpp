@@ -3,8 +3,78 @@
 #include "checkHooks.cpp"
 
 
-
 using namespace std;
+
+
+
+inline bool isSymbol(int i, string expr){
+	return (expr[i]<'0' || expr[i]>'9') && (expr[i] != '(' && expr[i] != ')');
+}
+
+inline bool isHook(int i, string expr){
+	return expr[i] == '(' || expr[i] == ')';
+}
+
+inline bool isSign(int i, string expr){
+	return isSymbol(i, expr) || isHook(i, expr);
+}
+
+int findNextHook(int pos, string expr){
+	for (int i = pos+1; i < expr.size(); i++)
+	{
+		if (isHook(i, expr))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+int findPrevHook(int pos, string expr){
+	for (int i = pos - 1; i > 0; i--)
+	{
+		if (isHook(i, expr))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+int findNextSymbol(int pos, string expr){
+	for (int i = pos + 1; i < expr.size(); i++)
+	{
+		if (isSymbol(i, expr))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+int findPrevSymbol(int pos, string expr){
+	for (int i = pos - 1; i > 0; i--)
+	{
+		if (isSymbol(i, expr))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+struct Borders{
+	int left, right;
+	Borders(int left, int right) : left(left), right(right){}
+	Borders() :left(0), right(0){}
+	void show(){
+		cout << left << ' ' << right << endl;
+	}
+};
 
 string binaryCalculation(string expr){
 	//cout << expr << " = ";
@@ -51,9 +121,42 @@ string binaryCalculation(string expr){
 	str_res = to_string(res);
 
 	//cout << str_res;
-	
+	cout << str_res << " binary res" << endl;
 	return str_res;
 }
+
+
+Borders findBinaryExpression(string expr){
+	
+	Borders borders;
+
+
+	for (int i = 0; i < expr.size(); i++)
+	{
+		if (isSymbol(i, expr))
+		{
+			if (isHook(i + 1, expr))
+			{
+				borders.left = i+2;
+				borders.right = findNextHook(i+2, expr) - 1;
+			}
+			else if (isHook(i - 1, expr))
+			{
+				borders.right = i - 2;
+				borders.left = findPrevHook(i - 2, expr) + 1;
+			}
+			else if (expr[i] == '*' || expr[i] == '/')
+			{
+
+			}
+		}
+	}
+
+
+	return borders;
+	
+}
+
 
 int calculate(string expr){
 	
@@ -79,12 +182,14 @@ int calculate(string expr){
 
 	int leftBorder = 0, rightBorder = 0;
 	string binExpr;
+
 	for (int i = 0; i < expr.size(); i++)
 	{
 		if (expr[i] == '*')
 		{
 			if (expr[i - 1] == ')')
 			{
+				cout << "first" << endl;
 				// определяем границы бинарной оберации
 				rightBorder = i - 2;
 				for (int j = i - 2; j >= 0; j--)
@@ -95,13 +200,13 @@ int calculate(string expr){
 						break;
 					}
 				}
-				cout << leftBorder << ' ' << rightBorder << endl;
+	
 				// запоминаем бинарную операцию
 				for (int j = leftBorder; j <= rightBorder; j++)
 				{
 					binExpr.push_back(expr[j]);
 				}
-				cout << binExpr << endl;
+				cout << binExpr << " 106" <<  endl;
 				leftBorder--;
 				rightBorder++;
 				// удаляем бинарную операцию и скобки если они есть из строки
@@ -118,12 +223,13 @@ int calculate(string expr){
 				// вставляем на место бинарной операции ее значение
 
 				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << endl;
-
+				cout << expr << " 123" << endl;
+				break;
 			}
 
-			if (expr[i + 1] == '(')
+			else if (expr[i + 1] == '(')
 			{
+				cout << "second" << endl;
 				// определяем границы бинарной оберации
 				leftBorder = i + 2;
 				for (int j = i + 2; j <= expr.size(); j++)
@@ -134,13 +240,13 @@ int calculate(string expr){
 						break;
 					}
 				}
-				cout << leftBorder << ' ' << rightBorder << endl;
+			
 				// запоминаем бинарную операцию
 				for (int j = leftBorder; j <= rightBorder; j++)
 				{
 					binExpr.push_back(expr[j]);
 				}
-				cout << binExpr << endl;
+				cout << binExpr << " 146" << endl;
 				leftBorder--;
 				rightBorder++;
 				// удаляем бинарную операцию и скобки если они есть из строки
@@ -149,7 +255,7 @@ int calculate(string expr){
 					rightBorder++; cout << "bla" << endl;
 				}
 
-				cout << leftBorder << ' ' << rightBorder << endl;
+		
 				expr.erase(leftBorder, rightBorder - leftBorder);
 
 				cout << expr << endl;
@@ -157,10 +263,12 @@ int calculate(string expr){
 				// вставляем на место бинарной операции ее значение
 
 				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << endl;
+				cout << expr << " 163" << endl;
+				break;
 			} 
 			
-			if (1){
+			else{
+				cout << "third" << endl;
 				// определяем границы бинарной оберации
 				
 				for (int j = i - 2; j >= 0; j--)
@@ -179,7 +287,7 @@ int calculate(string expr){
 						break;
 					}
 				}
-				cout << leftBorder << ' ' << rightBorder << endl;
+			
 				// запоминаем бинарную операцию
 				for (int j = leftBorder; j <= rightBorder; j++)
 				{
@@ -199,15 +307,27 @@ int calculate(string expr){
 				// вставляем на место бинарной операции ее значение
 
 				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << endl;
-				//i = 0;
+				cout << expr << " 207" << endl;
+				break;
 			}
 
 
 		}
 	}
 
-	//binaryCalculation(expr);
+
+	//// если в строке только один знак сразу возвращаем ответ
+	//signCount = 0;
+	//for (int i = 0; i < expr.size(); i++){
+	//	if (expr[i]<'0' || expr[i]>'9') signCount++;
+	//}
+
+	//if (signCount == 1) return stoi(binaryCalculation(expr));
+	// рекурсивный выхов функции
+	expr = calculate(expr);
+	cout << "225" << endl;
+	cout << expr << endl;
+//	return stoi(expr);
 
 	return 0;
 }
@@ -215,8 +335,14 @@ int calculate(string expr){
 int main(){
 	
 
-	cout << calculate("(4*4)") << endl;
+	//cout << calculate("4+4*(5+13)") << endl;
 
+	
+
+	string a = "(35+34)*359";
+
+	cout << findNextSymbol(0, a) << endl;
+	findBinaryExpression(a).show();
 	
 
 
