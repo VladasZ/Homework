@@ -52,7 +52,7 @@ int findNextSymbol(int pos, string expr){
 		}
 	}
 
-	return 0;
+	return expr.size();
 }
 
 int findPrevSymbol(int pos, string expr){
@@ -64,11 +64,19 @@ int findPrevSymbol(int pos, string expr){
 		}
 	}
 
+	return -1;
+}
+
+int findPrimaryExpression(string expr){
+	for (int i = 0; i < expr.size(); i++){
+		if (expr[i] == '*' || expr[i] == '/') return i;
+	}
 	return 0;
 }
 
 struct Borders{
 	int left, right;
+	string expr;
 	Borders(int left, int right) : left(left), right(right){}
 	Borders() :left(0), right(0){}
 	void show(){
@@ -139,22 +147,43 @@ Borders findBinaryExpression(string expr){
 			{
 				borders.left = i+2;
 				borders.right = findNextHook(i+2, expr) - 1;
+				break;
 			}
 			else if (isHook(i - 1, expr))
 			{
 				borders.right = i - 2;
 				borders.left = findPrevHook(i - 2, expr) + 1;
+				break;
 			}
 			else if (expr[i] == '*' || expr[i] == '/')
 			{
-
+				borders.left = findPrevSymbol(i, expr) + 1;
+				borders.right = findNextSymbol(i, expr) - 1;
+				break;
+			}
+			else if (expr[i] == '+' || expr[i] == '-')
+			{
+				if (findPrimaryExpression(expr)) continue;
+				borders.left = findPrevSymbol(i, expr) + 1;
+				borders.right = findNextSymbol(i, expr) - 1;
+				cout << "dripo" << endl;
+				break;
 			}
 		}
 	}
 
+	
+
+	for (int i = borders.left; i <= borders.right; i++){
+		borders.expr.push_back(expr[i]);
+	}
 
 	return borders;
 	
+}
+
+void replaceBinaryExpression(string* expr, Borders borders){
+
 }
 
 
@@ -174,160 +203,31 @@ int calculate(string expr){
 		if (expr[i]<'0' || expr[i]>'9') signCount++;
 	}
 
-	if (signCount == 1) return stoi(binaryCalculation(expr));
-
-	
-
-
-
-	int leftBorder = 0, rightBorder = 0;
-	string binExpr;
-
-	for (int i = 0; i < expr.size(); i++)
-	{
-		if (expr[i] == '*')
-		{
-			if (expr[i - 1] == ')')
-			{
-				cout << "first" << endl;
-				// определяем границы бинарной оберации
-				rightBorder = i - 2;
-				for (int j = i - 2; j >= 0; j--)
-				{
-					if (expr[j] == '(')
-					{
-						leftBorder = j+1;
-						break;
-					}
-				}
-	
-				// запоминаем бинарную операцию
-				for (int j = leftBorder; j <= rightBorder; j++)
-				{
-					binExpr.push_back(expr[j]);
-				}
-				cout << binExpr << " 106" <<  endl;
-				leftBorder--;
-				rightBorder++;
-				// удаляем бинарную операцию и скобки если они есть из строки
-				if (expr[leftBorder-1] == '(') leftBorder--;
-				if (expr[rightBorder] == ')') {
-					rightBorder++; cout << "bla" << endl;
-				}
-			
-				cout << leftBorder << ' ' << rightBorder << endl;
-				expr.erase(leftBorder, rightBorder-leftBorder);
-
-				cout << expr << endl;
-
-				// вставляем на место бинарной операции ее значение
-
-				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << " 123" << endl;
-				break;
-			}
-
-			else if (expr[i + 1] == '(')
-			{
-				cout << "second" << endl;
-				// определяем границы бинарной оберации
-				leftBorder = i + 2;
-				for (int j = i + 2; j <= expr.size(); j++)
-				{
-					if (expr[j] == ')')
-					{
-						rightBorder = j - 1;
-						break;
-					}
-				}
-			
-				// запоминаем бинарную операцию
-				for (int j = leftBorder; j <= rightBorder; j++)
-				{
-					binExpr.push_back(expr[j]);
-				}
-				cout << binExpr << " 146" << endl;
-				leftBorder--;
-				rightBorder++;
-				// удаляем бинарную операцию и скобки если они есть из строки
-				if (expr[leftBorder - 1] == '(') leftBorder--;
-				if (expr[rightBorder] == ')') {
-					rightBorder++; cout << "bla" << endl;
-				}
-
-		
-				expr.erase(leftBorder, rightBorder - leftBorder);
-
-				cout << expr << endl;
-
-				// вставляем на место бинарной операции ее значение
-
-				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << " 163" << endl;
-				break;
-			} 
-			
-			else{
-				cout << "third" << endl;
-				// определяем границы бинарной оберации
-				
-				for (int j = i - 2; j >= 0; j--)
-				{
-					if (expr[j]<'0' || expr[j]>'9')
-					{
-						leftBorder = j + 1;
-						break;
-					}
-				}
-				for (int j = i + 2; j <= expr.size(); j++)
-				{
-					if (expr[j]<'0' || expr[j]>'9')
-					{
-						rightBorder = j - 1;
-						break;
-					}
-				}
-			
-				// запоминаем бинарную операцию
-				for (int j = leftBorder; j <= rightBorder; j++)
-				{
-					binExpr.push_back(expr[j]);
-				}
-				cout << binExpr << endl;
-				//leftBorder--;
-				rightBorder++;
-				// удаляем бинарную операцию и скобки если они есть из строки
-				
-
-				//cout << leftBorder << ' ' << rightBorder << endl;
-				expr.erase(leftBorder, rightBorder - leftBorder);
-
-				cout << expr << endl;
-
-				// вставляем на место бинарной операции ее значение
-
-				expr.insert(leftBorder, binaryCalculation(binExpr));
-				cout << expr << " 207" << endl;
-				break;
-			}
-
-
-		}
+	if (signCount == 1){
+		expr = binaryCalculation(expr);
+		return 0;
 	}
 
 
-	//// если в строке только один знак сразу возвращаем ответ
-	//signCount = 0;
-	//for (int i = 0; i < expr.size(); i++){
-	//	if (expr[i]<'0' || expr[i]>'9') signCount++;
-	//}
 
-	//if (signCount == 1) return stoi(binaryCalculation(expr));
-	// рекурсивный выхов функции
-	expr = calculate(expr);
-	cout << "225" << endl;
-	cout << expr << endl;
-//	return stoi(expr);
+	// подсчет одного бинарного выражения 
+	Borders binary = findBinaryExpression(expr);
+
+
+	// стираем бинарное выражение
+
+	//стираем скобки если они есть
+	if (expr[binary.left - 1] == '(') expr.erase(binary.left - 1);
+	if (expr[binary.right + 1] == ')') expr.erase(binary.right + 1);
+
+	expr.erase(binary.left, binary.right - binary.left + 1);
+	string binaryResult = binaryCalculation(binary.expr);
+	expr.insert(binary.left, binaryResult);
+
+	// рекурсивный вызов функции
+	calculate(expr);
+	
+	cout << expr << endl;;
 
 	return 0;
 }
@@ -339,11 +239,10 @@ int main(){
 
 	
 
-	string a = "(35+34)*359";
+	string a = "25+25*(2+25)-50";
 
-	cout << findNextSymbol(0, a) << endl;
-	findBinaryExpression(a).show();
-	
+	cout << findBinaryExpression(a).expr << endl;
 
+	calculate(a);
 
 }
