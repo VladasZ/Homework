@@ -166,7 +166,7 @@ Borders findBinaryExpression(string expr){
 				if (findPrimaryExpression(expr)) continue;
 				borders.left = findPrevSymbol(i, expr) + 1;
 				borders.right = findNextSymbol(i, expr) - 1;
-				cout << "dripo" << endl;
+				//cout << "dripo" << endl;
 				break;
 			}
 		}
@@ -182,8 +182,45 @@ Borders findBinaryExpression(string expr){
 	
 }
 
-void replaceBinaryExpression(string* expr, Borders borders){
+void replaceBinaryExpression(string *expr, Borders binary){
 
+	int hooksDeleted = 0;
+	//cout << *expr << endl;
+
+	binary.show();
+
+	//удаляем бинарное выражение 
+
+	if (binary.left == 0)
+	{
+		expr->erase(binary.left, binary.right - binary.left + 1);
+	}
+	else
+	{
+		expr->erase(binary.left, binary.right - binary.left + 1);
+	}
+
+	//cout << *expr << endl;
+
+
+	// удаляем скобки если они есть
+	if (binary.left != 0){
+		if (expr->at(binary.left - 1) == '('){
+			expr->erase(binary.left - 1, 2);
+			hooksDeleted++;
+		}
+	}
+	//cout << *expr << endl;
+
+	// вставляем результат вичисления на место выражения
+
+	expr->insert(binary.left - hooksDeleted, binaryCalculation(binary.expr));
+
+	//cout << *expr << endl;
+
+	
+
+	
 }
 
 
@@ -193,7 +230,7 @@ int calculate(string expr){
 	Stack a = expr;
 	if (!a.checkHooks())
 	{
-		cout << "Hooks error!" << endl;
+		std::cout << "Hooks error!" << endl;
 		return 0;
 	}
 
@@ -205,44 +242,31 @@ int calculate(string expr){
 
 	if (signCount == 1){
 		expr = binaryCalculation(expr);
-		return 0;
+		cout << expr << " return" << endl;
+		int b = 4;
+		cout << b << endl;
+		b = stoi(expr);
+		cout << b << " <- this is b" << endl;
+		return b;
 	}
 
 
-
-	// подсчет одного бинарного выражения 
 	Borders binary = findBinaryExpression(expr);
 
+	replaceBinaryExpression(&expr, binary);
 
-	// стираем бинарное выражение
 
-	//стираем скобки если они есть
-	if (expr[binary.left - 1] == '(') expr.erase(binary.left - 1);
-	if (expr[binary.right + 1] == ')') expr.erase(binary.right + 1);
-
-	expr.erase(binary.left, binary.right - binary.left + 1);
-	string binaryResult = binaryCalculation(binary.expr);
-	expr.insert(binary.left, binaryResult);
-
-	// рекурсивный вызов функции
 	calculate(expr);
-	
-	cout << expr << endl;;
 
-	return 0;
 }
 
 int main(){
 	
-
-	//cout << calculate("4+4*(5+13)") << endl;
-
+	string a = "(536+12)*13+256*(34+15)";
 	
-
-	string a = "25+25*(2+25)-50";
-
-	cout << findBinaryExpression(a).expr << endl;
-
-	calculate(a);
+	int result = calculate(a);
+	int * _result = (int*)result;
+	cout << *_result << endl;
+	cout << result << " <- returned b =/" <<  endl;
 
 }
