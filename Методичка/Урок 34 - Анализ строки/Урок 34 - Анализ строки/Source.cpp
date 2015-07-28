@@ -127,9 +127,6 @@ string binaryCalculation(string expr){
 	
 	// котвертируем int обратно в string
 	str_res = to_string(res);
-
-	//cout << str_res;
-	cout << str_res << " binary res" << endl;
 	return str_res;
 }
 
@@ -187,7 +184,7 @@ void replaceBinaryExpression(string *expr, Borders binary){
 	int hooksDeleted = 0;
 	//cout << *expr << endl;
 
-	binary.show();
+	
 
 	//удаляем бинарное выражение 
 
@@ -225,7 +222,7 @@ void replaceBinaryExpression(string *expr, Borders binary){
 
 
 int calculate(string expr){
-	
+	int result = 0;
 	// Проверяем правильность расстановки скобок
 	Stack a = expr;
 	if (!a.checkHooks())
@@ -240,14 +237,11 @@ int calculate(string expr){
 		if (expr[i]<'0' || expr[i]>'9') signCount++;
 	}
 
+
+	
 	if (signCount == 1){
 		expr = binaryCalculation(expr);
-		cout << expr << " return" << endl;
-		int b = 4;
-		cout << b << endl;
-		b = stoi(expr);
-		cout << b << " <- this is b" << endl;
-		return b;
+		return stoi(expr);
 	}
 
 
@@ -256,17 +250,14 @@ int calculate(string expr){
 	replaceBinaryExpression(&expr, binary);
 
 
-	calculate(expr);
+	return calculate(expr);
 
 }
 
 int main(){
 	
-	string a = "(536+12)*13+256*(34+15)";
+	string a = "(34+18)*13+25+(36+15)*20+35/17+(36+15)*20+35-17+25+(36+15)*20";
 	
-	int result = calculate(a);
-	int * _result = (int*)result;
-	cout << *_result << endl;
-	cout << result << " <- returned b =/" <<  endl;
+	cout << calculate(a) << endl;
 
 }
