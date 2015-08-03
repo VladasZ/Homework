@@ -6,6 +6,47 @@
 using namespace std;
 
 
+class Student{
+public:
+	string name;
+	string lastName;
+	int coure;
+};
+
+vector <Student> students;
+
+void fillVector(){
+	
+	for (int i = 0; i < 20; i++){
+		Student newStudent;
+		for (int i = 0; i < 7; i++){
+			newStudent.name.push_back(rand() % 26 + 65);
+			newStudent.lastName.push_back(rand() % 26 + 65);
+		}
+		newStudent.coure = rand() % 4 + 1;
+		students.push_back(newStudent);
+	}
+}
+
+void printVector(){
+	for (int i = 0; i < students.size(); i++){
+		cout << students[i].name << ' '
+			<< students[i].lastName << " course N"
+			<< students[i].coure << endl;
+	}
+}
+
+void sortVector(){
+	for (int i = 0; i < students.size()-1; i++){
+		for (int j = 0; j < students.size()-1; j++){
+			if (students[j].name > students[j + 1].name){
+				Student u = students[j];
+				students[j] = students[j + 1];
+				students[j + 1] = u;
+			}
+		}
+	}
+}
 
 
 int main(){
@@ -46,7 +87,15 @@ int main(){
 	}
 
 
+	fillVector();
 
+	printVector();
+
+	sortVector();
+	
+	cout << endl; 
+
+	printVector();
 
 	return 0;
 }
