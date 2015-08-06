@@ -50,7 +50,7 @@ void sortVector(){
 
 
 int main(){
-
+	//1)
 	//«аполнить вектор длинной 10 квадратами целых чисел и вывести его в выходной поток.
 	vector <int> square(10);
 
@@ -63,6 +63,8 @@ int main(){
 		cout << a << endl;
 	}
 	cout << endl;
+
+	//2)
 	//«аполнить двухмерный вектор таблицей умножени€ и выввести его в выходной поток.
 
 	map <string, int> table;
@@ -86,7 +88,7 @@ int main(){
 		if (!(i++ % 5)) cout << endl;
 	}
 
-
+	//3)
 	fillVector();
 
 	printVector();
