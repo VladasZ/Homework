@@ -30,76 +30,76 @@ struct Company		 {
 			"Ultra", "Business", "Company", "Concern"
 		};
 		string names[20] = {
-			"Jacob" ,
+			"Jacob",
 			"Michael",
 			"Joshua ",
 			"Matthew",
-			"Ethan" ,
+			"Ethan",
 			"Andrew",
 			"Daniel",
 			"William",
-			"Joseph" ,
+			"Joseph",
 			"Christopher",
-			"Anthony" ,
-			"Ryan" ,
+			"Anthony",
+			"Ryan",
 			"Nicholas",
-			"David" ,
-			"Alexander" ,
-			"Tyler" ,
-			"James" ,
-			"John" ,
-			"Dylan" ,
+			"David",
+			"Alexander",
+			"Tyler",
+			"James",
+			"John",
+			"Dylan",
 			"Nathan"
 		};
 		string lastNames[20]{
 
 
-			" Abramson" , " Hoggarth" ,
-			" Adamson" , " Holiday" ,
-			" Adderiy" , " Holmes" ,
-			" Addington" , " Howard" ,
-			" Adrian" , " Jacobson" ,
-			" Albertson" , " James" ,
-			" Aldridge" , " Jeff" ,
-			" Allford" , " Barnes",
-			" Alsopp" , " Bishop",
-			" Anderson" ,
-			" Andrews"
+			" Abramson", " Hoggarth",
+				" Adamson", " Holiday",
+				" Adderiy", " Holmes",
+				" Addington", " Howard",
+				" Adrian", " Jacobson",
+				" Albertson", " James",
+				" Aldridge", " Jeff",
+				" Allford", " Barnes",
+				" Alsopp", " Bishop",
+				" Anderson",
+				" Andrews"
 
 
 
 		};
 		string lines[20]{
 			"Типография",
-			"Хлебзавод",
-			"Автозавод",
-			"Парикмахерская",
-			"Склад",
-			"Кафе",
-			"Бар",
-			"Ресторан",
-			"Магазин",
-			"Прачечная",
-			"Школа",
-			"Интернет провайдер",
-			"Грузоперевозки",
-			"Тур оператор",
-			"Спортивное снаряжение",
-			"Спорт зал",
-			"Молокозавод",
-			"Ремонт велосипедов",
-			"Ветеринарная клиника",
-			"Ритуальные услуги"
+				"Хлебзавод",
+				"Автозавод",
+				"Парикмахерская",
+				"Склад",
+				"Кафе",
+				"Бар",
+				"Ресторан",
+				"Магазин",
+				"Прачечная",
+				"Школа",
+				"Интернет провайдер",
+				"Грузоперевозки",
+				"Тур оператор",
+				"Спортивное снаряжение",
+				"Спорт зал",
+				"Молокозавод",
+				"Ремонт велосипедов",
+				"Ветеринарная клиника",
+				"Ритуальные услуги"
 
 
 		};
 
 		string numbers[10]{
-			"1","2","3","4","5","6","7","8","9", "0" };
+			"1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 
 		newCompany.name = (brandParts[rand() % 10]) + (brandParts[rand() % 10]) + (brandParts[rand() % 10]);
 		newCompany.owner = names[rand() % 20] + lastNames[rand() % 20];
-		newCompany.phone = numbers[rand()%10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] ;
+		newCompany.phone = numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10] + numbers[rand() % 10];
 		newCompany.line = lines[rand() % 20];
 
 
@@ -132,7 +132,7 @@ struct Catalog {
 		Company* newCatalog = new Company[size];
 
 
-		for (int i = 0;i < 20; i++) {
+		for (int i = 0; i < 20; i++) {
 			Company a = a.generateCompany();
 			newCatalog[i] = a;
 		}
@@ -151,7 +151,7 @@ struct Catalog {
 
 		company = new Company[size];
 
-		for (int i = 0;i < size;i++) {
+		for (int i = 0; i < size; i++) {
 			getline(fin, company[i].name);
 			getline(fin, company[i].owner);
 			getline(fin, company[i].line);
@@ -176,10 +176,10 @@ struct Catalog {
 		this->path = path;
 
 		ofstream fout(path, ios::out);
-		
+
 		fout << size << endl;
 
-		for (int i = 0;i < size;i++) {
+		for (int i = 0; i < size; i++) {
 			fout << company[i].name << endl;
 			fout << company[i].owner << endl;
 			fout << company[i].line << endl;
@@ -209,7 +209,7 @@ struct Catalog {
 		Company* temp = company;
 		company = new Company[size + 1];
 
-		for (int i = 0;i < size;i++) {
+		for (int i = 0; i < size; i++) {
 			company[i] = temp[i];
 		}
 
@@ -234,21 +234,21 @@ int main() {
 
 	// Сохраняем его
 	a.save("c:\\txt.txt");
-	
+
 	// добавляем новый элемент в справочник
 	a.add("ИП Ромашка", "Вася иванов", "375299999999", "Садоводство");
 
 	// Создаем новый каталог из файла
-	Catalog c ("c:\\txt.txt");
+	Catalog c("c:\\txt.txt");
 
 
 	// Просматриваем новый каталог
 	c.show();
 
-	
+
 }
 
 
 
 
-	
+
