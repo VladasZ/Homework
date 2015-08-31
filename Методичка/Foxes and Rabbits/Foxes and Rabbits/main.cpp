@@ -4,15 +4,26 @@ using namespace std;
 
 #define HIGH 20
 #define LENGTH 50
+// для вычисления смешения
+#define SHIFT_X location.x - 1 + j 
+#define SHIFT_Y location.y - 1 + i
 
+#define RABBIT_CHANCE 21
+#define FOX_CHANCE 71
 struct Location{
-	int x;
-	int y;
+	int x = 0;
+	int y = 0;
+	bool notFound;
 	Location(int x, int y) : x(x), y(y){}
+	Location(bool i) :notFound(i){}
 	Location() : x(0), y(0){};
 	void setLoc(int x, int y){
 		this->x = x;
 		this->y = y;
+	}
+	void setLoc(Location loc){
+		this->x = loc.x;
+		this->y = loc.y;
 	}
 	void show(){
 		cout << x << ' ' << y << endl;
@@ -24,98 +35,175 @@ class Fox;
 class Rabbit;
 class Empty;
 
-Creature* field[HIGH][LENGTH];
+Creature* field[LENGTH][HIGH];
 
 class Creature{
 public:
-	Creature* neighbors[3][3];
+	Creature* neighbors[3][3] = {};
 	Location location;
 	virtual char look() = 0;
 	virtual int move() = 0;
 	virtual int getAge() = 0;
+	virtual int getChance() = 0;
 
 	Creature(int x, int y){
 		location.setLoc(x, y);
+		location.notFound = true;
 	}
+
+	Creature(Location loc){
+		location.setLoc(loc.x, loc.y);
+	}
+
+
 	Creature(){}
 	virtual void lookAround(){
-	/*	cout << "i see something!" << endl;
-		cout << " i see myself! i'm looks like - " << look() << endl;
+		/*	cout << "i see something!" << endl;
+			cout << " i see myself! i'm looks like - " << look() << endl;
 
-		cout << "i'm here: "; location.show();*/
+			cout << "i'm here: "; location.show();*/
 
 		int y = location.y - 1;
 		int x = location.x - 1;
 
 		for (int i = 0; i < 3; i++){
-			
-			for (int j = 0; j < 3; j++){	
-						
-				neighbors[j][i] = field[x++][y];		
-				
+
+			for (int j = 0; j < 3; j++){
+
+				neighbors[j][i] = field[x++][y];
+
 			}
 			y++; x = x = location.x - 1;
 		}
-		
+
 
 		/*cout << " i see my neighbors! they are: " << endl;
 
 		for (int i = 0; i < 3; i++){
-			for (int j = 0; j < 3; j++){
-				cout << neighbors[i][j]->look();
-			}
-			cout << endl;
+		for (int j = 0; j < 3; j++){
+		cout << neighbors[i][j]->look();
+		}
+		cout << endl;
 		}*/
 	}
 
-};
-
-
-
-class Rabbit :public Creature{
-public:
-	int age = 0;
-	int getAge(){
-		return age;
+	void showNeighbors(){
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 3; j++){
+				cout << neighbors[j][i]->look();
+			}
+			cout << endl;
+		}
 	}
-	Rabbit(int x, int y) : Creature(x, y){}
 
-	char look(){ return 'R'; }
-	int move(){ return 0; }
+	void tellAboutYourself(){
+		cout << "Hello! i'm - " << look() << endl;
+		cout << "I live here - "; location.show();
+		lookAround();
+		cout << "My neighbors are:" << endl;
+		showNeighbors();
+	}
+
+	bool findNeighbor(Location& loc, char look){
+
+		
+		
+		for (int i = 0; i < 3; i++){
+			for (int j = 0; j < 3; j++){
+				if (neighbors[j][i]->look() == look){
+
+					if (!(rand() % getChance())){
+						loc = neighbors[j][i]->location;
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
+	
 };
+
 
 class Empty :public Creature{
 public:
 	int age = 0;
+	int chance = 1;
+	int getChance(){
+		return chance;
+	}
 	int getAge(){
 		return age;
 	}
 	Empty(int x, int y) : Creature(x, y){}
 
+	Empty(Location loc):Creature(loc){}
+
 	char look(){ return ' '; }
 	int move(){ return 0; }
 };
+
+class Rabbit :public Creature{
+public:
+	int age = 0;
+	int chance = RABBIT_CHANCE;
+	int getChance(){
+		return chance;
+	}
+	int getAge(){
+		return age;
+	}
+	Rabbit(int x, int y) : Creature(x, y){}
+	Rabbit(Location loc) :Creature(loc){}
+
+	char look(){ return 'R'; }
+	int move(){
+		lookAround();
+
+		Location target;
+
+		if (findNeighbor(target, 'R'))
+		{
+			findNeighbor(target, ' ');
+
+			field[target.x][target.y] = new Rabbit(target);
+			return 0;
+		}
+
+
+		return 0; }
+};
+
+
 
 
 class Wall :public Creature{
 public:
 	int age = 0;
+	int chance = 1;
+	int getChance(){
+		return chance;
+	}
 	int getAge(){
 		return age;
 	}
 	Wall(int x, int y) : Creature(x, y){}
 
 	char look(){ return 219; }
-	int move(){ cout << "Walls can't move!" << endl; return 0; }
-	void lookAround(){
-		cout << "\nSorry! I'm a wall. I can't see anything T_T" << endl;
-	}
+	int move(){return 0; }
+
 };
 
 
 class Fox :public Creature{
 public:
 	int age = 0;
+	int chance = FOX_CHANCE;
+	int getChance(){
+		return chance;
+	}
 	int getAge(){
 		return age;
 	}
@@ -123,32 +211,28 @@ public:
 	Fox(int x, int y) : Creature(x, y){}
 	char look(){ return 'F'; }
 	int move(){
-		// едим соседнего зайца
-		for (int i = 0; i < 3; i++){
-			for (int j = 0; j < 3; j++){
-				if (neighbors[i][j]->look() == 'R')
-				{
-					field[location.x - 1 + i][location.y - 1 + j] = new Empty(location.x - 1 + i, location.y - 1 + j);
-					return 0;
-				}
-			}
+
+		lookAround();
+
+		Location target;
+
+		if (findNeighbor(target, 'R'))
+		{
+			field[target.x][target.y] = new Empty(target);
+			return 0;
 		}
-		// Двигаемся если зайцев нет
-		for (int i = 0; i < 3; i++){
-			for (int j = 0; j < 3; j++){
-				if (neighbors[i][j]->look() == ' ' && 1)
-				{
-					field[location.x - 1 + i][location.y - 1 + j] = this;
-					//field[location.x - 1 + i][location.y - 1 + j]->location.x = location.x - 1 + i;
-					//field[location.x - 1 + i][location.y - 1 + j]->location.y = location.y - 1 + j;
+		if (findNeighbor(target, ' '))
+		{
+			field[target.x][target.y] = this;
+			field[location.x][location.y] = new Empty(location);
+			this->location.setLoc(target);
 
-					field[i][j] = new Empty(i, j);
-					return 0;
-				}
-			}
+			return 0;
 		}
+		
+		
 
-
+		return 0;
 	}
 
 };
@@ -161,7 +245,7 @@ void createField(){
 			// создаем стену для того чтобы не выйти за пределы массива когда животные будут осматриваться вокруг себя 
 			if (!i || !j || i == HIGH-1 || j == LENGTH-1)
 			{
-				field[i][j] = new Wall(i,j);
+				field[j][i] = new Wall(j,i);
 				continue;
 			}
 
@@ -170,13 +254,13 @@ void createField(){
 			switch (Rand)
 			{
 			case 0:
-				field[i][j] = new Fox(i, j);
+				field[j][i] = new Fox(j, i);
 				break;
 			case 1:
-				field[i][j] = new Rabbit(i, j);
+				field[j][i] = new Rabbit(j, i);
 				break;
 			case 2:
-				field[i][j] = new Empty(i, j);
+				field[j][i] = new Empty(j, i);
 				break;
 			default:
 				break;
@@ -188,7 +272,7 @@ void createField(){
 void showField(){
 	for (int i = 0; i < HIGH; i++){
 		for (int j = 0; j < LENGTH; j++){
-			cout << field[i][j]->look();
+			cout << field[j][i]->look();
 		}
 		cout << endl;
 	}
@@ -198,21 +282,18 @@ void showField(){
 void life(){
 
 
-	// животные осматриваются
-	for (int i = 1; i < HIGH-1; i++){
-		for (int j = 1; j < LENGTH-1; j++){
-			field[i][j]->lookAround();
-		}
-	}
+	
 	// животные делают свои дела
 	for (int i = 1; i < HIGH - 1; i++){
 		for (int j = 1; j < LENGTH - 1; j++){
-			field[i][j]->move();
+			field[j][i]->move();
 		}
 	}
 
 	system("cls");
 	showField();
+	//field[3][3]->tellAboutYourself();
+	//Sleep(500);
 
 }
 
@@ -224,10 +305,20 @@ void life(){
 
 int main(){
 	createField();
-	showField();
+
+	life();
 	while (1){
 		life();
 	}
+
+	showField();
+
+	field[3][3]->tellAboutYourself();
+	field[3][3]->move();
+
+
+
+
 
 	return 0;
 }

@@ -256,7 +256,7 @@ int calculate(string expr){
 
 int main(){
 	
-	string a = "(34+18)*13+25+(36+15)*20+35/17+(36+15)*20+35-17+25+(36+15)*20";
+	string a = "50-500*17000";
 	
 	cout << calculate(a) << endl;
 
