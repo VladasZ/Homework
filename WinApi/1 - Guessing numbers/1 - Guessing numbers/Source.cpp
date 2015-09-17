@@ -1,24 +1,39 @@
+#define UNICODE
+
 #include <Windows.h>
-//#include <tchar.h>
+#include <tchar.h>
 #include <string>
 
 using namespace std;
 
+#ifndef UNICODE  
+typedef string String;
+#define To_string to_string
+#else
+typedef wstring String;
+#define To_string to_wstring
 
-int guess(int number) {
+#endif
+
+#define MDA 3;
+
+
+
+
+int guess(const int& number) {
 	
 	static int iteration = 1;
 	static int try_ = 0;
 	++try_;
 
-	string message = "Is your number bigger than  ";
-	message.insert(message.size(), (to_string(number)));
-	message.insert(message.size(),"?");
+	String message = TEXT("Is your number bigger than  ");
+	message.insert(message.size(), (To_string(number)));
+	message.insert(message.size(),TEXT("?"));
 
 
 	iteration *= 2;
 
-	int answer = (MessageBox(0, TEXT(message.c_str()), TEXT("Guessing numbers"), MB_YESNOCANCEL));
+	int answer = (MessageBox(0, (message.c_str()), TEXT("Guessing numbers"), MB_YESNOCANCEL));
 
 	
 
@@ -36,10 +51,10 @@ int guess(int number) {
 		break;
 	case IDCANCEL:
 		message.erase();
-		message.insert(0,"Guessing your number takes ");
-		message.insert(message.size(), (to_string(try_)));
-		message.insert(message.size(), " attempts.");
-		(MessageBox(0, TEXT(message.c_str()), TEXT("Guessing numbers"), MB_OK));
+		message.insert(0,TEXT("Guessing your number takes "));
+		message.insert(message.size(), (To_string(try_)));
+		message.insert(message.size(), TEXT(" attempts."));
+		(MessageBox(0, (message.c_str()), TEXT("Guessing numbers"), MB_OK));
 		iteration = 1;
 		try_ = 0;
 		return 0;
