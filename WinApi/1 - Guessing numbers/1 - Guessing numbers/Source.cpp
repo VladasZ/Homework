@@ -51,7 +51,7 @@ int guess(const int& number) {
 		break;
 	case IDCANCEL:
 		message.erase();
-		message.insert(0,TEXT("Guessing your number takes "));
+		message.insert(0,TEXT("Guessing your number took "));
 		message.insert(message.size(), (To_string(try_)));
 		message.insert(message.size(), TEXT(" attempts."));
 		(MessageBox(0, (message.c_str()), TEXT("Guessing numbers"), MB_OK));
