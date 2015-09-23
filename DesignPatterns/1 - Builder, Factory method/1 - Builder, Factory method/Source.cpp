@@ -82,7 +82,6 @@ public:
 	}
 };
 
-enum Car_t{oka, ferrari};
 
 
 
