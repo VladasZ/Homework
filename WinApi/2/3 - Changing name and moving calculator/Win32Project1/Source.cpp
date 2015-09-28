@@ -1,171 +1,140 @@
-// Файл WINDOWS.H содержит определения, макросы, и структуры
-// которые используются при написании приложений под Windows.
-#define UNICODE
 #include <windows.h>
-#include <tchar.h>
-#include <string>
-
-
-//прототип оконной процедуры
-LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
-
-
-TCHAR szClassWindow[] = TEXT("Каркасное приложение"); /* Имя класса окна */
-
+#include <vector>
 
 using namespace std;
 
+LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
+BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam);
+BOOL CALLBACK FindDialog(HWND hWnd, LPARAM lParam);
 
-INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow)
+TCHAR szClassWindow[] = TEXT("Каркасное приложение");
+
+int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow)
 {
 	HWND hWnd;
 	MSG lpMsg;
 	WNDCLASSEX wcl;
-
-
-	/* 1. Определение класса окна */
-
-
-	wcl.cbSize = sizeof(wcl); // размер структуры WNDCLASSEX
-	wcl.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS; // окно сможет получать сообщения о двойном щелчке (DBLCLK)
-	wcl.lpfnWndProc = WindowProc; // адрес оконной процедуры
-	wcl.cbClsExtra = 0; // используется Windows
-	wcl.cbWndExtra = 0; // используется Windows
-	wcl.hInstance = hInst; // дескриптор данного приложения
-	wcl.hIcon = LoadIcon(NULL, IDI_APPLICATION); // загрузка стандартной иконки
-	wcl.hCursor = LoadCursor(NULL, IDC_ARROW); // загрузка стандартного курсора
-	wcl.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); //заполнение окна белым цветом 
-	wcl.lpszMenuName = NULL; // приложение не содержит меню
-	wcl.lpszClassName = szClassWindow; // имя класса окна
-	wcl.hIconSm = NULL; // отсутствие маленькой иконки для связи с классом окна
-
-
-
-						/* 2. Регистрация класса окна */
-
-
+	wcl.cbSize = sizeof(wcl);
+	wcl.style = CS_HREDRAW | CS_VREDRAW;
+	wcl.lpfnWndProc = WindowProc;
+	wcl.cbClsExtra = 0;
+	wcl.cbWndExtra = 0;
+	wcl.hInstance = hInst;
+	wcl.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wcl.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcl.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	wcl.lpszMenuName = NULL;
+	wcl.lpszClassName = szClassWindow;
+	wcl.hIconSm = NULL;
 	if (!RegisterClassEx(&wcl))
-		return 0; // при неудачной регистрации - выход
-
-
-
-				  /* 3. Создание окна */
-
-
-				  // создается окно и переменной hWnd присваивается дескриптор окна
-	hWnd = CreateWindowEx(
-		0, // расширенный стиль окна
-		szClassWindow, // имя класса окна
-		TEXT("Push RETURN/ESC to start/stop"), // заголовок окна
-							   /* Заголовок, рамка, позволяющая менять размеры, системное меню,
-							   кнопки развёртывания и свёртывания окна */
-		WS_OVERLAPPEDWINDOW, // стиль окна
-		CW_USEDEFAULT, // х-координата левого верхнего угла окна
-		CW_USEDEFAULT, // y-координата левого верхнего угла окна
-		350, // ширина окна
-		100, // высота окна
-		NULL, // дескриптор родительского окна
-		NULL, // дескриптор меню окна
-		hInst, // идентификатор приложения, создавшего окно
-		NULL); // указатель на область данных приложения
-
-
-
-			   /* 4. Отображение окна */
-
-
+		return 0;
+	hWnd = CreateWindowEx(0, szClassWindow, TEXT("Перечисление дочерних окон"), WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, CW_USEDEFAULT, 300, 300, NULL, NULL, hInst, NULL);
 	ShowWindow(hWnd, nCmdShow);
-	UpdateWindow(hWnd); // перерисовка окна
+	UpdateWindow(hWnd);
 
 
-	HWND calcHWnd = FindWindow(TEXT("CalcFrame"), TEXT("Calculator")); // получим дескриптор "Калькулятора"
+
+	HWND h = FindWindow(TEXT("CalcFrame"), NULL); // получим дескриптор "Калькулятора"
+	if (!h)
+		MessageBox(hWnd, TEXT("Необходимо открыть \"Калькулятор\""), TEXT("Error!!!"), MB_OK | MB_ICONSTOP);
+
+	else
+		EnumChildWindows(h, EnumChildProc, (LPARAM)hWnd); // начинаем перечисление дочерних окон "Калькулятора"
 
 
-																	   /* 5. Запуск цикла обработки сообщений */
+	//EnumChildWindows(h, FindDialog, (LPARAM)hWnd); // начинаем перечисление дочерних окон "Калькулятора"
 
 
-																	   // получение очередного сообщения из очереди сообщений
+	//MessageBox(hWnd, TEXT("Откройте, пожалуйста, \"Калькулятор\", и нажмите <CTRL>"), TEXT("Перечисление дочерних окон"), MB_OK | MB_ICONINFORMATION);
 	while (GetMessage(&lpMsg, NULL, 0, 0))
 	{
-		TranslateMessage(&lpMsg); // трансляция сообщения
-		DispatchMessage(&lpMsg); // диспетчеризация сообщений
+		TranslateMessage(&lpMsg);
+		DispatchMessage(&lpMsg);
 	}
 	return lpMsg.wParam;
 }
 
+vector<HWND> buttons;
 
 
-
-
-LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMessage, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam)
 {
+	HWND hWindow = (HWND)lParam; // дескриптор окна нашего приложения
+	TCHAR caption[MAX_PATH] = { 0 }, classname[100] = { 0 }, text[500] = { 0 };
 	
-	static HWND calcHWnd;
-	if(!calcHWnd) calcHWnd = FindWindow(TEXT("CalcFrame"), TEXT("Calculator")); // получим дескриптор "Калькулятора"
+	GetClassName(hWnd, classname, 100); // получаем имя класса текущего дочернего окна
+
+	if (wcscmp(classname , TEXT("Button"))) {
+		
+
+		buttons.push_back(hWnd);
+
+	}
+	else {
+		//MessageBox(hWindow, TEXT("izi"), TEXT("Ok"), MB_OK);
+
+	}
+	
+	return TRUE; // продолжаем перечисление дочерних окон
+}
+
+BOOL CALLBACK FindDialog(HWND hWnd, LPARAM lParam)
+{
+	HWND hWindow = (HWND)lParam; // дескриптор окна нашего приложения
+	TCHAR caption[MAX_PATH] = { 0 }, classname[100] = { 0 }, text[500] = { 0 };
+	GetClassName(hWnd, classname, 100); // получаем имя класса текущего дочернего окна
+
+	if (wcscmp(classname, TEXT("#32770 (Dialog)"))) {
+		MessageBox(hWindow, TEXT("OK dialog"), TEXT("Ok"), MB_OK );
+
+		buttons.push_back(hWnd);
+
+	}
+	else {
+		MessageBox(hWindow, TEXT("izi"), TEXT("Ok"), MB_OK);
+
+	}
+
+	return TRUE; // продолжаем перечисление дочерних окон
+}
 
 
-	int screenX = GetSystemMetrics(SM_CXSCREEN);
-	int screenY = GetSystemMetrics(SM_CYSCREEN);
 
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	static int number = 0;
 
-	static int posX = 0;
-	static int posY = 0;
-
-
-
-	TCHAR str[50];
-	switch (uMessage)
+	
+	switch (message)
 	{
-
-
-	case WM_TIMER:
-
-
-		if (posX <= screenX - 300 && posY == 0) {
-			MoveWindow(calcHWnd, posX, 0, 300, 300, 1);
-			posX += 10;
-		}
-		if (posX == screenX - 300 && posY <= screenY - 300) {
-			MoveWindow(calcHWnd, posX, posY, 300, 300, 1);
-			posY += 10;
-		}
-		if (posY == screenY - 300 && posX >= 0) {
-			MoveWindow(calcHWnd, posX, posY, 300, 300, 1);
-			posX -= 10;
-		}
-		if (posX == 0 && posY >= 0) {
-			MoveWindow(calcHWnd, posX, posY, 300, 300, 1);
-			posY -= 10;
-		}
-
-
-
-
-		break;
-
-
-	case WM_KEYDOWN:
-
-		if (!calcHWnd) MessageBox(hWnd, TEXT("Open calculator please!"), TEXT("Error!"), MB_OK | MB_ICONWARNING);
-		else
-		if (wParam == VK_RETURN) {
-
-			SetWindowText(calcHWnd, TEXT("BLA BLA BLAA"));
-
-			SetTimer(hWnd, 1, 100, 0);
-		}
-
-		if (wParam == VK_ESCAPE)
-			KillTimer(hWnd, 1);
-		break;
-
-
-
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
+	case WM_KEYDOWN:
+		if (wParam == VK_CONTROL)
+		{
+			}
+		if (wParam == VK_RETURN)
+		{
+			ShowWindow(buttons[number], SW_HIDE);
+		}
+		if (wParam == VK_ESCAPE)
+		{
+			ShowWindow(buttons[number], SW_SHOW);
+		}
+		if (wParam == VK_UP)
+		{
+			++number;
+		}
+		if (wParam == VK_DOWN)
+		{
+			--number;
+		}
+		break;
 	default:
-		return DefWindowProc(hWnd, uMessage, wParam, lParam);
+		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
 }
+
