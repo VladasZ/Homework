@@ -1,140 +1,45 @@
 #include <windows.h>
-#include <vector>
+#include "resource.h"
 
-using namespace std;
+BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
-LRESULT CALLBACK WindowProc(HWND, UINT, WPARAM, LPARAM);
-BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam);
-BOOL CALLBACK FindDialog(HWND hWnd, LPARAM lParam);
+HWND hStatic1, hStatic2;
+TCHAR szCoordinates[20];
+HINSTANCE hInst;
+const int LEFT = 15, TOP = 110, WIDTH = 380, HEIGHT = 50;
 
-TCHAR szClassWindow[] = TEXT(" аркасное приложение");
-
-int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow)
 {
-	HWND hWnd;
-	MSG lpMsg;
-	WNDCLASSEX wcl;
-	wcl.cbSize = sizeof(wcl);
-	wcl.style = CS_HREDRAW | CS_VREDRAW;
-	wcl.lpfnWndProc = WindowProc;
-	wcl.cbClsExtra = 0;
-	wcl.cbWndExtra = 0;
-	wcl.hInstance = hInst;
-	wcl.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	wcl.hCursor = LoadCursor(NULL, IDC_ARROW);
-	wcl.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-	wcl.lpszMenuName = NULL;
-	wcl.lpszClassName = szClassWindow;
-	wcl.hIconSm = NULL;
-	if (!RegisterClassEx(&wcl))
-		return 0;
-	hWnd = CreateWindowEx(0, szClassWindow, TEXT("ѕеречисление дочерних окон"), WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, 300, 300, NULL, NULL, hInst, NULL);
-	ShowWindow(hWnd, nCmdShow);
-	UpdateWindow(hWnd);
-
-
-
-	HWND h = FindWindow(TEXT("CalcFrame"), NULL); // получим дескриптор " алькул€тора"
-	if (!h)
-		MessageBox(hWnd, TEXT("Ќеобходимо открыть \" алькул€тор\""), TEXT("Error!!!"), MB_OK | MB_ICONSTOP);
-
-	else
-		EnumChildWindows(h, EnumChildProc, (LPARAM)hWnd); // начинаем перечисление дочерних окон " алькул€тора"
-
-
-	//EnumChildWindows(h, FindDialog, (LPARAM)hWnd); // начинаем перечисление дочерних окон " алькул€тора"
-
-
-	//MessageBox(hWnd, TEXT("ќткройте, пожалуйста, \" алькул€тор\", и нажмите <CTRL>"), TEXT("ѕеречисление дочерних окон"), MB_OK | MB_ICONINFORMATION);
-	while (GetMessage(&lpMsg, NULL, 0, 0))
-	{
-		TranslateMessage(&lpMsg);
-		DispatchMessage(&lpMsg);
-	}
-	return lpMsg.wParam;
+	hInst = hInstance;
+	// создаЄм главное окно приложени€ на основе модального диалога
+	return DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, DlgProc);
 }
 
-vector<HWND> buttons;
-
-
-BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam)
+BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	HWND hWindow = (HWND)lParam; // дескриптор окна нашего приложени€
-	TCHAR caption[MAX_PATH] = { 0 }, classname[100] = { 0 }, text[500] = { 0 };
-	
-	GetClassName(hWnd, classname, 100); // получаем им€ класса текущего дочернего окна
-
-	if (wcscmp(classname , TEXT("Button"))) {
-		
-
-		buttons.push_back(hWnd);
-
-	}
-	else {
-		//MessageBox(hWindow, TEXT("izi"), TEXT("Ok"), MB_OK);
-
-	}
-	
-	return TRUE; // продолжаем перечисление дочерних окон
-}
-
-BOOL CALLBACK FindDialog(HWND hWnd, LPARAM lParam)
-{
-	HWND hWindow = (HWND)lParam; // дескриптор окна нашего приложени€
-	TCHAR caption[MAX_PATH] = { 0 }, classname[100] = { 0 }, text[500] = { 0 };
-	GetClassName(hWnd, classname, 100); // получаем им€ класса текущего дочернего окна
-
-	if (wcscmp(classname, TEXT("#32770 (Dialog)"))) {
-		MessageBox(hWindow, TEXT("OK dialog"), TEXT("Ok"), MB_OK );
-
-		buttons.push_back(hWnd);
-
-	}
-	else {
-		MessageBox(hWindow, TEXT("izi"), TEXT("Ok"), MB_OK);
-
-	}
-
-	return TRUE; // продолжаем перечисление дочерних окон
-}
-
-
-
-LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	static int number = 0;
-
-	
 	switch (message)
 	{
-	case WM_DESTROY:
-		PostQuitMessage(0);
-		break;
-	case WM_KEYDOWN:
-		if (wParam == VK_CONTROL)
-		{
-			}
-		if (wParam == VK_RETURN)
-		{
-			ShowWindow(buttons[number], SW_HIDE);
-		}
-		if (wParam == VK_ESCAPE)
-		{
-			ShowWindow(buttons[number], SW_SHOW);
-		}
-		if (wParam == VK_UP)
-		{
-			++number;
-		}
-		if (wParam == VK_DOWN)
-		{
-			--number;
-		}
-		break;
-	default:
-		return DefWindowProc(hWnd, message, wParam, lParam);
+	case WM_CLOSE:
+		EndDialog(hWnd, 0); // закрываем модальный диалог
+		return TRUE;
+		// WM_INITDIALOG - данное сообщение приходит после создани€ диалогового окна, но перед его отображением на экран
+	case WM_INITDIALOG:
+		hStatic1 = GetDlgItem(hWnd, IDC_STATIC1); // получаем дескриптор статика, размещенного на форме диалога
+												  //создаЄм статик с помощью CreateWindowEx
+		hStatic2 = CreateWindowEx(0, TEXT("STATIC"), 0,
+			WS_CHILD | WS_VISIBLE | WS_BORDER | SS_CENTER | WS_EX_CLIENTEDGE,
+			LEFT, TOP, WIDTH, HEIGHT, hWnd, 0, hInst, 0);
+		return TRUE;
+	case WM_MOUSEMOVE:
+		wsprintf(szCoordinates, TEXT("X=%d  Y=%d"), LOWORD(lParam), HIWORD(lParam)); // текущие координаты курсора мыши
+		SetWindowText(hStatic1, szCoordinates);	// строка выводитс€ на статик
+		return TRUE;
+	case WM_LBUTTONDOWN:
+		SetWindowText(hStatic2, TEXT("Ќажата лева€ кнопка мыши"));
+		return TRUE;
+	case WM_RBUTTONDOWN:
+		SetWindowText(hStatic2, TEXT("Ќажата права€ кнопка мыши"));
+		return TRUE;
 	}
-	return 0;
+	return FALSE;
 }
-
