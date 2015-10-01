@@ -5,9 +5,9 @@
 
 using namespace std;
 
-int i = 0;
-int j = 0;
+
 #define LAST_STATIC statics[statics.size() - 1]
+#define stat statics[i]
 
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -88,6 +88,25 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 
 
+		for (int i = 0; i < statics.size(); ++i) {// showing info about statics
+
+
+			if (LOWORD(lParam) > stat->x && LOWORD(lParam) < stat->x + stat->height
+				&& HIWORD(lParam) > stat->y && HIWORD(lParam) < stat->y + stat->width) {
+
+				wsprintf(infoText, TEXT("#%d, HIGHT = %d, WIDTH = %d, X position = %d, Y position = %d"), i, stat->height, stat->width, stat->x, stat->y);
+				SetWindowText(hWnd, infoText);
+
+				break;
+			}
+			else {
+				wsprintf(infoText, TEXT("empty"), i, stat->height, stat->width, stat->x, stat->y);
+				SetWindowText(hWnd, infoText);
+			}
+		}
+
+
+
 		return TRUE;
 
 
@@ -127,37 +146,42 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 
 
+		//moved to WM_MOUSEMOVE
+	/*case WM_RBUTTONDOWN: 
 
-	case WM_RBUTTONDOWN:
-
-		i = 0;
-		for (auto a : statics) {++i;
+		
+		for (int i = 0; i < statics.size(); ++i) {
 			
 			
-			if (LOWORD(lParam) > a->x && LOWORD(lParam) < a->x + a->height
-				&& HIWORD(lParam) > a->y && HIWORD(lParam) < a->y + a->width) {
+			if (LOWORD(lParam) > stat->x && LOWORD(lParam) < stat->x + stat->height
+				&& HIWORD(lParam) > stat->y && HIWORD(lParam) < stat->y + stat->width) {
 
-				wsprintf(infoText, TEXT("#%d, HIGHT = %d, WIDTH = %d, X position = %d, Y position = %d"), i, a->height, a->width, a->x, a->y);
+				wsprintf(infoText, TEXT("#%d, HIGHT = %d, WIDTH = %d, X position = %d, Y position = %d"), i, stat->height, stat->width, stat->x, stat->y);
 				SetWindowText(hWnd, infoText);
 
-				
+				break;
+			}
+			else {
+				wsprintf(infoText, TEXT("empty"), i, stat->height, stat->width, stat->x, stat->y);
+				SetWindowText(hWnd, infoText);
 			}
 		}
 		
-		return TRUE;
+		return TRUE;*/
 
 	case WM_LBUTTONDBLCLK:
 
-		j = 0;
-		for (auto a : statics) {
-			++j;
+		
+		for (int i = 0; i < statics.size(); ++i) {
 
 
-			if (LOWORD(lParam) > a->x && LOWORD(lParam) < a->x + a->height
-				&& HIWORD(lParam) > a->y && HIWORD(lParam) < a->y + a->width) {
+			if (LOWORD(lParam) > stat->x && LOWORD(lParam) < stat->x + stat->height
+				&& HIWORD(lParam) > stat->y && HIWORD(lParam) < stat->y + stat->width) {
 
-				DestroyWindow(a->handle);
-				statics.erase(statics.begin()+j);
+				DestroyWindow(stat->handle);
+				
+				if(i)statics.erase(statics.begin()+i);
+				else statics.pop_back();
 				break;
 
 			}
