@@ -96,6 +96,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 				wsprintf(infoText, TEXT("#%d, HIGHT = %d, WIDTH = %d, X position = %d, Y position = %d"), i, stat->height, stat->width, stat->x, stat->y);
 				SetWindowText(hWnd, infoText);
+				
 
 				break;
 			}
@@ -134,7 +135,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return TRUE;
 
 	case WM_LBUTTONUP:
-<<<<<<< HEAD
+
 		mouseDown = false;
 		if (statics.size()) {
 			if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10 || LAST_STATIC->height < 0 || LAST_STATIC->height < 0) {// destroy static if it's less then 10*10
@@ -142,7 +143,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				statics.pop_back();
 			}
 		}
-=======
+
 			mouseDown = false;
 			
 			if(statics.size()){
@@ -151,7 +152,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					statics.pop_back();
 				}
 			}
->>>>>>> origin/master
+
 
 		return TRUE;
 
