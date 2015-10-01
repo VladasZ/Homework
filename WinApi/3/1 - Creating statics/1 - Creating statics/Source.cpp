@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <vector>
 #include "resource.h"
+#include <memory>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ struct staticRect {
 	staticRect(HWND hwnd, int x, int y, int width, int height) : handle(hwnd), x(x), y(y), width(width), height(height) {}
 };
 
-vector<staticRect*> statics;
+vector<shared_ptr<staticRect>> statics;
 
 bool mouseDown;
 
@@ -78,6 +79,10 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				1
 				);
 
+			statics[statics.size() - 1]->height = LOWORD(lParam) - statics[statics.size() - 1]->x;
+			statics[statics.size() - 1]->width = HIWORD(lParam) - statics[statics.size() - 1]->y;
+
+
 		}
 
 
@@ -92,7 +97,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		mouseDown = true;
 
 		statics.push_back
-			( new staticRect(
+			( make_shared<staticRect>(
 				CreateWindowEx(0, TEXT("STATIC"), 0,
 					WS_CHILD | WS_VISIBLE | WS_BORDER | SS_CENTER | WS_EX_CLIENTEDGE,
 					LOWORD(lParam), HIWORD(lParam), 0, 0, hWnd, 0, hInst, 0), 
@@ -109,6 +114,12 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_LBUTTONUP:
 			mouseDown = false;
+
+			if (statics[statics.size() - 1]->height < 10 && statics[statics.size() - 1]->width < 10) {
+				DestroyWindow(statics[statics.size() - 1]->handle);
+				statics.pop_back();
+			}
+
 
 		return TRUE;
 	case WM_RBUTTONDOWN:
