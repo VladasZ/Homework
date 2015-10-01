@@ -134,6 +134,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return TRUE;
 
 	case WM_LBUTTONUP:
+<<<<<<< HEAD
 		mouseDown = false;
 		if (statics.size()) {
 			if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10 || LAST_STATIC->height < 0 || LAST_STATIC->height < 0) {// destroy static if it's less then 10*10
@@ -141,6 +142,16 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				statics.pop_back();
 			}
 		}
+=======
+			mouseDown = false;
+			
+			if(statics.size()){
+				if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10 || LAST_STATIC->height < 0 || LAST_STATIC->height < 0) {// destroy static if it's less then 10*10
+					DestroyWindow(LAST_STATIC->handle);
+					statics.pop_back();
+				}
+			}
+>>>>>>> origin/master
 
 		return TRUE;
 
