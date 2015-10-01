@@ -5,6 +5,8 @@
 
 using namespace std;
 
+#define LAST_STATIC statics[statics.size() - 1]
+
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
 
 HWND hStatic1, hStatic2;
@@ -33,7 +35,7 @@ HINSTANCE hInst;
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow)
 {
 	hInst = hInstance;
-	// создаём главное окно приложения на основе модального диалога
+
 	return DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, DlgProc);
 }
 
@@ -42,28 +44,24 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	switch (message)
 	{
 	case WM_CLOSE:
-		EndDialog(hWnd, 0); // закрываем модальный диалог
+		EndDialog(hWnd, 0); 
 		return TRUE;
-		// WM_INITDIALOG - данное сообщение приходит после создания диалогового окна, но перед его отображением на экран
+	
+
 	case WM_INITDIALOG:
-		//	hStatic1 = GetDlgItem(hWnd, IDC_STATIC1); // получаем дескриптор статика, размещенного на форме диалога
-		//создаём статик с помощью CreateWindowEx
-			
-		/*hStatic2 = CreateWindowEx(0, TEXT("STATIC"), 0,
-			WS_CHILD | WS_VISIBLE | WS_BORDER | SS_CENTER | WS_EX_CLIENTEDGE,
-			LEFT, TOP, WIDTH, HEIGHT, hWnd, 0, hInst, 0);*/
+		
 
 
 		infoButton = GetDlgItem(hWnd, IDC_BUTTON1);
-		wsprintf(infoText, TEXT("Arrow: X=%d  Y=%d"), LOWORD(lParam), HIWORD(lParam)); // текущие координаты курсора мыши
-		SetWindowText(infoButton, infoText);	// строка выводится на статик
+		wsprintf(infoText, TEXT("Arrow: X=%d  Y=%d"), LOWORD(lParam), HIWORD(lParam)); 
+		SetWindowText(infoButton, infoText);	
 
 		return TRUE;
 
 
 	case WM_MOUSEMOVE:
-		wsprintf(infoText, TEXT("Arrow: X=%d  Y=%d"), LOWORD(lParam), HIWORD(lParam)); // текущие координаты курсора мыши
-		SetWindowText(infoButton, infoText);	// строка выводится на статик
+		wsprintf(infoText, TEXT("Arrow: X=%d  Y=%d"), LOWORD(lParam), HIWORD(lParam)); // mouse coordinates for info
+		SetWindowText(infoButton, infoText);	
 
 
 		if (mouseDown)
@@ -71,16 +69,16 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			
 			MoveWindow(
-				statics[statics.size() - 1]->handle,
-				statics[statics.size() - 1]->x,
-				statics[statics.size() - 1]->y,
-				LOWORD(lParam) - statics[statics.size() - 1]->x,
-				HIWORD(lParam) - statics[statics.size() - 1]->y,
+				LAST_STATIC->handle,
+				LAST_STATIC->x,
+				LAST_STATIC->y,
+				LOWORD(lParam) - LAST_STATIC->x,
+				HIWORD(lParam) - LAST_STATIC->y,
 				1
 				);
 
-			statics[statics.size() - 1]->height = LOWORD(lParam) - statics[statics.size() - 1]->x;
-			statics[statics.size() - 1]->width = HIWORD(lParam) - statics[statics.size() - 1]->y;
+			LAST_STATIC->height = LOWORD(lParam) - LAST_STATIC->x;
+			LAST_STATIC->width = HIWORD(lParam) - LAST_STATIC->y;
 
 
 		}
@@ -115,8 +113,8 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP:
 			mouseDown = false;
 
-			if (statics[statics.size() - 1]->height < 10 && statics[statics.size() - 1]->width < 10) {
-				DestroyWindow(statics[statics.size() - 1]->handle);
+			if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10) {// destroy static if it's less then 10*10
+				DestroyWindow(LAST_STATIC->handle);
 				statics.pop_back();
 			}
 
