@@ -135,12 +135,13 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_LBUTTONUP:
 			mouseDown = false;
-
-			if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10 || LAST_STATIC->height < 0 || LAST_STATIC->height < 0) {// destroy static if it's less then 10*10
-				DestroyWindow(LAST_STATIC->handle);
-				statics.pop_back();
+			
+			if(statics.size()){
+				if (LAST_STATIC->height < 10 && LAST_STATIC->width < 10 || LAST_STATIC->height < 0 || LAST_STATIC->height < 0) {// destroy static if it's less then 10*10
+					DestroyWindow(LAST_STATIC->handle);
+					statics.pop_back();
+				}
 			}
-
 
 		return TRUE;
 
