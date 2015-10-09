@@ -1,95 +1,68 @@
 #include <iostream>
-#include <vector>
-#include <conio.h>
-#include <string>
-#include <cstdlib>
 
-using namespace std;
-
-enum Button { Esc = 27, Backspace = 8, Enter = 13 };
-
-class Memento {
-	vector<string> memory;
+class Strategy
+{
 public:
+	virtual ~Strategy() {}
+	virtual void use(void) = 0;
+};
 
-	void saveState();
-	void cancel();
-}memento;
-
-
-class TextEditor {
+class Strategy_1 : public Strategy
+{
 public:
-	string data;
+	void use(void) { std::cout << "Strategy_1" << std::endl; };
+};
 
+class Strategy_2 : public Strategy
+{
+public:
+	void use(void) { std::cout << "Strategy_2" << std::endl; };
+};
 
-	TextEditor& type(char letter) {
+class Strategy_3 : public Strategy
+{
+public:
+	void use(void) { std::cout << "Strategy_3" << std::endl; };
+};
 
+class Context
+{
+protected:
+	Strategy* operation;
 
-		if (letter == Esc) {
+public:
+	virtual ~Context() {}
+	virtual void useStrategy(void) = 0;
+	virtual void setStrategy(Strategy* v) = 0;
+};
 
-			memento.cancel();
-			return *this;
-		}
-
-
-		memento.saveState();
-
-		if (letter == Backspace) {
-			cout << (char)Backspace << ' ' << (char)Backspace;
-			if (data.size()) data.pop_back();
-
-			return *this;
-		}
-
-		if (letter == Enter) {
-			return *this;
-		}
-
-
-
-		cout << letter;
-		data.push_back(letter);
-		return *this;
+class Client : public Context
+{
+public:
+	void useStrategy(void)
+	{
+		operation->use();
 	}
 
-	void redraw() {
-		system("cls");
-		cout << data;
+	void setStrategy(Strategy* o)
+	{
+		operation = o;
 	}
+};
 
+int main(int /*argc*/, char* /*argv*/[])
+{
+	Client customClient;
+	Strategy_1 str1;
+	Strategy_2 str2;
+	Strategy_3 str3;
 
-
-
-}textEditor;
-
-
-
-void Memento::saveState() {
-	memory.push_back(textEditor.data);
-}
-
-void Memento::cancel() {
-
-	textEditor.data.clear();
-
-	if (memory.size()) {
-		textEditor.data = memory.back();
-		memory.pop_back();
-	}
-	textEditor.redraw();
-}
-
-
-
-int main() {
-
-
-
-	while (7) {
-		textEditor.type(getch());
-
-	}
-
+	customClient.setStrategy(&str1);
+	customClient.useStrategy();
+	customClient.setStrategy(&str2);
+	customClient.useStrategy();
+	customClient.setStrategy(&str3);
+	customClient.useStrategy();
 
 	return 0;
 }
