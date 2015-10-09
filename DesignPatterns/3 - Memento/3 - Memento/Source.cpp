@@ -65,7 +65,7 @@ public:
 
 
 void Memento::saveState() {
-	memory.push_back(textEditor.data.c_str());
+	memory.push_back(textEditor.data);
 }
 
 void Memento::cancel() {
@@ -73,7 +73,7 @@ void Memento::cancel() {
 	textEditor.data.clear();
 
 	if (memory.size()) {
-		textEditor.data = memory[memory.size() - 1].c_str();
+		textEditor.data = memory.back();
 		memory.pop_back();
 	}
 	textEditor.redraw();
