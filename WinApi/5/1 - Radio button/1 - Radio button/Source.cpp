@@ -3,6 +3,7 @@
 #include <vector>
 
 
+
 using namespace std;
 
 
@@ -75,8 +76,8 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 
 			if (IsDlgButtonChecked(hWnd, RADIO_ADDITION)) goto addition;
-			if (IsDlgButtonChecked(hWnd, RADIO_MULTIPLICATION)) goto addition;
-			if (IsDlgButtonChecked(hWnd, RADIO_MEAN)) goto addition;
+			if (IsDlgButtonChecked(hWnd, RADIO_MULTIPLICATION)) goto multiplication;
+			if (IsDlgButtonChecked(hWnd, RADIO_MEAN)) goto mean;
 
 
 			return TRUE;
