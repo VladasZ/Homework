@@ -23,7 +23,7 @@ using namespace std;
 #define ID_BUTTON14 14
 #define ID_BUTTON15 15
 
-#define FOR_EACH_FIELD_ELEM for (int i = 1; i < 5; ++i) { for (int j = 1; j < 5; ++j) {if (i == 4 && j == 4) break;
+#define FOR_EACH_FIELD_ELEM for (int i = 1; i < 5; ++i) { for (int j = 1; j < 5; ++j) {
 #define END_FOR_EACH }}
 #define ELEM field[j][i]
 
@@ -65,10 +65,29 @@ public:
 	
 	}
 
-	void shuffle() {
+	void shuffle(HWND hWnd) {
 
-		for (int i = 0; i < 1000; ++i) {
-			swap(field[(rand() % 16) + 1], field[(rand() % 15) + 1]);
+
+		int n = 1;
+
+		for (int p = 0; p < 3000; ++p) {
+
+			n = rand() % 15 + 1;
+
+
+			FOR_EACH_FIELD_ELEM
+
+
+				if (game.ELEM.number == n && game.ELEM.enable) {
+					Game::goToPos(hWnd, n, game.emptyX, game.emptyY);
+					swap(game.ELEM, EMPTY_ELEM);
+					game.setActiveButtons();
+					goto _break;
+				}
+
+			END_FOR_EACH
+
+				_break : ;
 		}
 	}
 
@@ -117,6 +136,7 @@ public:
 		FOR_EACH_FIELD_ELEM
 
 			if (j == 4 && i == 4) continue;
+
 				wsprintf(text, TEXT("%d"), ++n);
 
 			ELEM.hWnd = CreateWindowEx(0, TEXT("BUTTON"), text,
@@ -154,6 +174,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, 
 }
 
 
+
+
 BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
@@ -168,6 +190,8 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		game.init(hWnd);
 		game.setActiveButtons();
+		game.shuffle(hWnd);
+		
 
 		
 
@@ -175,8 +199,14 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_COMMAND:
 
+		if (wParam == BTN_SHUFFLE) {
+			game.shuffle(hWnd);
+
+			return TRUE;
+		}
 		
 		FOR_EACH_FIELD_ELEM
+
 
 				if (game.ELEM.number == wParam && game.ELEM.enable) {
 					Game::goToPos(hWnd, wParam, game.emptyX, game.emptyY);
