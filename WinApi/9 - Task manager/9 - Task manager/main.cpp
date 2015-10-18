@@ -36,7 +36,6 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return TRUE;
 
 
-
 	case WM_INITDIALOG:
 		taskManager.init(hWnd, message, wParam, lParam);
 		return TRUE;
@@ -44,6 +43,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_COMMAND:
 		taskManager.wmCommand(hWnd, message, wParam, lParam);
 		return TRUE;
+
 
 	case WM_LBUTTONDBLCLK:
 		taskManager.dblClick(hWnd, message, wParam, lParam);

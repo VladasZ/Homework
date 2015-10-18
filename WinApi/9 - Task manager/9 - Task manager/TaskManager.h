@@ -25,6 +25,8 @@ class TaskManager
 
 	void showInfo(LPCTSTR a);
 
+	int closeProcess(LPCTSTR name);
+
 	HANDLE getProcessHandle(LPCTSTR name);
 
 public:

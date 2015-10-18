@@ -39,6 +39,15 @@ void TaskManager::showInfo(LPCTSTR a) {
 	SetWindowText(hWnd, text);
 }
 
+int TaskManager::closeProcess(LPCTSTR name)
+{
+	HANDLE kill = getProcessHandle(name);
+
+	TerminateProcess(kill, 0);
+
+	return 1;
+}
+
 
 void TaskManager::init(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
@@ -90,7 +99,6 @@ HANDLE TaskManager::getProcessHandle(LPCTSTR name) {
 
 
 
-
 int TaskManager::wmCommand(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 
 	if (wParam == BTN_REFRESH) {
@@ -134,16 +142,39 @@ int TaskManager::wmCommand(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam
 		return 1;
 	}
 
+	if (wParam == BTN_END_TASK) {
+
+
+		int i = SendMessage(hToEndProcessesList, LB_GETCOUNT, 0, 0) * 2;
+
+		while (i--) {
+
+			SendMessage(hToEndProcessesList, LB_GETTEXT, 0, (WPARAM)text);
+
+			closeProcess(text);
+
+			SendMessage(hToEndProcessesList, LB_DELETESTRING, 0, 0);
+
+
+		}
+
+		return 1;
+	}
+
 }
 
 int TaskManager::dblClick(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	static int i = 0;
-	showInfo((int)getProcessHandle(TEXT("calc.exe")));
 
-	HANDLE kill = getProcessHandle(TEXT("calc.exe"));
 
-	TerminateProcess(kill,0);
+	SendMessage(hToEndProcessesList, LB_GETTEXT, 0, (WPARAM)text);
+
+	closeProcess(text);
+
+	SendMessage(hToEndProcessesList, LB_DELETESTRING, 0, 0);
+
+	
+
 
 	return 0;
 }
