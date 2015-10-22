@@ -1,10 +1,8 @@
 #include <windows.h>
 #include "resource.h"
-#include "DllProcs.h"
 #include <vector>
-#include<memory>
+#include <memory>
 
-#define IDD_MAINDLG 547
 
 
 
@@ -17,16 +15,17 @@ HANDLE hLib;
 HRSRC hResInfo;
 HGLOBAL hGblRes;
 
-typedef shared_ptr<DllProcs> LPDllProcs;
-#define NEW_DLLPROC make_shared<DllProcs>
 
-vector<LPDllProcs> dllProcs;
 
-DllProcs myDllProc;
+
+
+typedef  BOOL(CALLBACK *dlgPrc)(HWND, UINT, WPARAM, LPARAM);
+
+dlgPrc dllProc;
 
 TCHAR text[50];
 
-BOOL  DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+BOOL CALLBACK  DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 
 
@@ -42,7 +41,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, 
 
 
 
-BOOL DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
 	{
@@ -63,28 +62,20 @@ BOOL DlgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		if (wParam == MAIN_BTN_PLUGINS) {
 
 
-			hLib = LoadLibrary(L"Plugins\\Task list.dll");
+			hLib = LoadLibrary(L"C:\\Users\\Vladas\\Desktop\\Homework\\WinApi\\Exam\\Task list\\Debug\\Task list.dll");
 
-			/*dllProcs.push_back(
-				NEW_DLLPROC(
-					(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Init"),
-					(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Command"),
-					(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Close")
-					)
-				);*/
-
-			myDllProc.setProc(
-				(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Init"),
-				(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Command"),
-				(dlgPrc)GetProcAddress((HMODULE)hLib, "Wm_Close")
-				);
 			
-		
 
+
+			dllProc = (dlgPrc)GetProcAddress((HMODULE)hLib, "DlgProc");
+
+			if (!(dlgPrc)GetProcAddress((HMODULE)hLib, "DlgProc")) {
+				MessageBox(hWnd, L"bla bla", L"you mda", MB_OK);
+			}
 			hResInfo = FindResource((HMODULE)hLib, MAKEINTRESOURCE(101), RT_DIALOG);
 			hGblRes = LoadResource((HMODULE)hLib, hResInfo);
 
-			CreateDialogIndirect(hInst, (LPCDLGTEMPLATE)hGblRes, hWnd, myDllProc.DllProc);
+			CreateDialogIndirect(hInst, (LPCDLGTEMPLATE)hGblRes, hWnd, (DLGPROC)(dllProc));
 
 		}
 
