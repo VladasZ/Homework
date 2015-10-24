@@ -1,12 +1,18 @@
 #include <Windows.h>
 #include "resource.h"
 #include "StringParsing.h"
+#include <commctrl.h>
+
+
+#pragma comment(lib,"comctl32")
 
 using namespace std;
 
 HINSTANCE hInst;
 HINSTANCE hLib;
-HWND hEdit;
+HWND hEdit, hStatusBar;
+
+HMENU hMenu;
 
 StringParsing stringParcing;
 
@@ -21,13 +27,13 @@ TCHAR edit[50];
 char expression[50];
 
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow){
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow) {
 	hInst = hInstance;
 
 	return DialogBox(hInstance, MAKEINTRESOURCE(IDD_DIALOG1), NULL, (DLGPROC)DlgProc);
 }
 
-BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
+BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam) {
 
 	switch (Message)
 	{
@@ -41,8 +47,18 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 		hEdit = GetDlgItem(hWnd, EDIT_CONTROL);
 
 		hLib = LoadLibrary(L"Check Brackets DLL.dll");
-		
+
 		checkBrackets = (dllFunc)GetProcAddress((HMODULE)hLib, "checkBrackets");
+
+		hMenu = LoadMenu(GetModuleHandle(0), MAKEINTRESOURCE(IDR_MENU1));
+
+		SetMenu(hWnd, hMenu);
+
+		hStatusBar = CreateStatusWindow(WS_CHILD | WS_VISIBLE | CCS_BOTTOM | SBARS_TOOLTIPS, 0, hWnd, WM_USER);
+
+		
+
+		//SetWindowLong(hWnd, GWL_STYLE, 0);
 
 		return TRUE;
 
@@ -66,14 +82,14 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 
 		if (wParam == BTN_LEFT_BRACKET || wParam == BTN_RIGHT_BRACKET) {// showing brackets
 
-			GetWindowText(GetDlgItem(hWnd,wParam), text,50);
+			GetWindowText(GetDlgItem(hWnd, wParam), text, 50);
 			wcscat_s(edit, text);
 			SetWindowText(hEdit, edit);
 
 			return TRUE;
 		}
 
-		if (wParam >= IDC_BUTTON1 && wParam <= IDC_BUTTON10){ // showing digits
+		if (wParam >= IDC_BUTTON1 && wParam <= IDC_BUTTON10) { // showing digits
 			wsprintf(text, TEXT("%d"), wParam % 10);
 			wcscat_s(edit, text);
 			SetWindowText(hEdit, edit);
@@ -82,7 +98,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 		}
 
 
-		if (wParam == BTN_SUB && !wcslen(edit)){ //  allowing minus as first character
+		if (wParam == BTN_SUB && !wcslen(edit)) { //  allowing minus as first character
 			wsprintf(text, TEXT("-"));
 			wcscat_s(edit, text);
 			SetWindowText(hEdit, edit);
@@ -99,33 +115,35 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 					!wcslen(edit))					  // and first character as symbol
 					return TRUE;					  // minus is allowed as first character if prev i
 			}
-				
-				GetWindowText(
-					GetDlgItem(hWnd, wParam),
-					text, 50);
+
+			GetWindowText(
+				GetDlgItem(hWnd, wParam),
+				text, 50);
 
 
-				wcscat_s(edit, text);
-				SetWindowText(hEdit, edit);
+			wcscat_s(edit, text);
+			SetWindowText(hEdit, edit);
 
 
 		}
 
-		if (wParam == BTN_EQ){
+		if (wParam == BTN_EQ) {
 
 			if (!wcslen(edit)) return TRUE;
 
-			
+
 			if ((edit[wcslen(edit) - 1] < L'0' || edit[wcslen(edit) - 1] > L'9') &&
 				edit[wcslen(edit) - 1] != '(' && edit[wcslen(edit) - 1] != ')') {
-				MessageBox(hWnd, L"Enter last value", L"Error", MB_OK);
+				SetWindowText(hStatusBar, L"Enter last value");
 				return TRUE;
 			}
 
 			if (!checkBrackets(edit)) {
-				MessageBox(hWnd, L"Check brackets", L"Error", MB_OK);
+				SetWindowText(hStatusBar, L"Check brackets");
+				//MessageBox(hWnd, L"Check brackets", L"Error", MB_OK);
 				return TRUE;
 			}
+			SetWindowText(hStatusBar, L" ");
 
 
 			wcstombs(expression, edit, 50);
@@ -139,14 +157,14 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 
 			wcscpy(edit, text);
 
-			
+
 			return TRUE;
 
 		}
-			
+
 
 		break;
-		
+
 	default:
 		break;
 	}
