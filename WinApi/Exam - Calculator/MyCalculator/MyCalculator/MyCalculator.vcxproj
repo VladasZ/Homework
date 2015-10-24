@@ -79,10 +79,12 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StringParsing.cpp" />
+    <ClCompile Include="WndProc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="StringParsing.h" />
+    <ClInclude Include="WndProc.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MyCalculator.rc" />
