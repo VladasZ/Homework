@@ -14,6 +14,7 @@
     <ProjectGuid>{449E8B97-7525-4F35-8F9F-A7F102A475B2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MyCalculator</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,12 +77,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StringParsing.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Calculations.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StringParsing.h" />
   </ItemGroup>

@@ -1,6 +1,5 @@
 #include <Windows.h>
 #include "resource.h"
-#include <string>
 #include "StringParsing.h"
 
 using namespace std;
@@ -8,6 +7,8 @@ using namespace std;
 HINSTANCE hInst;
 HINSTANCE hLib;
 HWND hEdit;
+
+StringParsing stringParcing;
 
 typedef bool(*dllFunc)(const TCHAR[]);
 
@@ -17,7 +18,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
 TCHAR text[50];
 TCHAR edit[50];
-
+char expression[50];
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpszCmdLine, int nCmdShow){
@@ -50,8 +51,27 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 	case WM_COMMAND:
 
 
-		
-		
+		if (wParam == BTN_AC) {// reset button
+			edit[0] = L'\0';
+			SetWindowText(hEdit, edit);
+			return TRUE;
+		}
+
+		if (wParam == BTN_BACKSPACE) {// backspace button
+			if (!wcslen(edit)) return TRUE;
+			edit[wcslen(edit) - 1] = L'\0';
+			SetWindowText(hEdit, edit);
+			return TRUE;
+		}
+
+		if (wParam == BTN_LEFT_BRACKET || wParam == BTN_RIGHT_BRACKET) {// showing brackets
+
+			GetWindowText(GetDlgItem(hWnd,wParam), text,50);
+			wcscat_s(edit, text);
+			SetWindowText(hEdit, edit);
+
+			return TRUE;
+		}
 
 		if (wParam >= IDC_BUTTON1 && wParam <= IDC_BUTTON10){ // showing digits
 			wsprintf(text, TEXT("%d"), wParam % 10);
@@ -70,45 +90,63 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam){
 		}
 
 
-		if (wParam >= BTN_DIV && wParam <= BTN_PLUS){
-		
-			if (edit[wcslen(edit)- 1] < L'0'  ||  // preventing double symbols 
-				edit[wcslen(edit) - 1] > L'9' ||
-				!wcslen(edit))					  // and first character as symbol
-				return TRUE;					  // minus is allowed as first character if prev if
+		if (wParam >= BTN_DIV && wParam <= BTN_PLUS) {
 
+			if (edit[wcslen(edit) - 1] != '(' && edit[wcslen(edit) - 1] != ')') { //excluding brackets from check
 
-				GetWindowText(
-				GetDlgItem(hWnd, wParam),
-				text, 50);
-
+				if (edit[wcslen(edit) - 1] < L'0' ||  // preventing double symbols 
+					edit[wcslen(edit) - 1] > L'9' ||
+					!wcslen(edit))					  // and first character as symbol
+					return TRUE;					  // minus is allowed as first character if prev i
+			}
 				
+				GetWindowText(
+					GetDlgItem(hWnd, wParam),
+					text, 50);
+
 
 				wcscat_s(edit, text);
 				SetWindowText(hEdit, edit);
+
+
 		}
 
 		if (wParam == BTN_EQ){
 
-			GetWindowText(
-				hEdit,
-				text, 50);
+			if (!wcslen(edit)) return TRUE;
 
-			if (checkBrackets(text))
+			
+			if ((edit[wcslen(edit) - 1] < L'0' || edit[wcslen(edit) - 1] > L'9') &&
+				edit[wcslen(edit) - 1] != '(' && edit[wcslen(edit) - 1] != ')') {
+				MessageBox(hWnd, L"Enter last value", L"Error", MB_OK);
 				return TRUE;
+			}
 
-			MessageBox(hWnd, L"Check brackets", L"Error", MB_OK);
+			if (!checkBrackets(edit)) {
+				MessageBox(hWnd, L"Check brackets", L"Error", MB_OK);
+				return TRUE;
+			}
+
+
+			wcstombs(expression, edit, 50);
+
+
+			swprintf(text, L"%d",
+				stringParcing.calculate(expression)// sending edit expression to parser
+				);
+
+			SetWindowText(hEdit, text);
+
+			wcscpy(edit, text);
+
+			
 			return TRUE;
 
-
 		}
-
-		
+			
 
 		break;
-
-
-
+		
 	default:
 		break;
 	}
