@@ -83,9 +83,9 @@ bool WndProc::Wm_Init(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 	hEdit = GetDlgItem(hWnd, EDIT_CONTROL);
 	hResult = GetDlgItem(hWnd, EDIT_RESULT);
 
-	hLib = LoadLibrary(L"Check Brackets DLL.dll");
+	
 
-	checkBrackets = (dllFunc)GetProcAddress((HMODULE)hLib, "checkBrackets");
+	
 
 	hMenu = LoadMenu(GetModuleHandle(0), MAKEINTRESOURCE(IDR_MENU1));
 
@@ -106,15 +106,10 @@ bool WndProc::Wm_Init(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
-	if (!wcslen(edit)) return TRUE;
+	//if (!wcslen(edit)) return TRUE;
 
 	
 
-	if (!checkBrackets(edit)) {
-		SetWindowText(hStatusBar, L"Check brackets");
-		//MessageBox(hWnd, L"Check brackets", L"Error", MB_OK);
-		return TRUE;
-	}
 	SetWindowText(hStatusBar, L" ");
 
 

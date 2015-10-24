@@ -3,7 +3,7 @@
 #include "resource.h"
 #include "StringParsing.h"
 #include <commctrl.h>
-
+#pragma comment(lib,"comctl32")
 
 #define HANDLE_MSG(message, fn)    \
     if((message) == wParam){ (fn)(hWnd, Message, wParam, lParam); \
@@ -30,7 +30,7 @@ ShowWindow(GetDlgItem(hWnd, EDIT_RESULT), cmd);
 MoveWindow(hWnd, posRect.left, posRect.top, sizeRect.right, sizeRect.bottom - (n), 1);
 
 
-#pragma comment(lib,"comctl32")
+
 
 class WndProc
 {
@@ -45,16 +45,9 @@ class WndProc
 
 	HMENU hMenu;
 
-	typedef bool(*dllFunc)(const TCHAR[]);
-
-	
 	
 
 	
-
-	dllFunc checkBrackets;
-
-	HINSTANCE hLib;
 	HWND hStatusBar, hSmallStatusBar;
 
 	RECT sizeRect, posRect;

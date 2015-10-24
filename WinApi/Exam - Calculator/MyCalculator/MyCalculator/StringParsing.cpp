@@ -224,6 +224,7 @@ void StringParsing::replaceBinaryExpression(string *expr, Borders binary) {
 }
 
 
+
 int StringParsing::calculate(string expr) {
 
 	if (!expr.size()) throw(L"Write something");
@@ -231,6 +232,11 @@ int StringParsing::calculate(string expr) {
 	for (int i = 0; i < expr.size(); ++i) {
 		if (isLetter(i, expr)) throw (L"Invalid expression");
 	}
+
+
+	wsprintf(w_text, L"%s", expr.c_str());
+	
+	if (!checkBrackets(w_text)) throw (L"Check brackets");
 
 	if ((expr.back() < '0' || expr.back() > '9') &&
 		expr.back() != '(' && expr.back() != ')') 
@@ -271,6 +277,8 @@ int StringParsing::calculate(string expr) {
 
 StringParsing::StringParsing()
 {
+	hLib = LoadLibrary(L"Check Brackets DLL.dll");
+	checkBrackets = (dllFunc)GetProcAddress((HMODULE)hLib, "checkBrackets");
 }
 
 
