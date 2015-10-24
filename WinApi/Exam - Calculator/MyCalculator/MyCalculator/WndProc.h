@@ -47,6 +47,11 @@ class WndProc
 
 	typedef bool(*dllFunc)(const TCHAR[]);
 
+	
+	
+
+	
+
 	dllFunc checkBrackets;
 
 	HINSTANCE hLib;

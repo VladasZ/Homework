@@ -22,6 +22,9 @@ class StringParsing
 	inline bool isSymbol(int i, string expr);
 	inline bool isHook(int i, string expr);
 	inline bool isSign(int i, string expr);
+	inline bool isDigit(int i, string expr);
+	inline bool isLetter(int i, string expr);
+
 
 	int findNextHook(int pos, string expr);
 

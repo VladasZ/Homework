@@ -6,9 +6,6 @@
 bool WndProc::Wm_Command(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
 
-	wsprintf(text, L"%d", wParam);
-	SetWindowText(hWnd, text);
-
 	if (wParam == BTN_AC) {// reset button
 		edit[0] = L'\0';
 		SetWindowText(hEdit, edit);
@@ -111,12 +108,7 @@ bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
 	if (!wcslen(edit)) return TRUE;
 
-
-	if ((edit[wcslen(edit) - 1] < L'0' || edit[wcslen(edit) - 1] > L'9') &&
-		edit[wcslen(edit) - 1] != '(' && edit[wcslen(edit) - 1] != ')') {
-		SetWindowText(hStatusBar, L"Enter last value");
-		return TRUE;
-	}
+	
 
 	if (!checkBrackets(edit)) {
 		SetWindowText(hStatusBar, L"Check brackets");
@@ -128,10 +120,15 @@ bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 	wcstombs(expression, edit, 50);
 
+	try {
+		swprintf(text, L"%d",
+			stringParcing.calculate(expression)// sending edit expression to parser
+			);
+	}
 
-	swprintf(text, L"%d",
-		stringParcing.calculate(expression)// sending edit expression to parser
-		);
+	catch (TCHAR error[]) {
+		SetWindowText(hStatusBar, error);
+	}
 
 	SetWindowText(hEdit, text);
 
@@ -179,12 +176,23 @@ bool WndProc::Menu_Standart(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lPara
 
 bool WndProc::Btn_Eval(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
+	SetWindowText(hSmallStatusBar, L" ");
+
 	GetWindowText(hEdit, text, 50);
 	wcstombs(expression, text, 50);
-	swprintf(text, L"%d",
-		stringParcing.calculate(expression)// sending edit expression to parser
-		);
+
+	try {
+		swprintf(text, L"%d",
+			stringParcing.calculate(expression)// sending edit expression to parser
+			);
+	}
+
+	catch (TCHAR error[]) {
+		SetWindowText(hSmallStatusBar, error);
+	}
+
 	SetWindowText(hResult, text);
+
 	return false;
 }
 

@@ -12,8 +12,20 @@ inline bool StringParsing::isHook(int i, string expr) {
 }
 
 inline bool StringParsing::isSign(int i, string expr) {
+	if (isSign(i + 1, expr)) throw "Invalid input, 2 operators";
 	return isSymbol(i, expr) || isHook(i, expr);
 }
+
+inline bool StringParsing::isDigit(int i, string expr) {
+	return (expr[i]<'0' || expr[i]>'9');
+}
+
+inline bool StringParsing::isLetter(int i, string expr)
+{
+	return  ((expr[i] > 'a' && expr[i]<'z') ||
+		(expr[i]>'A' && expr[i] < 'Z'));
+}
+
 
 int StringParsing::findNextHook(int pos, string expr) {
 	for (int i = pos + 1; i < expr.size(); i++)
@@ -64,14 +76,27 @@ int StringParsing::findPrevSymbol(int pos, string expr) {
 }
 
 int StringParsing::findPrimaryExpression(string expr) {
-	for (int i = 0; i < expr.size(); i++) {
-		if (expr[i] == 'x' || expr[i] == '*' || expr[i] == '/') return i;
+	for (int i = 1; i < expr.size(); i++) {
+		if ((expr[i] == 'x' || expr[i] == '*' || expr[i] == '/') &&
+			expr[i+1] != '(' && expr[i-1] != ')'
+			) return i;
 	}
 	return 0;
 }
 
 
 string StringParsing::binaryCalculation(string expr) {
+
+
+	for (int i = 0; i <= expr.size(); ++i) {
+
+		if (i == expr.size()) {
+			expr.clear();
+			return expr;
+		}
+
+		if (isDigit(i, expr)) break;
+	}
 
 	int res;
 	int a, b, signPos;
@@ -104,6 +129,7 @@ string StringParsing::binaryCalculation(string expr) {
 		res = a * b;
 		break;
 	case '/':
+		if (!b) throw L"Divided by zero!";
 		res = a / b;
 		break;
 	default:
@@ -127,13 +153,13 @@ Borders StringParsing::findBinaryExpression(string expr) {
 			if (isHook(i + 1, expr))
 			{
 				borders.left = i + 2;
-				borders.right = findNextHook(i + 2, expr) - 1;
+				borders.right = findNextHook(i + 1, expr) - 1;//2
 				break;
 			}
 			else if (isHook(i - 1, expr))
 			{
 				borders.right = i - 2;
-				borders.left = findPrevHook(i - 2, expr) + 1;
+				borders.left = findPrevHook(i - 1, expr) + 1;//2
 				break;
 			}
 			else if (expr[i] == 'x' || expr[i] == '*' || expr[i] == '/')
@@ -200,8 +226,18 @@ void StringParsing::replaceBinaryExpression(string *expr, Borders binary) {
 
 int StringParsing::calculate(string expr) {
 
+	if (!expr.size()) throw(L"Write something");
 
-	if (!expr.size()) return 0;
+	for (int i = 0; i < expr.size(); ++i) {
+		if (isLetter(i, expr)) throw (L"Invalid expression");
+	}
+
+	if ((expr.back() < '0' || expr.back() > '9') &&
+		expr.back() != '(' && expr.back() != ')') 
+		throw(L"Enter last value");
+	
+
+	
 
 	
 
