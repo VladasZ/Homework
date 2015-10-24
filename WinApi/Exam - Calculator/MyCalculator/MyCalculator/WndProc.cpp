@@ -69,13 +69,11 @@ bool WndProc::Wm_Command(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 	}
 
-	
-
-	HANDLE_MSG(MENU_MANUAL_INPUT, Menu_Manual);
-
-	HANDLE_MSG(MENU_STANDART_INPUT, Menu_Standart);
-
 	HANDLE_MSG(BTN_EQ, Btn_Eq);
+	HANDLE_MSG(MENU_MANUAL_INPUT, Menu_Manual);
+	HANDLE_MSG(MENU_STANDART_INPUT, Menu_Standart);
+	HANDLE_MSG(BTN_EVAL, Btn_Eval);
+
 	
 
 
@@ -86,6 +84,7 @@ bool WndProc::Wm_Init(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
 
 	hEdit = GetDlgItem(hWnd, EDIT_CONTROL);
+	hResult = GetDlgItem(hWnd, EDIT_RESULT);
 
 	hLib = LoadLibrary(L"Check Brackets DLL.dll");
 
@@ -98,9 +97,10 @@ bool WndProc::Wm_Init(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 	hStatusBar = CreateStatusWindow(WS_CHILD | WS_VISIBLE | CCS_BOTTOM | SBARS_TOOLTIPS, 0, hWnd, WM_USER);
 
 
+
 	CheckMenuRadioItem(GetSubMenu(GetMenu(hWnd), 0), MENU_STANDART_INPUT, MENU_MANUAL_INPUT, MENU_STANDART_INPUT, MF_BYCOMMAND);
 
-	GetWindowRect(hWnd, &rect);
+	GetWindowRect(hWnd, &sizeRect);
 
 	//SetWindowLong(hWnd, GWL_STYLE, 0);
 
@@ -142,43 +142,49 @@ bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 bool WndProc::Menu_Manual(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
-		
-	CheckMenuRadioItem(GetSubMenu(GetMenu(hWnd), 0), MENU_STANDART_INPUT, MENU_MANUAL_INPUT, MENU_MANUAL_INPUT, MF_BYCOMMAND);
+	
+
+	CHANGE_WINDOW_BOTTOM(190);
+
+	RARIO_CHECK(MENU_MANUAL_INPUT);
+
+	SHOW_STANDART_ELEMS(SW_HIDE);
+	SHOW_MANUAL_ELEMS(SW_SHOW);
+
+	SendMessage(GetDlgItem(hWnd, EDIT_CONTROL), EM_SETREADONLY, 0, 0);
+
+
+	hSmallStatusBar = CreateStatusWindow(WS_CHILD | WS_VISIBLE | CCS_BOTTOM | SBARS_TOOLTIPS, 0 , hWnd, WM_USER);
 
 
 
-	MoveWindow(hWnd, 0, 0 , rect.right, rect.bottom - 200, 1);
-
-	ShowWindow(GetDlgItem(hWnd,BTN_AC), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, BTN_BACKSPACE), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, BTN_LEFT_BRACKET), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, BTN_RIGHT_BRACKET), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON7), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON8), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON9), SW_HIDE);
-	ShowWindow(GetDlgItem(hWnd, BTN_DIV), SW_HIDE);
-
-
-	return false;
+	return TRUE;
 }
 
 bool WndProc::Menu_Standart(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
-	CheckMenuRadioItem(GetSubMenu(GetMenu(hWnd), 0), MENU_STANDART_INPUT, MENU_MANUAL_INPUT, MENU_STANDART_INPUT, MF_BYCOMMAND);
+	CHANGE_WINDOW_BOTTOM(0);
 
+	RARIO_CHECK(MENU_STANDART_INPUT);
 
+	SHOW_STANDART_ELEMS(SW_SHOW);
+	SHOW_MANUAL_ELEMS(SW_HIDE);
 
-	MoveWindow(hWnd, 0, 0, rect.right, rect.bottom, 1);
+	SendMessage(GetDlgItem(hWnd, EDIT_CONTROL), EM_SETREADONLY, 1, 0);
 
-	ShowWindow(GetDlgItem(hWnd, BTN_AC), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, BTN_BACKSPACE), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, BTN_LEFT_BRACKET), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, BTN_RIGHT_BRACKET), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON7), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON8), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, IDC_BUTTON9), SW_SHOW);
-	ShowWindow(GetDlgItem(hWnd, BTN_DIV), SW_SHOW);
+	ShowWindow(hSmallStatusBar, SW_HIDE);
 
+	return TRUE;
+}
+
+bool WndProc::Btn_Eval(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
+{
+	GetWindowText(hEdit, text, 50);
+	wcstombs(expression, text, 50);
+	swprintf(text, L"%d",
+		stringParcing.calculate(expression)// sending edit expression to parser
+		);
+	SetWindowText(hResult, text);
 	return false;
 }
 

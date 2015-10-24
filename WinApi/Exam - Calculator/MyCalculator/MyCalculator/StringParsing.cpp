@@ -65,7 +65,7 @@ int StringParsing::findPrevSymbol(int pos, string expr) {
 
 int StringParsing::findPrimaryExpression(string expr) {
 	for (int i = 0; i < expr.size(); i++) {
-		if (expr[i] == 'x' || expr[i] == '/') return i;
+		if (expr[i] == 'x' || expr[i] == '*' || expr[i] == '/') return i;
 	}
 	return 0;
 }
@@ -100,7 +100,7 @@ string StringParsing::binaryCalculation(string expr) {
 	case '-':
 		res = a - b;
 		break;
-	case 'x':
+	case 'x':case'*':
 		res = a * b;
 		break;
 	case '/':
@@ -136,7 +136,7 @@ Borders StringParsing::findBinaryExpression(string expr) {
 				borders.left = findPrevHook(i - 2, expr) + 1;
 				break;
 			}
-			else if (expr[i] == 'x' || expr[i] == '/')
+			else if (expr[i] == 'x' || expr[i] == '*' || expr[i] == '/')
 			{
 				borders.left = findPrevSymbol(i, expr) + 1;
 				borders.right = findNextSymbol(i, expr) - 1;

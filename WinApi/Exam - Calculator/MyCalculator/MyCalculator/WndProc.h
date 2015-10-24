@@ -10,6 +10,26 @@
 	return TRUE;}
 
 
+#define SHOW_STANDART_ELEMS(cmd)\
+ShowWindow(GetDlgItem(hWnd,BTN_AC), cmd);\
+ShowWindow(GetDlgItem(hWnd, BTN_BACKSPACE), cmd);\
+ShowWindow(GetDlgItem(hWnd, BTN_LEFT_BRACKET), cmd);\
+ShowWindow(GetDlgItem(hWnd, BTN_RIGHT_BRACKET), cmd);\
+ShowWindow(GetDlgItem(hWnd, IDC_BUTTON7), cmd);\
+ShowWindow(GetDlgItem(hWnd, IDC_BUTTON8), cmd);\
+ShowWindow(GetDlgItem(hWnd, IDC_BUTTON9), cmd);\
+ShowWindow(GetDlgItem(hWnd, BTN_DIV), cmd);
+
+#define SHOW_MANUAL_ELEMS(cmd)\
+ShowWindow(GetDlgItem(hWnd, BTN_EVAL), cmd); \
+ShowWindow(GetDlgItem(hWnd, EDIT_RESULT), cmd);
+
+#define RARIO_CHECK(id)	CheckMenuRadioItem(GetSubMenu(GetMenu(hWnd), 0), MENU_STANDART_INPUT, MENU_MANUAL_INPUT, (id), MF_BYCOMMAND);
+
+#define CHANGE_WINDOW_BOTTOM(n) GetWindowRect(hWnd, &posRect);\
+MoveWindow(hWnd, posRect.left, posRect.top, sizeRect.right, sizeRect.bottom - (n), 1);
+
+
 #pragma comment(lib,"comctl32")
 
 class WndProc
@@ -21,7 +41,7 @@ class WndProc
 	TCHAR edit[50];
 	char expression[50];
 
-	HWND hEdit;
+	HWND hEdit, hResult;
 
 	HMENU hMenu;
 
@@ -30,14 +50,15 @@ class WndProc
 	dllFunc checkBrackets;
 
 	HINSTANCE hLib;
-	HWND hStatusBar;
+	HWND hStatusBar, hSmallStatusBar;
 
-	RECT rect;
+	RECT sizeRect, posRect;
 
 
 	bool Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 	bool Menu_Manual(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 	bool Menu_Standart(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+	bool Btn_Eval(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
 
 public:
