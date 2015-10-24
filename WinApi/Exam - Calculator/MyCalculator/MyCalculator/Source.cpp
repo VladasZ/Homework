@@ -57,6 +57,9 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam) {
 		hStatusBar = CreateStatusWindow(WS_CHILD | WS_VISIBLE | CCS_BOTTOM | SBARS_TOOLTIPS, 0, hWnd, WM_USER);
 
 		
+		CheckMenuRadioItem(GetSubMenu(GetMenu(hWnd), 1), ID_DIALOG_SHOW,
+			ID_DIALOG_HIDE, ID_DIALOG_SHOW, MF_BYCOMMAND);
+		
 
 		//SetWindowLong(hWnd, GWL_STYLE, 0);
 
