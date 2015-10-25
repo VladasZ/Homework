@@ -18,7 +18,7 @@ class StringParsing
 {
 	TCHAR w_text[50];
 
-	typedef bool(*dllFunc)(const TCHAR[]);
+	typedef bool(*dllFunc)(string&);
 	dllFunc checkBrackets;
 	HINSTANCE hLib;
 
@@ -39,6 +39,8 @@ class StringParsing
 	int findPrevSymbol(int pos, string expr);
 
 	int findPrimaryExpression(string expr);
+
+	int exceptions(string& expr);
 
 	
 	string binaryCalculation(string expr);

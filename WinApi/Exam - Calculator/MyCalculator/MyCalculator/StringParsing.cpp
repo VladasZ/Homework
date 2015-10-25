@@ -12,7 +12,6 @@ inline bool StringParsing::isHook(int i, string expr) {
 }
 
 inline bool StringParsing::isSign(int i, string expr) {
-	if (isSign(i + 1, expr)) throw "Invalid input, 2 operators";
 	return isSymbol(i, expr) || isHook(i, expr);
 }
 
@@ -25,7 +24,6 @@ inline bool StringParsing::isLetter(int i, string expr)
 	return  ((expr[i] > 'a' && expr[i]<'z') ||
 		(expr[i]>'A' && expr[i] < 'Z'));
 }
-
 
 int StringParsing::findNextHook(int pos, string expr) {
 	for (int i = pos + 1; i < expr.size(); i++)
@@ -84,7 +82,6 @@ int StringParsing::findPrimaryExpression(string expr) {
 	return 0;
 }
 
-
 string StringParsing::binaryCalculation(string expr) {
 
 
@@ -139,7 +136,6 @@ string StringParsing::binaryCalculation(string expr) {
 	str_res = to_string(res);
 	return str_res;
 }
-
 
 Borders StringParsing::findBinaryExpression(string expr) {
 
@@ -216,36 +212,42 @@ void StringParsing::replaceBinaryExpression(string *expr, Borders binary) {
 
 
 	expr->insert(binary.left - hooksDeleted, binaryCalculation(binary.expr));
-
-
-
-
+	
 
 }
 
 
-
-int StringParsing::calculate(string expr) {
-
+int StringParsing::exceptions(string& expr)
+{
 	if (!expr.size()) throw(L"Write something");
 
 	for (int i = 0; i < expr.size(); ++i) {
 		if (isLetter(i, expr)) throw (L"Invalid expression");
 	}
 
-
-	wsprintf(w_text, L"%s", expr.c_str());
-	
-	if (!checkBrackets(w_text)) throw (L"Check brackets");
-
 	if ((expr.back() < '0' || expr.back() > '9') &&
-		expr.back() != '(' && expr.back() != ')') 
+		expr.back() != '(' && expr.back() != ')')
 		throw(L"Enter last value");
-	
+
+	for (int i = 0; i < expr.size(); i++) {
+		if (isSymbol(i, expr) && isSymbol(i + 1, expr)) throw (L"Missing argument");
+	}
+
+
+
+	if (!checkBrackets(expr)) throw (L"Check brackets");
 
 	
 
-	
+
+	return 0;
+}
+
+
+
+int StringParsing::calculate(string expr) {
+
+	exceptions(expr);
 
 	int result = 0;
 

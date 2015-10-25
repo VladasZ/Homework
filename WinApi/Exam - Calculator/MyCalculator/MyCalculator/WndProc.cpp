@@ -7,6 +7,7 @@ bool WndProc::Wm_Command(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
 
 	if (wParam == BTN_AC) {// reset button
+		SetWindowText(hStatusBar, L" ");
 		edit[0] = L'\0';
 		SetWindowText(hEdit, edit);
 		return TRUE;
@@ -106,10 +107,7 @@ bool WndProc::Wm_Init(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 {
-	//if (!wcslen(edit)) return TRUE;
-
 	
-
 	SetWindowText(hStatusBar, L" ");
 
 
@@ -117,12 +115,12 @@ bool WndProc::Btn_Eq(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 	try {
 		swprintf(text, L"%d",
-			stringParcing.calculate(expression)// sending edit expression to parser
-			);
+			stringParcing.calculate(expression));// sending edit expression to parser
 	}
 
 	catch (TCHAR error[]) {
 		SetWindowText(hStatusBar, error);
+		return TRUE;
 	}
 
 	SetWindowText(hEdit, text);
@@ -184,6 +182,7 @@ bool WndProc::Btn_Eval(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam)
 
 	catch (TCHAR error[]) {
 		SetWindowText(hSmallStatusBar, error);
+		return TRUE;
 	}
 
 	SetWindowText(hResult, text);
