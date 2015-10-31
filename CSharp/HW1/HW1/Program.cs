@@ -9,6 +9,22 @@ namespace HW1
 {
     class Program
     {
+        static ulong fib(int n)
+        {
+            if (n == 1 || n == 2) return 1;
+
+            ulong result = 0, current = 1, prev = 0;
+
+            for(int i = 0; i<n; ++i)
+            {
+
+                result = current + prev;
+                prev = current;
+                current = result;
+            }
+
+            return result;
+        }
 
         static void N1()
         {
@@ -95,6 +111,53 @@ namespace HW1
 
         static void N7()
         {
+            Console.WriteLine("Задание 7: Введите число");
+
+            string str = Console.ReadLine();
+            char[] temp = str.ToCharArray();
+
+            int a = temp.Max() - '0';
+            int b = temp.Min() - '0';
+
+            Console.WriteLine("Max - " + a + " Min - " + b);
+
+        }
+
+        static void N8()
+        {
+            ulong result = 0;
+
+            for(int i = 1; i<50; ++i)
+            {
+                result += fib(i);
+            }
+
+            Console.WriteLine(result);
+
+        }
+
+        static void N9()
+        {
+
+
+            int e = 10; // точность
+            double x = 0.4;
+            double result = -x;
+            double addition = x*x/2;
+            int iter = 2;
+        
+            for(; addition > 1/Math.Pow(10,e);++iter)
+            {
+                result -= addition;
+                addition *= x*iter/(iter+1);
+            }
+
+            Console.WriteLine("Ряд тейлора:               " + result);
+
+            Console.WriteLine("Математическая функция     " + Math.Log(1 - x));
+            Console.WriteLine("Количество слагаемых требуемое для заданной точности: " + iter);
+
+
 
         }
 
@@ -104,8 +167,10 @@ namespace HW1
             //N2();
             //N3();
             //N4();
-            N6();
-
+            //N6();
+            //N7();
+            //N8();
+            N9();
 
         }
     }
