@@ -9,13 +9,13 @@ namespace HW1
 {
     class Program
     {
-        static ulong fib(int n)
+        static ulong fibonacci(int n)
         {
             if (n == 1 || n == 2) return 1;
 
             ulong result = 0, current = 1, prev = 0;
 
-            for(int i = 0; i<n; ++i)
+            for (int i = 0; i < n; ++i)
             {
 
                 result = current + prev;
@@ -41,9 +41,9 @@ namespace HW1
                     Console.WriteLine("Первое число должно быть меньше второго");
             }
             while (a > b);
-            
-            for(int i = a; i <= b; ++i)
-               for(int j = 0; j < i; ++j)
+
+            for (int i = a; i <= b; ++i)
+                for (int j = 0; j < i; ++j)
                     Console.WriteLine(i);
         }
 
@@ -53,9 +53,9 @@ namespace HW1
 
             int n = int.Parse(Console.ReadLine());
 
-            for (int i = 0 ; i < n; ++i)
+            for (int i = 0; i < n; ++i)
             {
-                for(int j = 0; j < 5; ++j)
+                for (int j = 0; j < 5; ++j)
                 {
                     Console.Write((char)('A' + j + i));
                 }
@@ -82,6 +82,21 @@ namespace HW1
         }
 
         static void N4()
+        {
+            Console.WriteLine("Введите число");
+
+            int x = int.Parse(Console.ReadLine());
+
+            if(x >= 30 && x <= 90 &&
+                x > 20)
+                Console.WriteLine("Число входит в интервал");
+            else
+                Console.WriteLine("Число не входит в интервал");
+
+
+        }
+
+        static void N5()
         {
             Console.WriteLine("Задание 4: Введите значение");
 
@@ -129,7 +144,7 @@ namespace HW1
 
             for(int i = 1; i<50; ++i)
             {
-                result += fib(i);
+                result += fibonacci(i);
             }
 
             Console.WriteLine(result);
