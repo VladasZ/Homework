@@ -67,6 +67,7 @@ namespace HW2
             mass[4] = new int[2] { 100, 5555555 };
 
 
+
             for (int i = 0; i < mass.Length; ++i) 
             {
                 for (int j = 0; j <= mass[i].Length; ++j) 
@@ -81,7 +82,12 @@ namespace HW2
             }
 
 
+            int[] sorti = { 5, 6, 4, 7, 8, 6, 5, 7, 7, 5, 5, 4 };
 
+
+
+
+            Console.WriteLine(mass[0].Length > mass[1].Length);
 
         }
     }
