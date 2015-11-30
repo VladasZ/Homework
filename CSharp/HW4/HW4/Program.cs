@@ -15,22 +15,25 @@ namespace HW4
 
     class Part : IPart{
         public int BuildProgress {  private set; get; }
+        public int BuildSpeed { private set; get; }
         public int Price { private set; get; }
         public string Type { private set; get; }
         public bool Done { private set; get; }
 
-        public Part(int price, string type)
+        public Part(int price, string type, int buildSpeed)
         {
             Done = false;
             Type = type;
             BuildProgress = 0;
+            BuildSpeed = buildSpeed;
             Price = price;
         }
 
         
         public void build()
         {
-            ++BuildProgress;
+            if (BuildProgress == 100) return;
+            BuildProgress += BuildSpeed;
         }
         
         public void showBuildStatus()
@@ -47,27 +50,27 @@ namespace HW4
 
     class Window : Part
     {
-        public Window() : base(1000, "Окно") {}
+        public Window() : base(1000, "Окно", 10) {}
     }
 
     class Door : Part
     {
-        public Door() : base(2000, "Дверь") { }
+        public Door() : base(2000, "Дверь",10) { }
     }
 
     class Wall : Part
     {
-        public Wall() : base(5000, "Стена") { }
+        public Wall() : base(5000, "Стена",2) { }
     }
 
     class Roof : Part
     {
-        public Roof() : base(5000, "Крыша") { }
+        public Roof() : base(5000, "Крыша",5) { }
     }
 
     class Basement : Part
     {
-        public Basement() : base(6000, "Фундамент") { }
+        public Basement() : base(6000, "Фундамент",1) { }
     }
 
 
