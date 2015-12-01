@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace HW4
 {
@@ -10,6 +11,7 @@ namespace HW4
     {
        void build();
        void showBuildStatus();
+       int getBuildStatus();
 
     }
 
@@ -19,6 +21,10 @@ namespace HW4
         public int Price { private set; get; }
         public string Type { private set; get; }
         public bool Done { private set; get; }
+        public int getBuildStatus()
+        {
+            return BuildProgress;
+        }
 
         public Part(int price, string type, int buildSpeed)
         {
@@ -73,10 +79,39 @@ namespace HW4
         public Basement() : base(6000, "Фундамент",1) { }
     }
 
+    interface IWorker
+    {
+        void build(ref IPart[] parts);
+    }
+
+    class Worker : IWorker
+    {
+        public void build(ref IPart[] parts)
+        {
+            foreach (IPart a in parts)
+                a.build();
+        }
+
+    }
+
+    class TeamLeader
+    {
+        public void Report()
+        {
+            Console.Clear();
+
+            if (!Home.done)
+               Home.showProgress();
+            
+            else
+               Console.WriteLine("Дом готов!");
+            
+         }
+    }
 
     class Home
     {
-        static IPart[] parts =
+       public static IPart[] parts =
         {
             new Basement(),
             new Wall(), new Wall(), new Wall(), new Wall(),
@@ -85,9 +120,24 @@ namespace HW4
             new Roof()
         };
 
+
+
+       public static bool done = false;
+
        public static void showProgress()
         {
-            foreach (IPart a in parts)
+            for(int i = 0; i <= parts.Length; ++i)
+            {
+                if(i == parts.Length)
+                {
+                    done = true;
+                    return;
+                }
+                if (parts[i].getBuildStatus() != 100)
+                    break;
+            }
+
+            foreach (IPart a in parts) 
                 a.showBuildStatus();
         }
     }
@@ -96,8 +146,25 @@ namespace HW4
     {
         static void Main(string[] args)
         {
-            Home.showProgress();
-            
+
+            Worker Ravshan = new Worker();
+            Worker Djumschut = new Worker();
+            TeamLeader Naschalnika = new TeamLeader();
+
+            Naschalnika.Report();
+
+            while (!Home.done)
+            {
+                Thread.Sleep(200);
+
+                Ravshan.build(ref Home.parts);
+                Djumschut.build(ref Home.parts);
+                
+                Naschalnika.Report();
+            }
+
+
+            Naschalnika.Report();
 
 
         }
