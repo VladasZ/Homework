@@ -7,9 +7,16 @@ using System.Threading;
 
 namespace HW4
 {
+
+    enum priority
+    {
+        Basement, Wall, Door, Window, Roof
+    };
+
     interface IPart
     {
        void build();
+       priority GetPriority();
        void showBuildStatus();
        int getBuildStatus();
 
@@ -19,6 +26,7 @@ namespace HW4
         public int BuildProgress {  private set; get; }
         public int BuildSpeed { private set; get; }
         public int Price { private set; get; }
+        public priority Priority { private set; get; }
         public string Type { private set; get; }
         public bool Done { private set; get; }
         public int getBuildStatus()
@@ -26,11 +34,18 @@ namespace HW4
             return BuildProgress;
         }
 
-        public Part(int price, string type, int buildSpeed)
+        public priority GetPriority()
+        {
+            return Priority;
+        }
+
+
+        public Part(int price, string type, int buildSpeed, priority pr)
         {
             Done = false;
             Type = type;
             BuildProgress = 0;
+            Priority = pr;
             BuildSpeed = buildSpeed;
             Price = price;
         }
@@ -56,27 +71,27 @@ namespace HW4
 
     class Window : Part
     {
-        public Window() : base(1000, "Окно", 10) {}
+        public Window() : base(1000, "Окно", 10, priority.Window) {}
     }
 
     class Door : Part
     {
-        public Door() : base(2000, "Дверь",10) { }
+        public Door() : base(2000, "Дверь",10,priority.Door) { }
     }
 
     class Wall : Part
     {
-        public Wall() : base(5000, "Стена",2) { }
+        public Wall() : base(5000, "Стена",2, priority.Wall) { }
     }
 
     class Roof : Part
     {
-        public Roof() : base(5000, "Крыша",5) { }
+        public Roof() : base(5000, "Крыша",5, priority.Roof) { }
     }
 
     class Basement : Part
     {
-        public Basement() : base(6000, "Фундамент",1) { }
+        public Basement() : base(6000, "Фундамент",1, priority.Basement) { }
     }
 
     interface IWorker
@@ -89,7 +104,12 @@ namespace HW4
         public void build(ref IPart[] parts)
         {
             foreach (IPart a in parts)
-                a.build();
+            {
+                if (Home.Priority == a.GetPriority())
+                {
+                    a.build();
+                }
+            }
         }
 
     }
@@ -121,24 +141,30 @@ namespace HW4
         };
 
 
+       public static priority Priority = priority.Basement; // В первую очередь строим фундамент
 
        public static bool done = false;
 
        public static void showProgress()
         {
-            for(int i = 0; i <= parts.Length; ++i)
+
+            foreach(IPart a in parts)
             {
-                if(i == parts.Length)
+                if (a.GetPriority() == Home.Priority &&
+                    a.getBuildStatus() == 100)
                 {
-                    done = true;
-                    return;
-                }
-                if (parts[i].getBuildStatus() != 100)
+                    Home.Priority++;
                     break;
+                }
             }
 
-            foreach (IPart a in parts) 
+            if (Home.Priority == priority.Roof + 1)
+                done = true;
+
+            foreach (IPart a in parts)            
                 a.showBuildStatus();
+
+            
         }
     }
 
