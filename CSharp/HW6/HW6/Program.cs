@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Loger;
 
 
 
@@ -11,7 +12,15 @@ namespace ConsoleApplication3
 {
     enum Value { J = 11, Q, K, A };
     enum Suit { Hearts = '♥', Diamonds, Clubs, Spades }; // ♦♣♠
-     
+
+    static class PlayerShuffle
+    {
+        public static bool Yes { private set; get; } = true;
+        public static bool No { private set; get; } = false;
+    }
+
+//#define PLAYER_SHUFFLE_YES true
+    
     class Program
     {
 
@@ -19,13 +28,14 @@ namespace ConsoleApplication3
         public static int infiniteGames = 0;
         public static int finiteGames = 0;
       
-        static void TestGame(int infinity, int accuracy)
+        static void TestGame(int infinity, int accuracy, bool plShuffle)
         {
-            int[] playersN = { 2, 3, 4, 6, 9, 12, 18, 36 };
+            int[] playersN = { 2, 3, 4, 6, 9, 12, 18};
 
             Game.display = false;
                         
             Game.SetInfinity(infinity);
+            Game.plShuffle = plShuffle;
 
             Console.WriteLine("Игра считается бесконечной после " + infinity + " ходов");
 
@@ -52,10 +62,15 @@ namespace ConsoleApplication3
         static void Main(string[] args)
         {
 
-             TestGame(10000, 1000);
+            // TestGame(1000, 1000, PlayerShuffle.Yes); // тест игры со всеми возможыми комбинациями игроков
+
+
+            Loger.Loger.hi();
+            Loger.Loger.init();
+            
          
            
-            //Game.Play(18);
+            //Game.Play(2);
 
         }
 

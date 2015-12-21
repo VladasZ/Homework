@@ -11,13 +11,15 @@ namespace ConsoleApplication3
         public static List<Player> players;
         public static List<Card> desk;
 
-        public static bool display;
+        public static bool display;// включаем или выключаем отображение ходов, метод Test отключает отображение
 
-        static int infinity;
+        public static bool plShuffle;// включаем и выключаем перетасовку карт в руках игрока
+
+        static int infinity;// количество ходов принимаемое за бесконечную игру
 
         static Game()
         {
-            infinity = 0;
+            infinity = 300;
             display = true;
             players = new List<Player>();
             desk = new List<Card>();
@@ -41,7 +43,7 @@ namespace ConsoleApplication3
         static void SetPlayers(int n)
         {
              for (int i = 0; i < n; ++i)
-                players.Add(new Player(i + 1, 36 / n));
+                players.Add(new Player(i + 1, Deck.cards.Count / n));
         }
 
         static void Start()
@@ -68,21 +70,28 @@ namespace ConsoleApplication3
             {
                 if(display)Console.Clear();
 
-                foreach (Player player in players) player.Move();
+                foreach (Player player in players)
+                {
+                    if(plShuffle)Deck.shuffle(player.cards, 100);   // перемешиваем карты игроков для уменьшения количества бесконечных игр
+                                                                    // на порядок увеличивает время теста
+                    player.Move();
+                }
 
                 if (display)foreach (Card card in desk) card.show();
 
-                //foreach (Player player in players)
-                //{
-                //    player.showStatus();
-                //    player.showCards();
-                //}
+                if(display)
+                foreach (Player player in players)
+                {
+                    player.showStatus();
+                    player.showCards();
+                }
 
 
-                Player winner = /*null;// */Disput.Check();
+                Player winner = null;// */Disput.Check();
 
                 if (winner != null)
                 {
+                    Deck.shuffle(desk);
                     winner.TakeDesk();
                 }
                 else { 

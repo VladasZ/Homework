@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW6", "HW6\HW6.csproj", "{17ADF29C-E381-4FF9-9E29-4720DD3E8E8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 2", "Task 2\Task 2.csproj", "{E87FF2E5-3FED-4D8A-97FC-73C87D52EB5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loger", "Loger\Loger.csproj", "{00C0F9AA-5DDB-4008-A87A-27AB90942E68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{17ADF29C-E381-4FF9-9E29-4720DD3E8E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17ADF29C-E381-4FF9-9E29-4720DD3E8E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17ADF29C-E381-4FF9-9E29-4720DD3E8E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E87FF2E5-3FED-4D8A-97FC-73C87D52EB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E87FF2E5-3FED-4D8A-97FC-73C87D52EB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E87FF2E5-3FED-4D8A-97FC-73C87D52EB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E87FF2E5-3FED-4D8A-97FC-73C87D52EB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00C0F9AA-5DDB-4008-A87A-27AB90942E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C0F9AA-5DDB-4008-A87A-27AB90942E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C0F9AA-5DDB-4008-A87A-27AB90942E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C0F9AA-5DDB-4008-A87A-27AB90942E68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
