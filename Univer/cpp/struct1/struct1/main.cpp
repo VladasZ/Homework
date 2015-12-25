@@ -45,7 +45,7 @@ void showStudent(student st){
 }
 
 void showAllStudents(){
-    for(int i = 0; i < 50; ++i){
+    for(int i = 0; i < STUDENTS_COUNT; ++i){
         showStudent(students[i]);
     }
 }
