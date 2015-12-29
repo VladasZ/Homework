@@ -62,15 +62,15 @@ namespace ConsoleApplication3
         static void Main(string[] args)
         {
 
-            // TestGame(1000, 1000, PlayerShuffle.Yes); // тест игры со всеми возможыми комбинациями игроков
 
 
-            Loger.Loger.hi();
+            // Loger.Loger.hi();
             Loger.Loger.init();
+            Loger.Loger.log();
+
             
-         
+
            
-            //Game.Play(2);
 
         }
 
