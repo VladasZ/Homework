@@ -14,6 +14,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *button2;
 @property (nonatomic, weak) IBOutlet UIButton *button3;
 
+@property (weak, nonatomic) IBOutlet UIButton *resizeButton;
+
 - (IBAction)didPressButton1:(UIButton *)sender;
 - (IBAction)didPressButton2:(UIButton *)sender;
 - (IBAction)didPressButton3:(UIButton *)sender;
@@ -36,12 +38,18 @@
 
 - (IBAction)didPressButton1:(UIButton *)sender
 {
-    [self.button3 setHidden:YES];
+    CGRect rect;
+    rect.size.height = 100;
+    rect.size.width = 100;
+    rect.origin.x = 100;
+    rect.origin.y = 100;
+    
+    self.resizeButton.frame = rect;
+
 }
 
 - (IBAction)didPressButton2:(UIButton *)sender
 {
-    [self.button1 setHidden:YES];
 }
 
 

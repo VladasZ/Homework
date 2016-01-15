@@ -38,6 +38,10 @@
                                     <action selector="didPressButton3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qNA-SI-vAN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eC-Zq-2V4">
+                                <rect key="frame" x="90" y="247" width="129" height="104"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -46,6 +50,7 @@
                         <outlet property="button1" destination="3YV-bg-bRP" id="W7W-Y8-bDt"/>
                         <outlet property="button2" destination="Mp0-mn-c42" id="Fjd-r2-1JY"/>
                         <outlet property="button3" destination="lcg-j0-37E" id="o1l-KR-HRG"/>
+                        <outlet property="resizeButton" destination="6eC-Zq-2V4" id="uKs-ix-GRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

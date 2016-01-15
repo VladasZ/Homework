@@ -3,6 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,218 +20,336 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgr-La-Aq4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgr-La-Aq4">
                                 <rect key="frame" x="0.0" y="574" width="187" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="arZ-bE-9Wd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="0       " backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="0       ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DsC-MF-fIM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-5F-rDB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-5F-rDB">
                                 <rect key="frame" x="188" y="574" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="." backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title=".">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUJ-xt-7eT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUJ-xt-7eT">
                                 <rect key="frame" x="282" y="574" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="=" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="=">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressEqualsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oz1-xM-jsE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCe-OD-I3d">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCe-OD-I3d">
                                 <rect key="frame" x="0.0" y="480" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="SvA-l6-uIz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="1" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="1">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7YR-Xc-BVs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcJ-F9-MjP">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcJ-F9-MjP">
                                 <rect key="frame" x="94" y="480" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="2" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="2">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l5o-4H-B28"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-6V-PKO">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-6V-PKO">
                                 <rect key="frame" x="188" y="480" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="3" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="3">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="40W-yq-bSl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-z2-YGm">
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-z2-YGm">
                                 <rect key="frame" x="282" y="480" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="+" backgroundImage="sinii500.png">
+                                <state key="normal" title="+">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hu1-ko-HeK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-yV-aVe">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-yV-aVe">
                                 <rect key="frame" x="0.0" y="386" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="LzE-E6-9YO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="4" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="4">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lyB-7t-7JT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HW-5I-MNO">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HW-5I-MNO">
                                 <rect key="frame" x="94" y="386" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="5" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="5">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NYK-f3-qlZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-4A-cU1">
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-4A-cU1">
                                 <rect key="frame" x="188" y="386" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="6" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="6">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JAY-YO-8gN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-LB-BzQ">
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-LB-BzQ">
                                 <rect key="frame" x="282" y="386" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="-" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="−">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UnZ-sK-Hfx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dr-f2-sJH">
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dr-f2-sJH">
                                 <rect key="frame" x="0.0" y="292" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="so5-w1-mR6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="7" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="7">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O7b-ON-Cqv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6A-vs-a0S">
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6A-vs-a0S">
                                 <rect key="frame" x="94" y="292" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="8" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="8">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nk9-3H-dvY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxz-ff-cLj">
+                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxz-ff-cLj">
                                 <rect key="frame" x="188" y="292" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="9" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="9">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vf5-pA-K4U"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVb-Qd-mbX">
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVb-Qd-mbX">
                                 <rect key="frame" x="282" y="292" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="×" backgroundImage="sinii500.png">
+                                <state key="normal" title="×">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="of7-ob-mzq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-TF-8oz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUN-TF-8oz">
                                 <rect key="frame" x="0.0" y="198" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="263-Wd-DfG"/>
+                                    <constraint firstAttribute="height" constant="93" id="Seo-PV-UaZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="AC" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="AC">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressACBUtton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8z1-WE-sMH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaf-Il-Vyj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uaf-Il-Vyj">
                                 <rect key="frame" x="94" y="198" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="waJ-wX-FGv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="+/-" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="+/−">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didPressPlusMinusButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Kn-1i-gDR"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-wq-WaL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-wq-WaL">
                                 <rect key="frame" x="188" y="198" width="93" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="bzq-wi-qHi"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="%" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="%">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg9-Oh-uLE">
-                                <rect key="frame" x="20" y="28" width="335" height="138"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="89"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg9-Oh-uLE">
+                                <rect key="frame" x="20" y="60" width="335" height="138"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="100"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPN-3o-YzF">
+                            <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPN-3o-YzF">
                                 <rect key="frame" x="282" y="198" width="93" height="93"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="÷" backgroundImage="sinii500.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="1" green="0.68914331900000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="÷">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9HI-kj-DAc"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="aUJ-xt-7eT" firstAttribute="top" secondItem="ywF-5F-rDB" secondAttribute="top" id="10S-Kh-ETh"/>
+                            <constraint firstItem="hxz-ff-cLj" firstAttribute="trailing" secondItem="xxC-4A-cU1" secondAttribute="trailing" id="1Lf-aq-KOC"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="trailing" secondItem="xxC-4A-cU1" secondAttribute="trailing" id="2Rc-vL-aOl"/>
+                            <constraint firstItem="GCs-z2-YGm" firstAttribute="leading" secondItem="JTK-LB-BzQ" secondAttribute="leading" id="2dR-ys-oa0"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="leading" secondItem="1HW-5I-MNO" secondAttribute="leading" id="4d7-1n-49b"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="trailing" secondItem="1HW-5I-MNO" secondAttribute="trailing" id="4p7-K0-gWt"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="baseline" secondItem="GCs-z2-YGm" secondAttribute="baseline" id="50b-Cm-9WY"/>
+                            <constraint firstItem="aUJ-xt-7eT" firstAttribute="baseline" secondItem="ywF-5F-rDB" secondAttribute="baseline" id="57l-vA-vfC"/>
+                            <constraint firstItem="fUN-TF-8oz" firstAttribute="trailing" secondItem="4Dr-f2-sJH" secondAttribute="trailing" id="6gW-Q9-kyI"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="trailing" secondItem="nCe-OD-I3d" secondAttribute="trailing" id="6oL-c3-5LE"/>
+                            <constraint firstAttribute="trailing" secondItem="aUJ-xt-7eT" secondAttribute="trailing" id="6sb-XD-5JG"/>
+                            <constraint firstItem="hxz-ff-cLj" firstAttribute="baseline" secondItem="UVb-Qd-mbX" secondAttribute="baseline" id="6yB-da-bk3"/>
+                            <constraint firstItem="hxz-ff-cLj" firstAttribute="baseline" secondItem="UVb-Qd-mbX" secondAttribute="firstBaseline" id="8tp-uA-M7r"/>
+                            <constraint firstItem="fUN-TF-8oz" firstAttribute="top" secondItem="Uaf-Il-Vyj" secondAttribute="top" id="964-Ka-b18"/>
+                            <constraint firstItem="4Dr-f2-sJH" firstAttribute="top" secondItem="fUN-TF-8oz" secondAttribute="bottom" constant="1" id="9Zt-jH-4Fz"/>
+                            <constraint firstItem="xxC-4A-cU1" firstAttribute="baseline" secondItem="1HW-5I-MNO" secondAttribute="baseline" id="9dY-LJ-kZU"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="trailing" secondItem="Uaf-Il-Vyj" secondAttribute="trailing" id="9rZ-e9-tyU"/>
+                            <constraint firstItem="ywF-5F-rDB" firstAttribute="top" secondItem="jgr-La-Aq4" secondAttribute="top" id="A74-ln-Rk0"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="top" secondItem="RxX-wq-WaL" secondAttribute="top" id="APj-tj-sly"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="leading" secondItem="1HW-5I-MNO" secondAttribute="leading" id="ARy-5o-tEM"/>
+                            <constraint firstItem="aUJ-xt-7eT" firstAttribute="leading" secondItem="GCs-z2-YGm" secondAttribute="leading" id="BPK-f4-DP0"/>
+                            <constraint firstItem="4Dr-f2-sJH" firstAttribute="leading" secondItem="fUN-TF-8oz" secondAttribute="leading" id="Ctc-bH-CJw"/>
+                            <constraint firstItem="1HW-5I-MNO" firstAttribute="baseline" secondItem="xxC-4A-cU1" secondAttribute="firstBaseline" id="D52-Wq-PJF"/>
+                            <constraint firstItem="GCs-z2-YGm" firstAttribute="trailing" secondItem="JTK-LB-BzQ" secondAttribute="trailing" id="DlM-zR-WvB"/>
+                            <constraint firstItem="jgr-La-Aq4" firstAttribute="baseline" secondItem="ywF-5F-rDB" secondAttribute="baseline" id="EI8-W4-Hnv"/>
+                            <constraint firstItem="UVb-Qd-mbX" firstAttribute="trailing" secondItem="JTK-LB-BzQ" secondAttribute="trailing" id="EM4-zf-VYI"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="baseline" secondItem="nCe-OD-I3d" secondAttribute="firstBaseline" id="GtB-rV-UGX"/>
+                            <constraint firstItem="xxC-4A-cU1" firstAttribute="top" secondItem="JTK-LB-BzQ" secondAttribute="top" id="H7V-dV-GmF"/>
+                            <constraint firstItem="GCs-z2-YGm" firstAttribute="trailing" secondItem="aUJ-xt-7eT" secondAttribute="trailing" id="Kg8-Ik-bBU"/>
+                            <constraint firstItem="nCe-OD-I3d" firstAttribute="baseline" secondItem="EcJ-F9-MjP" secondAttribute="firstBaseline" id="KxA-mR-lcv"/>
+                            <constraint firstItem="4Dr-f2-sJH" firstAttribute="baseline" secondItem="a6A-vs-a0S" secondAttribute="firstBaseline" id="LmI-3t-rli"/>
+                            <constraint firstItem="4Dr-f2-sJH" firstAttribute="baseline" secondItem="a6A-vs-a0S" secondAttribute="baseline" id="MX3-LH-1lc"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="baseline" secondItem="GCs-z2-YGm" secondAttribute="firstBaseline" id="NdJ-Zn-Laz"/>
+                            <constraint firstItem="nCe-OD-I3d" firstAttribute="top" secondItem="xX1-yV-aVe" secondAttribute="bottom" constant="1" id="Ndy-Dt-4YZ"/>
+                            <constraint firstItem="ywF-5F-rDB" firstAttribute="trailing" secondItem="6U7-6V-PKO" secondAttribute="trailing" id="Neu-Av-GLY"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="trailing" secondItem="jgr-La-Aq4" secondAttribute="trailing" id="NgX-za-5g2"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="baseline" secondItem="RxX-wq-WaL" secondAttribute="firstBaseline" id="OsN-bi-YxD"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="top" secondItem="bPN-3o-YzF" secondAttribute="top" id="Oxt-7c-YEr"/>
+                            <constraint firstItem="hg9-Oh-uLE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PdP-mL-LQq"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="leading" secondItem="Uaf-Il-Vyj" secondAttribute="trailing" constant="1" id="PkL-0L-wla"/>
+                            <constraint firstItem="UVb-Qd-mbX" firstAttribute="top" secondItem="hxz-ff-cLj" secondAttribute="top" id="Q1F-wA-0gf"/>
+                            <constraint firstItem="4Dr-f2-sJH" firstAttribute="top" secondItem="a6A-vs-a0S" secondAttribute="top" id="SQP-og-h22"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="baseline" secondItem="fUN-TF-8oz" secondAttribute="baseline" id="T3A-By-5sH"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="baseline" secondItem="4Dr-f2-sJH" secondAttribute="firstBaseline" id="Tgc-J1-CXx"/>
+                            <constraint firstItem="JTK-LB-BzQ" firstAttribute="leading" secondItem="UVb-Qd-mbX" secondAttribute="leading" id="UDE-zf-OMu"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="baseline" secondItem="1HW-5I-MNO" secondAttribute="firstBaseline" id="UHh-HK-9yM"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="baseline" secondItem="nCe-OD-I3d" secondAttribute="baseline" id="UJt-OB-UTL"/>
+                            <constraint firstItem="jgr-La-Aq4" firstAttribute="leading" secondItem="nCe-OD-I3d" secondAttribute="leading" id="Uh4-4H-riu"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="leading" secondItem="fUN-TF-8oz" secondAttribute="trailing" constant="1" id="VQo-k2-RVO"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="top" secondItem="1HW-5I-MNO" secondAttribute="top" id="WAg-Gz-q5T"/>
+                            <constraint firstItem="hxz-ff-cLj" firstAttribute="baseline" secondItem="a6A-vs-a0S" secondAttribute="baseline" id="WSi-aw-qiz"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="leading" secondItem="xxC-4A-cU1" secondAttribute="leading" id="WdY-x5-O2N"/>
+                            <constraint firstItem="fUN-TF-8oz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XMh-vK-TqD"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="top" secondItem="nCe-OD-I3d" secondAttribute="top" id="Y7F-mR-SOW"/>
+                            <constraint firstItem="fUN-TF-8oz" firstAttribute="baseline" secondItem="Uaf-Il-Vyj" secondAttribute="firstBaseline" id="YMZ-Qg-li5"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="baseline" secondItem="RxX-wq-WaL" secondAttribute="baseline" id="ZVi-az-PSA"/>
+                            <constraint firstItem="xxC-4A-cU1" firstAttribute="baseline" secondItem="JTK-LB-BzQ" secondAttribute="firstBaseline" id="Ztu-xf-mzu"/>
+                            <constraint firstItem="jgr-La-Aq4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="aM2-HL-eqH"/>
+                            <constraint firstItem="xxC-4A-cU1" firstAttribute="top" secondItem="1HW-5I-MNO" secondAttribute="top" id="amj-cY-KeT"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="leading" secondItem="hxz-ff-cLj" secondAttribute="leading" id="b1r-fu-6QR"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="trailing" secondItem="4Dr-f2-sJH" secondAttribute="trailing" id="bV5-tJ-2Vy"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="trailing" secondItem="1HW-5I-MNO" secondAttribute="trailing" id="bYO-Gh-C5W"/>
+                            <constraint firstItem="UVb-Qd-mbX" firstAttribute="leading" secondItem="bPN-3o-YzF" secondAttribute="leading" id="bnd-Oe-6VE"/>
+                            <constraint firstItem="hg9-Oh-uLE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="cdN-7n-fx1"/>
+                            <constraint firstItem="bPN-3o-YzF" firstAttribute="trailing" secondItem="UVb-Qd-mbX" secondAttribute="trailing" id="ckn-Qb-OWl"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="top" secondItem="4Dr-f2-sJH" secondAttribute="bottom" constant="1" id="cv1-sP-9yL"/>
+                            <constraint firstItem="hg9-Oh-uLE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="d4X-7n-bKv"/>
+                            <constraint firstItem="1HW-5I-MNO" firstAttribute="baseline" secondItem="xX1-yV-aVe" secondAttribute="baseline" id="dSx-Cy-c1L"/>
+                            <constraint firstItem="jgr-La-Aq4" firstAttribute="top" secondItem="nCe-OD-I3d" secondAttribute="bottom" constant="1" id="dmh-Kz-cGE"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="baseline" secondItem="EcJ-F9-MjP" secondAttribute="baseline" id="ecv-bk-xLI"/>
+                            <constraint firstItem="GCs-z2-YGm" firstAttribute="top" secondItem="6U7-6V-PKO" secondAttribute="top" id="gHU-ku-8BF"/>
+                            <constraint firstItem="6U7-6V-PKO" firstAttribute="top" secondItem="EcJ-F9-MjP" secondAttribute="top" id="hVn-8x-NRf"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="baseline" secondItem="bPN-3o-YzF" secondAttribute="baseline" id="i6b-hV-vKY"/>
+                            <constraint firstItem="bPN-3o-YzF" firstAttribute="leading" secondItem="RxX-wq-WaL" secondAttribute="trailing" constant="1" id="iWM-tZ-vjy"/>
+                            <constraint firstItem="aUJ-xt-7eT" firstAttribute="baseline" secondItem="ywF-5F-rDB" secondAttribute="firstBaseline" id="k8M-RN-bh2"/>
+                            <constraint firstItem="1HW-5I-MNO" firstAttribute="baseline" secondItem="xX1-yV-aVe" secondAttribute="firstBaseline" id="kR3-lc-Wrw"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="leading" secondItem="nCe-OD-I3d" secondAttribute="leading" id="koD-up-5bI"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="baseline" secondItem="hxz-ff-cLj" secondAttribute="firstBaseline" id="ld1-Ad-aUc"/>
+                            <constraint firstItem="xX1-yV-aVe" firstAttribute="leading" secondItem="4Dr-f2-sJH" secondAttribute="leading" id="ow6-ZP-EL0"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="trailing" secondItem="hxz-ff-cLj" secondAttribute="trailing" id="pG0-6I-46N"/>
+                            <constraint firstItem="ywF-5F-rDB" firstAttribute="leading" secondItem="6U7-6V-PKO" secondAttribute="leading" id="qcG-he-a0k"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="top" secondItem="hg9-Oh-uLE" secondAttribute="bottom" id="sat-kD-Gs5"/>
+                            <constraint firstItem="hxz-ff-cLj" firstAttribute="leading" secondItem="xxC-4A-cU1" secondAttribute="leading" id="ss3-rL-0aI"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="baseline" secondItem="fUN-TF-8oz" secondAttribute="firstBaseline" id="tQ5-f1-LqI"/>
+                            <constraint firstItem="ywF-5F-rDB" firstAttribute="baseline" secondItem="aUJ-xt-7eT" secondAttribute="firstBaseline" id="tZh-yc-eBm"/>
+                            <constraint firstItem="xxC-4A-cU1" firstAttribute="baseline" secondItem="JTK-LB-BzQ" secondAttribute="baseline" id="tr5-Fm-LeV"/>
+                            <constraint firstItem="Uaf-Il-Vyj" firstAttribute="leading" secondItem="a6A-vs-a0S" secondAttribute="leading" id="trw-86-7nX"/>
+                            <constraint firstItem="EcJ-F9-MjP" firstAttribute="baseline" secondItem="6U7-6V-PKO" secondAttribute="firstBaseline" id="uD4-rh-ok7"/>
+                            <constraint firstItem="a6A-vs-a0S" firstAttribute="top" secondItem="hxz-ff-cLj" secondAttribute="top" id="vxb-Yp-5Tc"/>
+                            <constraint firstItem="RxX-wq-WaL" firstAttribute="baseline" secondItem="bPN-3o-YzF" secondAttribute="firstBaseline" id="zDH-Gq-Khk"/>
+                            <constraint firstItem="ywF-5F-rDB" firstAttribute="baseline" secondItem="jgr-La-Aq4" secondAttribute="firstBaseline" id="zUO-Sl-pQN"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="acButton" destination="fUN-TF-8oz" id="M2W-Rf-Xdd"/>
                         <outlet property="display" destination="hg9-Oh-uLE" id="G0A-OC-ARi"/>
+                        <outletCollection property="lightGrayButtons" destination="fUN-TF-8oz" id="E5I-RH-tAW"/>
+                        <outletCollection property="lightGrayButtons" destination="Uaf-Il-Vyj" id="lpI-4S-1LX"/>
+                        <outletCollection property="lightGrayButtons" destination="RxX-wq-WaL" id="Coa-6t-jr8"/>
+                        <outletCollection property="darkGrayButtons" destination="jgr-La-Aq4" id="RmB-WW-vY9"/>
+                        <outletCollection property="darkGrayButtons" destination="nCe-OD-I3d" id="Bwa-2X-EMR"/>
+                        <outletCollection property="darkGrayButtons" destination="EcJ-F9-MjP" id="4A9-6w-m0s"/>
+                        <outletCollection property="darkGrayButtons" destination="6U7-6V-PKO" id="Dcv-cN-0LQ"/>
+                        <outletCollection property="darkGrayButtons" destination="xX1-yV-aVe" id="ksU-OZ-6sb"/>
+                        <outletCollection property="darkGrayButtons" destination="1HW-5I-MNO" id="zud-YL-Qk7"/>
+                        <outletCollection property="darkGrayButtons" destination="xxC-4A-cU1" id="9Uv-6b-OHH"/>
+                        <outletCollection property="darkGrayButtons" destination="4Dr-f2-sJH" id="Bmz-nu-Kza"/>
+                        <outletCollection property="darkGrayButtons" destination="a6A-vs-a0S" id="xdq-tC-hu7"/>
+                        <outletCollection property="darkGrayButtons" destination="hxz-ff-cLj" id="RsF-Zg-0dU"/>
+                        <outletCollection property="darkGrayButtons" destination="ywF-5F-rDB" id="5dB-JY-jQW"/>
+                        <outletCollection property="orangeButtons" destination="aUJ-xt-7eT" id="PET-lQ-OWq"/>
+                        <outletCollection property="orangeButtons" destination="GCs-z2-YGm" id="7Cj-sh-ZJf"/>
+                        <outletCollection property="orangeButtons" destination="JTK-LB-BzQ" id="PUp-Bo-Wka"/>
+                        <outletCollection property="orangeButtons" destination="UVb-Qd-mbX" id="awv-D2-qRi"/>
+                        <outletCollection property="orangeButtons" destination="bPN-3o-YzF" id="Pg2-FS-vy1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,7 +357,4 @@
             <point key="canvasLocation" x="779.5" y="654.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="sinii500.png" width="500" height="375"/>
-    </resources>
 </document>
