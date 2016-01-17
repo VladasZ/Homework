@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+
 #define RGB(r, g, b) [UIColor colorWithRed:(float)r / 255.0 green:(float)g / 255.0 blue:(float)b / 255.0 alpha:1.0]
+#define EightDigitsNumber 99999999
 
 @interface ViewController ()
 
@@ -50,12 +52,8 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"Width - %f. Height - %f", self.view.frame.size.width, self.view.frame.size.height);
-    
     self.displayValue = 0;
     self.previousValue = 0;
-    
-    
     
     for (UIButton *button in self.darkGrayButtons) {
         button.backgroundColor = RGB(204, 205, 209);
@@ -71,8 +69,8 @@ typedef enum {
     
     self.view.backgroundColor = RGB(29, 29, 29);
     
-    [self resizing];
-
+ //   [self resizing];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,6 +81,9 @@ typedef enum {
 #pragma mark - Action methods
 - (IBAction)didPressDigitButton:(UIButton *)sender
 {
+    if (self.displayValue > EightDigitsNumber ||
+        self.displayValue < -EightDigitsNumber) return;
+    
     if (self.operationButtonPressed) {
         
         self.previousValue = self.displayValue;
@@ -95,8 +96,10 @@ typedef enum {
     } else {
         
         self.displayValue *= 10;
-        self.displayValue += sender.tag;
-    
+        
+        if (self.displayValue >= 0) self.displayValue += sender.tag;
+        else                        self.displayValue -= sender.tag;
+        
         [self showDisplayValue];
     }
 }
@@ -107,7 +110,6 @@ typedef enum {
     self.previousValue = 0;
     self.operationButtonPressed = NO;
     self.display.text = @"0";
-    self.display.font = [self.display.font fontWithSize:100];
 }
 
 - (IBAction)didPressOperationButton:(UIButton *)sender
@@ -139,26 +141,34 @@ typedef enum {
 #pragma mark - Other methods
 - (void)showDisplayValue
 {
-    self.display.text = [NSString stringWithFormat:@"%ld" , (long)self.displayValue];
+    NSMutableString *displayString = [NSMutableString stringWithFormat:@"%ld", (long)self.displayValue];
     
-    if (self.display.text.length > 6) {
-        
-        self.display.font = [self.display.font fontWithSize:75];
-
+    BOOL valueIsLessThanOne = (self.displayValue < 0);
+    
+    if (valueIsLessThanOne) {
+        [displayString deleteCharactersInRange:NSMakeRange(0, 1)];
     }
     
-    if (self.display.text.length > 7) {
+    int commaPosition = 3;
+    
+    for (int i = 0; i < displayString.length ; i++) {
         
-        self.display.font = [self.display.font fontWithSize:60];
+        if ( i == commaPosition) {
+            
+            [displayString insertString:@"," atIndex: displayString.length - i];
+            
+            commaPosition += 3;
+            commaPosition++;
 
+        }
     }
     
-    if (self.display.text.length > 8) {
-        
-        self.display.font = [self.display.font fontWithSize:50];
-
+    if (valueIsLessThanOne) {
+        [displayString insertString:@"-" atIndex:0];
     }
     
+    self.display.text = displayString;
+
 }
 
 - (void)calculate
@@ -244,6 +254,18 @@ typedef enum {
         }
         
     
+}
+
+- (UIImage *)imageFromColor:(UIColor *)color// from stackovefwlow
+{
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

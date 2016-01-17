@@ -15,7 +15,6 @@
 		8254482C1C4835DB0021EBFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8254482A1C4835DB0021EBFF /* LaunchScreen.storyboard */; };
 		825448371C4835DB0021EBFF /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 825448361C4835DB0021EBFF /* CalculatorTests.m */; };
 		825448421C4835DB0021EBFF /* CalculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 825448411C4835DB0021EBFF /* CalculatorUITests.m */; };
-		82DD6CA11C4876EF00ABD9E2 /* sinii500.png in Resources */ = {isa = PBXBuildFile; fileRef = 82DD6CA01C4876EF00ABD9E2 /* sinii500.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		8254483D1C4835DB0021EBFF /* CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		825448411C4835DB0021EBFF /* CalculatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorUITests.m; sourceTree = "<group>"; };
 		825448431C4835DB0021EBFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82DD6CA01C4876EF00ABD9E2 /* sinii500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sinii500.png; path = ../../../../../../../Desktop/sinii500.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +105,6 @@
 				825448201C4835DB0021EBFF /* AppDelegate.m */,
 				825448221C4835DB0021EBFF /* ViewController.h */,
 				825448231C4835DB0021EBFF /* ViewController.m */,
-				82DD6CA01C4876EF00ABD9E2 /* sinii500.png */,
 				825448251C4835DB0021EBFF /* Main.storyboard */,
 				825448281C4835DB0021EBFF /* Assets.xcassets */,
 				8254482A1C4835DB0021EBFF /* LaunchScreen.storyboard */,
@@ -249,7 +246,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82DD6CA11C4876EF00ABD9E2 /* sinii500.png in Resources */,
 				8254482C1C4835DB0021EBFF /* LaunchScreen.storyboard in Resources */,
 				825448291C4835DB0021EBFF /* Assets.xcassets in Resources */,
 				825448271C4835DB0021EBFF /* Main.storyboard in Resources */,
