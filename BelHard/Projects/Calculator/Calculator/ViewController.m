@@ -26,8 +26,8 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIButton *acButton;
 
-
 @property (nonatomic, weak) IBOutlet UILabel *display;
+
 @property (nonatomic) NSInteger displayValue;
 @property (nonatomic) NSInteger previousValue;
 @property (nonatomic) OperationType operationToDo;
@@ -48,8 +48,12 @@ typedef enum {
 
 @implementation ViewController
 
-#pragma mark - Default methods
-- (void)viewDidLoad {
+//#pragma mark - Default methods
+
+#pragma mark - View life cycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.displayValue = 0;
@@ -73,12 +77,9 @@ typedef enum {
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Action methods
+
 - (IBAction)didPressDigitButton:(UIButton *)sender
 {
     if (self.displayValue > EightDigitsNumber ||
@@ -97,8 +98,11 @@ typedef enum {
         
         self.displayValue *= 10;
         
-        if (self.displayValue >= 0) self.displayValue += sender.tag;
-        else                        self.displayValue -= sender.tag;
+        if (self.displayValue >= 0) {
+            self.displayValue += sender.tag;
+        } else {
+            self.displayValue -= sender.tag;
+        }
         
         [self showDisplayValue];
     }
@@ -129,7 +133,7 @@ typedef enum {
 
 - (IBAction)didPressEqualsButton:(UIButton *)sender
 {
-        [self calculate];
+    [self calculate];
 }
 
 - (IBAction)didPressPlusMinusButton:(UIButton *)sender
@@ -138,7 +142,10 @@ typedef enum {
     [self showDisplayValue];
 }
 
-#pragma mark - Other methods
+//#pragma mark - Other methods
+
+#pragma mark - Internal
+
 - (void)showDisplayValue
 {
     NSMutableString *displayString = [NSMutableString stringWithFormat:@"%ld", (long)self.displayValue];
@@ -149,17 +156,16 @@ typedef enum {
         [displayString deleteCharactersInRange:NSMakeRange(0, 1)];
     }
     
-    int commaPosition = 3;
+    NSUInteger commaPosition = 3;
     
-    for (int i = 0; i < displayString.length ; i++) {
+    for (NSUInteger i = 0; i < displayString.length ; i++) {
         
-        if ( i == commaPosition) {
+        if (i == commaPosition) {
             
             [displayString insertString:@"," atIndex: displayString.length - i];
             
             commaPosition += 3;
             commaPosition++;
-
         }
     }
     
@@ -210,7 +216,7 @@ typedef enum {
     [self showDisplayValue];
 }
 
-- (void) resizeButton:(UIButton *)element
+- (void)resizeButton:(UIButton *)element
 {
     NSLog(@"resize");
     
@@ -226,45 +232,47 @@ typedef enum {
 
 - (void)resizing// don't work
 {
-        if (self.view.frame.size.width == 375) {
-    
-            self.resizeCoefficient = 1;
-            self.needToResize = NO;
-            NSLog(@"No need to resize");
-    
-        } else {
-                [super viewDidLayoutSubviews];
-        [super viewDidLayoutSubviews];
-    
-            self.resizeCoefficient = self.view.frame.size.width / 375;
-            self.needToResize = YES;
-            NSLog(@"Starting with resize %f", self.resizeCoefficient);
-    
-            for (UIButton *button in self.darkGrayButtons) {
-    
-                CGRect frame = button.frame;
-    
-                frame.origin.x *= self.resizeCoefficient;
-                frame.origin.y *= self.resizeCoefficient;
-                frame.size.height *= self.resizeCoefficient;
-                frame.size.width *= self.resizeCoefficient;
-    
-                button.frame = frame;        }
-            
-        }
+    if (self.view.frame.size.width == 375) {
+
+        self.resizeCoefficient = 1;
+        self.needToResize = NO;
         
-    
+        NSLog(@"No need to resize");
+
+    } else {
+        
+        [super viewDidLayoutSubviews];
+
+        self.resizeCoefficient = self.view.frame.size.width / 375;
+        self.needToResize = YES;
+        
+        NSLog(@"Starting with resize %f", self.resizeCoefficient);
+
+        for (UIButton *button in self.darkGrayButtons) {
+
+            CGRect frame = button.frame;
+
+            frame.origin.x *= self.resizeCoefficient;
+            frame.origin.y *= self.resizeCoefficient;
+            frame.size.height *= self.resizeCoefficient;
+            frame.size.width *= self.resizeCoefficient;
+
+            button.frame = frame;
+        }
+    }
 }
 
-- (UIImage *)imageFromColor:(UIColor *)color// from stackovefwlow
+- (UIImage *)imageFromColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0, 0, 1, 1);
+    
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
     return image;
 }
 

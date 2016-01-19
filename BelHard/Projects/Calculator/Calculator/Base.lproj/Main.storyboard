@@ -83,16 +83,6 @@
                                     <action selector="didPressDigitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="40W-yq-bSl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-z2-YGm">
-                                <rect key="frame" x="282" y="480" width="93" height="93"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hu1-ko-HeK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-yV-aVe">
                                 <rect key="frame" x="0.0" y="386" width="93" height="93"/>
                                 <constraints>
@@ -230,6 +220,16 @@
                                 </state>
                                 <connections>
                                     <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9HI-kj-DAc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-z2-YGm">
+                                <rect key="frame" x="282" y="480" width="93" height="93"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressOperationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hu1-ko-HeK"/>
                                 </connections>
                             </button>
                         </subviews>
