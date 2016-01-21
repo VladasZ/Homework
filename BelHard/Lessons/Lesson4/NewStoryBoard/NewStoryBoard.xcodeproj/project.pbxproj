@@ -14,6 +14,8 @@
 		823A41611C4EAB850073E2BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823A415F1C4EAB850073E2BA /* LaunchScreen.storyboard */; };
 		823A416C1C4EAB850073E2BA /* NewStoryBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 823A416B1C4EAB850073E2BA /* NewStoryBoardTests.m */; };
 		823A41771C4EAB850073E2BA /* NewStoryBoardUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 823A41761C4EAB850073E2BA /* NewStoryBoardUITests.m */; };
+		8284B3241C513AEC00DB7EEE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284B3231C513AEC00DB7EEE /* SecondViewController.m */; };
+		8284B3271C513AF900DB7EEE /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8284B3261C513AF900DB7EEE /* ThirdViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		823A41721C4EAB850073E2BA /* NewStoryBoardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewStoryBoardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		823A41761C4EAB850073E2BA /* NewStoryBoardUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewStoryBoardUITests.m; sourceTree = "<group>"; };
 		823A41781C4EAB850073E2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8284B3221C513AEC00DB7EEE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		8284B3231C513AEC00DB7EEE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		8284B3251C513AF900DB7EEE /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		8284B3261C513AF900DB7EEE /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,10 @@
 				823A41551C4EAB850073E2BA /* AppDelegate.m */,
 				823A41571C4EAB850073E2BA /* ViewController.h */,
 				823A41581C4EAB850073E2BA /* ViewController.m */,
+				8284B3221C513AEC00DB7EEE /* SecondViewController.h */,
+				8284B3231C513AEC00DB7EEE /* SecondViewController.m */,
+				8284B3251C513AF900DB7EEE /* ThirdViewController.h */,
+				8284B3261C513AF900DB7EEE /* ThirdViewController.m */,
 				823A415D1C4EAB850073E2BA /* Assets.xcassets */,
 				823A415F1C4EAB850073E2BA /* LaunchScreen.storyboard */,
 				823A41621C4EAB850073E2BA /* Info.plist */,
@@ -269,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8284B3241C513AEC00DB7EEE /* SecondViewController.m in Sources */,
+				8284B3271C513AF900DB7EEE /* ThirdViewController.m in Sources */,
 				823A41591C4EAB850073E2BA /* ViewController.m in Sources */,
 				823A41561C4EAB850073E2BA /* AppDelegate.m in Sources */,
 				823A41531C4EAB850073E2BA /* main.m in Sources */,
@@ -489,6 +501,7 @@
 				823A417D1C4EAB850073E2BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		823A417E1C4EAB850073E2BA /* Build configuration list for PBXNativeTarget "NewStoryBoardTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +510,7 @@
 				823A41801C4EAB850073E2BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		823A41811C4EAB850073E2BA /* Build configuration list for PBXNativeTarget "NewStoryBoardUITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +519,7 @@
 				823A41831C4EAB850073E2BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
