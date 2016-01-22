@@ -21,7 +21,7 @@ namespace SerializeConsolApp
 
             foreach (PC pc in pcStorage)
             {
-                pc.turnOn();
+                pc.turnOn(); 
             }
 
             using (FileStream file = new FileStream(@"C:\pcStorageData.txt", FileMode.OpenOrCreate))
