@@ -36,7 +36,7 @@
 
 #pragma mark - SettingsViewControllerProtocol implementation
 
--(void)settingsViewController:(SettingsViewController *)settingsViewController didPressSetLabelTextButton:(NSString *)text secondText:(NSString *)secondText thirdText:(NSString *)thirdText fouthText:(NSString *)fourthText
+- (void)settingsViewController:(SettingsViewController *)settingsViewController didPressSetLabelTextButton:(NSString *)text secondText:(NSString *)secondText thirdText:(NSString *)thirdText fouthText:(NSString *)fourthText
 {
     self.label.text = text;
     self.secondLabel.text = secondText;
@@ -44,7 +44,7 @@
     self.fourthLabel.text = fourthText;
 }
 
--(void)settingsViewController:(SettingsViewController *)settingsViewController textFieldDidEndEditing:(UITextField *)textField
+- (void)settingsViewController:(SettingsViewController *)settingsViewController textFieldDidEndEditing:(UITextField *)textField
 {
     switch (textField.tag) {
             

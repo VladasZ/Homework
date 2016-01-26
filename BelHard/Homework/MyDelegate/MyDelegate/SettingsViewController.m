@@ -38,7 +38,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(settingsViewController:textFieldDidEndEditing:)]) {
         
-       // [self.delegate settingsViewController:self textFieldDidEndEditing:textField];
+        [self.delegate settingsViewController:self textFieldDidEndEditing:textField];
         
     }
 }

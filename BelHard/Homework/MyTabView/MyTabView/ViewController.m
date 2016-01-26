@@ -10,18 +10,35 @@
 
 @interface ViewController ()
 
+@property (nonatomic, weak) IBOutlet UIView *containerView;
+
 @end
 
 @implementation ViewController
 
+- (void)didPressLeftBUtton:(UIButton *)sender
+{
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"leftViewController"];
+
+    controller.view.frame = self.containerView.frame;
+    
+    [self addChildViewController:controller];
+    
+    [self.containerView addSubview:controller.view];
+}
+
 -(void)didPressRightBUtton:(UIButton *)sender
 {
     
-    [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"]];
+    UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"];
     
-    [self.view addSubview:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"].view];
+    controller.view.frame = self.containerView.frame;
     
-    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"] animated:NO completion:nil];
+    [self addChildViewController:controller];
+    
+    [self.containerView addSubview:controller.view];
+    
+//    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"rightViewController"] animated:NO completion:nil];
 }
 
 @end
