@@ -46,12 +46,12 @@
 {
     [super viewDidLoad];
     
-//    [self.userDefaults setObject:@"Vasija" key:VZUserDefaultsFirstName];
-//    [self.userDefaults setObject:@"Petrovich" key:VZUserDefaultsName];
-//    [self.userDefaults setObject:@"Petrov" key:VZUserDefaultsLastName];
-//    [self.userDefaults setObject:@"Minsk" key:VZUserDefaultsCity];
-//    [self.userDefaults setObject:@33 key:VZUserDefaultsAge];
-//    
+    [self.userDefaults setObject:@"Vasija" key:VZUserDefaultsFirstName];
+    [self.userDefaults setObject:@"Petrovich" key:VZUserDefaultsName];
+    [self.userDefaults setObject:@"Petrov" key:VZUserDefaultsLastName];
+    [self.userDefaults setObject:@"Minsk" key:VZUserDefaultsCity];
+    [self.userDefaults setObject:@33 key:VZUserDefaultsAge];
+
     self.textFieldOne.text = [self.userDefaults getObjectForKey:VZUserDefaultsFirstName];
     self.textFieldTwo.text = [self.userDefaults getObjectForKey:VZUserDefaultsName];
     self.textFieldThree.text = [self.userDefaults getObjectForKey:VZUserDefaultsLastName];
