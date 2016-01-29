@@ -8,10 +8,10 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController () <UIScrollViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -20,62 +20,56 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     UIImage *myFirstImage = [UIImage imageNamed:@"1.jpg"];
     
-    CGRect imageFrame = CGRectZero;
     
-    imageFrame.origin.x = 0;
-    imageFrame.origin.y = 0;
-    imageFrame.size.width = self.view.frame.size.width - 0;
-    imageFrame.size.height = self.view.frame.size.height - 0;
     
-    for (int i = 0; i < 3; i++) {
+    CGRect imageFrame = CGRectMake(10,
+                                   10,
+                                   self.view.frame.size.width  - 20,
+                                   self.view.frame.size.height - 20);
+    
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
+    
+    [label setText:@"balb la"];
+    
+    [self.view addSubview:label];
+    
+    
+    for (NSUInteger i = 0; i < 10; i++) {
         
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:imageFrame];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
         
-        for (int j = 0; j < 3; j++) {
-            
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageFrame];
-            [imageView setImage:myFirstImage];
-            
-            imageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            [scrollView addSubview:imageView];
-            
-            imageFrame.origin.x = CGRectGetMaxY(imageView.frame) + 0;
-            
-        }
+        [imageView setImage:myFirstImage];
         
-        imageFrame.origin.x = 0;
-        imageFrame.origin.y = 0;
-        imageFrame.size.width = self.view.frame.size.width - 0;
-        imageFrame.size.height = self.view.frame.size.height - 0;
-        
-        
-        [self.scrollView addSubview:scrollView];
+        imageFrame.origin.y += imageFrame.size.height + 20;
+
+        [self.scrollView addSubview:imageView];
         
     }
     
-    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(imageFrame) - imageFrame.size.width * 3, CGRectGetMaxX(imageFrame) - imageFrame.size.height * 10);
-    
+
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 10);
     
     
     
 }
 
 
-#pragma mark - UIScrollViewDelegate implementation
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-   // NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
-}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.imageView;
-}
+//#pragma mark - UIScrollViewDelegate implementation
+//
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//   // NSLog(@"%@", NSStringFromCGPoint(scrollView.contentOffset));
+//}
+//
+//- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+//{
+//    return nil;//self.imageView;
+//}
 
 
 @end
