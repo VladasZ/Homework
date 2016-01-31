@@ -45,10 +45,34 @@
     [self.scrollView setZoomScale:0.5];
     
     self.openImageViewController.imageNumber = [self.images indexOfObject:[imageView image]];
+    self.openImageViewController.images = self.images;
+    self.openImageViewController.screenSize = self.screenSize;
     
     [self.navigationController pushViewController:self.openImageViewController animated:YES];
     
     NSLog(@"image tap");
+}
+
+#pragma mark - Init
+
+- (void)commonInit
+{
+    self.openImageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenImageViewController"];
+    
+
+    self.images = [NSMutableArray new];
+    self.screenSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+    self.imageViewSize = CGSizeMake((self.screenSize.width - 1) / 2, (self.screenSize.height - 2) / 3);
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    //self.scrollView.delegate = self;
+    [self.scrollView setUserInteractionEnabled:YES];
+    
+    [self.scrollView setMaximumZoomScale:50];
+    [self.scrollView setMinimumZoomScale:0.01];
+    self.scrollView.zoomScale = 0.1;
+    
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)mainScreenInit
@@ -88,34 +112,15 @@
         
         
         [self.scrollView addSubview:imageView];
-
+        
         [self.scrollView setContentSize:CGSizeMake(self.screenSize.width, CGRectGetMaxY(imageView.frame))];
     }
     
     [self.scrollView setContentOffset:CGPointMake(0, self.scrollView.contentSize.height - self.screenSize.height + self.navigationController.navigationBar.frame.size.height)];
     
     NSLog(@"%f", self.scrollView.contentSize.height - self.screenSize.height);
-
+    
 }
 
-- (void)commonInit
-{
-    self.openImageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OpenImageViewController"];
-    
-
-    self.images = [NSMutableArray new];
-    self.screenSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
-    self.imageViewSize = CGSizeMake((self.screenSize.width - 1) / 2, (self.screenSize.height - 2) / 3);
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    //self.scrollView.delegate = self;
-    [self.scrollView setUserInteractionEnabled:YES];
-    
-    [self.scrollView setMaximumZoomScale:50];
-    [self.scrollView setMinimumZoomScale:0.01];
-    self.scrollView.zoomScale = 0.1;
-    
-    [self.view addSubview:self.scrollView];
-}
 
 @end
