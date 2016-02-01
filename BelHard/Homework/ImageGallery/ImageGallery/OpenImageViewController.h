@@ -10,7 +10,7 @@
 
 @interface OpenImageViewController : UIViewController
 
-@property (nonatomic) NSUInteger imageNumber;
+@property (nonatomic) NSUInteger pushedImageNumber;
 @property (nonatomic, weak) NSMutableArray *images;
 @property (nonatomic) CGSize screenSize;
 
