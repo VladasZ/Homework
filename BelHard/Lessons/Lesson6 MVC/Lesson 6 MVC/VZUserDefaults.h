@@ -23,4 +23,6 @@ extern NSString * const VZUserDefaultsAge;
 
 - (id)getObjectForKey:(NSString *)key;
 
++ (id)sharedManager;
+
 @end

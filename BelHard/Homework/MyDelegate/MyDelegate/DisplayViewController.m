@@ -8,8 +8,9 @@
 
 #import "DisplayViewController.h"
 #import "SettingsViewController.h"
+#import "Singleton.h"
 
-@interface DisplayViewController () <SettingsViewControllerProtocol>
+@interface DisplayViewController () /*<SettingsViewControllerProtocol>*/
 
 @end
 
@@ -18,7 +19,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iRecievedSomeData:) name:@"observer" object:nil];
+    
 
+}
+
+- (void)iRecievedSomeData:(NSNotification *)notification
+{
+    if ([notification.object isKindOfClass:[NSString class]]) {
+
+        self.label.text = notification.object;
+
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.secondLabel.text = [[Singleton sharedManager] textString];
 }
 
 
@@ -33,40 +51,40 @@
 
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-#pragma mark - SettingsViewControllerProtocol implementation
-
-- (void)settingsViewController:(SettingsViewController *)settingsViewController didPressSetLabelTextButton:(NSString *)text secondText:(NSString *)secondText thirdText:(NSString *)thirdText fouthText:(NSString *)fourthText
-{
-    self.label.text = text;
-    self.secondLabel.text = secondText;
-    self.thirdLabel.text = thirdText;
-    self.fourthLabel.text = fourthText;
-}
-
-- (void)settingsViewController:(SettingsViewController *)settingsViewController textFieldDidEndEditing:(UITextField *)textField
-{
-    switch (textField.tag) {
-            
-        case 1:
-            self.label.text = textField.text;
-            break;
-            
-        case 2:
-            self.secondLabel.text = textField.text;
-            break;
-            
-        case 3:
-            self.thirdLabel.text = textField.text;
-            break;
-            
-        case 4:
-            self.fourthLabel.text = textField.text;
-            break;
-            
-        default:
-            break;
-    }
-}
+//
+//#pragma mark - SettingsViewControllerProtocol implementation
+//
+//- (void)settingsViewController:(SettingsViewController *)settingsViewController didPressSetLabelTextButton:(NSString *)text secondText:(NSString *)secondText thirdText:(NSString *)thirdText fouthText:(NSString *)fourthText
+//{
+//    self.label.text = text;
+//    self.secondLabel.text = secondText;
+//    self.thirdLabel.text = thirdText;
+//    self.fourthLabel.text = fourthText;
+//}
+//
+//- (void)settingsViewController:(SettingsViewController *)settingsViewController textFieldDidEndEditing:(UITextField *)textField
+//{
+//    switch (textField.tag) {
+//            
+//        case 1:
+//            self.label.text = textField.text;
+//            break;
+//            
+//        case 2:
+//            self.secondLabel.text = textField.text;
+//            break;
+//            
+//        case 3:
+//            self.thirdLabel.text = textField.text;
+//            break;
+//            
+//        case 4:
+//            self.fourthLabel.text = textField.text;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//}
 
 @end

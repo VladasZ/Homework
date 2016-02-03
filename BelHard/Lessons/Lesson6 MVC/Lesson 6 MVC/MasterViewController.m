@@ -31,20 +31,22 @@
 
 #pragma mark - Getters
 
-- (VZUserDefaults *)userDefaults
-{
-    if (_userDefaults == nil) {
-        _userDefaults = [[VZUserDefaults alloc] init];
-    }
-    
-    return _userDefaults;
-}
+//- (VZUserDefaults *)userDefaults
+//{
+//    if (_userDefaults == nil) {
+//        _userDefaults = [[VZUserDefaults alloc] init];
+//    }
+//    
+//    return _userDefaults;
+//}
 
 #pragma mark - ViewDidLoad
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.userDefaults = [VZUserDefaults sharedManager];
     
     [self.userDefaults setObject:@"Vasija" key:VZUserDefaultsFirstName];
     [self.userDefaults setObject:@"Petrovich" key:VZUserDefaultsName];
@@ -58,6 +60,13 @@
     
     self.labelOne.text = [self.userDefaults getObjectForKey:VZUserDefaultsCity];
     self.labelTwo.text = [NSString stringWithFormat:@"%@" ,[self.userDefaults getObjectForKey:VZUserDefaultsAge]];
+    
+    
+    [[VZUserDefaults sharedManager] setObject:@"fdsfds" key:@"random string"];
+    
+    NSLog(@"%@", [[VZUserDefaults sharedManager] getObjectForKey:@"random string"]);
+
+    
     
 }
 

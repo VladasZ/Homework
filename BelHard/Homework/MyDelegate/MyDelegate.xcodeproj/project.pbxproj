@@ -16,6 +16,7 @@
 		827A65C91C517823009BC965 /* MyDelegateUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 827A65C81C517823009BC965 /* MyDelegateUITests.m */; };
 		827A65D81C5178BD009BC965 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827A65D71C5178BD009BC965 /* DisplayViewController.m */; };
 		827A65DB1C5178D7009BC965 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 827A65DA1C5178D7009BC965 /* SettingsViewController.m */; };
+		8292FFCA1C611F8800E54E12 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8292FFC91C611F8800E54E12 /* Singleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		827A65D71C5178BD009BC965 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
 		827A65D91C5178D7009BC965 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		827A65DA1C5178D7009BC965 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8292FFC81C611F8800E54E12 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		8292FFC91C611F8800E54E12 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				827A65A61C517823009BC965 /* AppDelegate.h */,
 				827A65A71C517823009BC965 /* AppDelegate.m */,
 				827A65D61C5178BD009BC965 /* DisplayViewController.h */,
+				8292FFC81C611F8800E54E12 /* Singleton.h */,
+				8292FFC91C611F8800E54E12 /* Singleton.m */,
 				827A65D71C5178BD009BC965 /* DisplayViewController.m */,
 				827A65D91C5178D7009BC965 /* SettingsViewController.h */,
 				827A65DA1C5178D7009BC965 /* SettingsViewController.m */,
@@ -282,6 +287,7 @@
 				827A65D81C5178BD009BC965 /* DisplayViewController.m in Sources */,
 				827A65A51C517823009BC965 /* main.m in Sources */,
 				827A65DB1C5178D7009BC965 /* SettingsViewController.m in Sources */,
+				8292FFCA1C611F8800E54E12 /* Singleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +513,7 @@
 				827A65CF1C517824009BC965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		827A65D01C517824009BC965 /* Build configuration list for PBXNativeTarget "MyDelegateTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +522,7 @@
 				827A65D21C517824009BC965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		827A65D31C517824009BC965 /* Build configuration list for PBXNativeTarget "MyDelegateUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +531,7 @@
 				827A65D51C517824009BC965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

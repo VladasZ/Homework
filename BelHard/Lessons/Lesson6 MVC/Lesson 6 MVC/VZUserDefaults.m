@@ -20,6 +20,30 @@ NSString * const VZUserDefaultsAge = @"Age";
 
 @implementation VZUserDefaults
 
+#pragma mark - Singleton
+
++ (id)sharedManager
+{
+    static VZUserDefaults *sharedMySingletone = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedMySingletone = [[self alloc] init];
+    });
+    return sharedMySingletone;
+}
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"init %@", self);
+    }
+    return self;
+}
+
+
 
 - (void)setObject:(id)object key:(NSString *)key
 {

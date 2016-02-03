@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "DisplayViewController.h"
+#import "Singleton.h"
 
 @interface SettingsViewController () <UITextFieldDelegate>
 
@@ -20,6 +21,8 @@
     [super viewDidLoad];
     
 }
+
+
 
 - (void)didPressSetLabelTextButton:(UIButton *)sender
 {
@@ -34,14 +37,17 @@
 }
 
 
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([self.delegate respondsToSelector:@selector(settingsViewController:textFieldDidEndEditing:)]) {
-        
-        [self.delegate settingsViewController:self textFieldDidEndEditing:textField];
-        
+    
+    if (textField.tag == 1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"observer" object:self.textField.text];
     }
+    
+    if (textField.tag == 2) {
+        [[Singleton sharedManager] setTextString:self.secondTextField.text];
+    }
+    
 }
-
-
 @end

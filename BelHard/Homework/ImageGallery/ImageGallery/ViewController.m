@@ -32,7 +32,7 @@
 
 - (void)didPressImage:(UIGestureRecognizer *)gestureRecognizer
 {
-    self.openImageViewController.pushedImageNumber = [gestureRecognizer view].tag;
+    self.openImageViewController.pushedImageNumber = gestureRecognizer.view.tag;
     
     [self.navigationController pushViewController:self.openImageViewController animated:YES];
 }
@@ -55,6 +55,8 @@
 
 - (void)mainScreenInit
 {
+    //NSUInteger index = 0;
+    
     for (NSUInteger i = 0; i < 12; i++) {
         
         static NSUInteger row = 0;
