@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8227A7ED1C63B19300090C64 /* dd.c in Sources */ = {isa = PBXBuildFile; fileRef = 8227A7EB1C63B19300090C64 /* dd.c */; };
+		8227A7F01C63C2FB00090C64 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8227A7EF1C63C2FB00090C64 /* ProfileCell.m */; };
+		8227A7F31C63CAD700090C64 /* SecondProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8227A7F21C63CAD700090C64 /* SecondProfileCell.m */; };
 		8292FF941C610CAB00E54E12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8292FF931C610CAB00E54E12 /* main.m */; };
 		8292FF971C610CAB00E54E12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8292FF961C610CAB00E54E12 /* AppDelegate.m */; };
 		8292FF9A1C610CAB00E54E12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8292FF991C610CAB00E54E12 /* ViewController.m */; };
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8227A7EB1C63B19300090C64 /* dd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dd.c; sourceTree = "<group>"; };
+		8227A7EE1C63C2FB00090C64 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		8227A7EF1C63C2FB00090C64 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		8227A7F11C63CAD700090C64 /* SecondProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondProfileCell.h; sourceTree = "<group>"; };
+		8227A7F21C63CAD700090C64 /* SecondProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondProfileCell.m; sourceTree = "<group>"; };
 		8292FF8F1C610CAB00E54E12 /* Lesson 8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lesson 8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8292FF931C610CAB00E54E12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8292FF951C610CAB00E54E12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,8 +111,13 @@
 			children = (
 				8292FF951C610CAB00E54E12 /* AppDelegate.h */,
 				8292FF961C610CAB00E54E12 /* AppDelegate.m */,
+				8227A7EE1C63C2FB00090C64 /* ProfileCell.h */,
+				8227A7EF1C63C2FB00090C64 /* ProfileCell.m */,
+				8227A7F11C63CAD700090C64 /* SecondProfileCell.h */,
+				8227A7F21C63CAD700090C64 /* SecondProfileCell.m */,
 				8292FF981C610CAB00E54E12 /* ViewController.h */,
 				8292FF991C610CAB00E54E12 /* ViewController.m */,
+				8227A7EB1C63B19300090C64 /* dd.c */,
 				8292FF9B1C610CAB00E54E12 /* Main.storyboard */,
 				8292FF9E1C610CAB00E54E12 /* Assets.xcassets */,
 				8292FFA01C610CAB00E54E12 /* LaunchScreen.storyboard */,
@@ -274,8 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8292FF9A1C610CAB00E54E12 /* ViewController.m in Sources */,
+				8227A7ED1C63B19300090C64 /* dd.c in Sources */,
 				8292FF971C610CAB00E54E12 /* AppDelegate.m in Sources */,
+				8227A7F31C63CAD700090C64 /* SecondProfileCell.m in Sources */,
 				8292FF941C610CAB00E54E12 /* main.m in Sources */,
+				8227A7F01C63C2FB00090C64 /* ProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "ProfileCell.h"
+#import "SecondProfileCell.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+#define GENERATE_RANDOM_COLOR CGFloat hue = (arc4random() % 256 / 256.0);\
+CGFloat saturation = (arc4random() % 128 / 256.0) + 0.5;\
+CGFloat brightness = (arc4random() % 128 / 256.0) + 0.5;\
+UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, ProfileCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic) BOOL isEditing;
 
 @end
 
@@ -20,31 +31,36 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(didPressEditBarButtonItem)];
+    
+    [self.navigationItem setRightBarButtonItem:editButton];
+    
 }
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (void)didPressEditBarButtonItem
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
-    
-    [headerView setBackgroundColor:[UIColor redColor]];
-    
-    return headerView;
+    if (self.isEditing) {
+        [self.tableView setEditing:NO animated:YES];
+        self.isEditing = NO;
+    } else {
+        [self.tableView setEditing:YES animated:YES];
+        self.isEditing = YES;
+    }
 }
 
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (NSArray *)dataArray
 {
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+    if (_dataArray == nil) {
+        _dataArray = [NSArray arrayWithObjects:
+                      @"Kolja", @"Vasia", @"Petja", @"Masha", @"Dasha", nil];
+    }
     
-    [footerView setBackgroundColor:[UIColor greenColor]];
-    
-    return footerView;
+    return _dataArray;
 }
-
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 75;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -54,49 +70,80 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 50;
+    return 0;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"%@", indexPath);
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.dataArray.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //return indexPath.row == 0 ? NO : YES;
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    id sourceObject = [self.dataArray objectAtIndex:sourceIndexPath.row];
+    id destinationObject = [self.dataArray objectAtIndex:destinationIndexPath.row];
+    
+    NSMutableArray *tempArray = self.dataArray.mutableCopy;
+    
+    [tempArray replaceObjectAtIndex:sourceIndexPath.row withObject:destinationObject];
+    [tempArray replaceObjectAtIndex:destinationIndexPath.row withObject:sourceObject];
+    
+    self.dataArray = tempArray.copy;
+    
+   // ![tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSMutableArray *tempArray = self.dataArray.mutableCopy;
+        
+        [tempArray removeObjectAtIndex:indexPath.row];
+        
+        self.dataArray = tempArray.copy;
+        [tableView reloadData];
+    }
+}
+
+-(void)didPressButtonOnCell:(ProfileCell *)cell
+{
+    NSLog(@"didPressButtonOnCell %@", cell.firstNameLabel.text);
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    NSLog(@"%@", indexPath);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellID = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    
-    
+    SecondProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"qwe"];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        cell = [[SecondProfileCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SecondProfileCell"];
     }
     
-    if (indexPath.section == 0) {
-        cell.textLabel.text = @"Name";
-        cell.detailTextLabel.text = @"534534543";
-    } else if (indexPath.section == 1){
-        cell.textLabel.text = @"bla bla bla";
-        cell.detailTextLabel.text = @"11111111";
-    } else {
-        cell.textLabel.text = @"Naaaaaame";
-        cell.detailTextLabel.text = @"fsdfdsdfsa";
-    }
-    
-  
+    //cell.delegate = self;
+    //cell.firstNameLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     
     return cell;
 }
