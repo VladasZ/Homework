@@ -7,10 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
+
+@protocol MyCellDelegate;
 
 @interface FirstCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *image;
+@property (nonatomic, strong) id<MyCellDelegate> delegate;
+
+@property (nonatomic, strong) UIImageView *photoImageView;
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UIButton *pushButton;
+@property (nonatomic, strong) NSString *bioInfo;
+
+- (void)setInfoWithProfile:(Profile *)profile;
+
+@end
+
+@protocol MyCellDelegate <NSObject>
+
+- (void)didPressButonOnCell:(FirstCell *)sender;
+- (void)didPressOnCellImage:(FirstCell *)sender;
 
 @end

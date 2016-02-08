@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+NSString * const profileNameKey = @"profileName";
+NSString * const profilePhotoKey = @"profilePhoto";
+NSString * const profileBioKey = @"profileBio";
+
 @interface ViewController : UIViewController
 
 

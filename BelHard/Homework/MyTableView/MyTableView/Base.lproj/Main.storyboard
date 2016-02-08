@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -44,6 +45,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="94" y="382"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="vi8-g4-1JT">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" id="mur-Ki-x5L" customClass="PhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yud-fL-6S7"/>
+                        <viewControllerLayoutGuide type="bottom" id="XOX-M9-FKQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XJn-ki-dtG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Et-Is-WMT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XOX-M9-FKQ" firstAttribute="top" secondItem="1Et-Is-WMT" secondAttribute="bottom" id="7GC-jA-q6N"/>
+                            <constraint firstItem="XOX-M9-FKQ" firstAttribute="top" secondItem="1Et-Is-WMT" secondAttribute="bottom" id="7tA-jM-tRP"/>
+                            <constraint firstItem="1Et-Is-WMT" firstAttribute="top" secondItem="XJn-ki-dtG" secondAttribute="topMargin" id="AJ8-kq-gcb"/>
+                            <constraint firstItem="1Et-Is-WMT" firstAttribute="leading" secondItem="XJn-ki-dtG" secondAttribute="leadingMargin" constant="-20" id="Fj7-V8-iQp"/>
+                            <constraint firstItem="1Et-Is-WMT" firstAttribute="leading" secondItem="XJn-ki-dtG" secondAttribute="leadingMargin" constant="-20" id="Ixa-NW-mmt"/>
+                            <constraint firstItem="1Et-Is-WMT" firstAttribute="top" secondItem="XJn-ki-dtG" secondAttribute="topMargin" id="QQf-Og-1qm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Et-Is-WMT" secondAttribute="trailing" constant="-20" id="Wmm-S9-Bmr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Et-Is-WMT" secondAttribute="trailing" constant="-20" id="qc8-fc-Awt"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="1Et-Is-WMT" id="PzZ-0S-Uzi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0V-SC-WXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="460.5" y="886.5"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="0VU-z3-CgD">
+            <objects>
+                <viewController storyboardIdentifier="InfoViewController" id="NvX-qi-IrC" customClass="InfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zyn-Tz-mPz"/>
+                        <viewControllerLayoutGuide type="bottom" id="gZG-zB-PVi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iak-Jq-Rnv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="92e-Tp-sWZ">
+                                <rect key="frame" x="20" y="74" width="150" height="150"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-12-ACN">
+                                <rect key="frame" x="20" y="232" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qNp-Tj-Fpz">
+                                <rect key="frame" x="20" y="261" width="335" height="386"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qNp-Tj-Fpz" firstAttribute="trailing" secondItem="iak-Jq-Rnv" secondAttribute="trailingMargin" id="J4D-wz-GWW"/>
+                            <constraint firstItem="gZG-zB-PVi" firstAttribute="top" secondItem="qNp-Tj-Fpz" secondAttribute="bottom" constant="20" id="bue-K6-a1H"/>
+                            <constraint firstItem="qNp-Tj-Fpz" firstAttribute="top" secondItem="mwf-12-ACN" secondAttribute="bottom" constant="8" id="e2K-8v-7MO"/>
+                            <constraint firstItem="qNp-Tj-Fpz" firstAttribute="leading" secondItem="iak-Jq-Rnv" secondAttribute="leadingMargin" id="jKd-FE-jJ8"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bioTextView" destination="qNp-Tj-Fpz" id="ROW-4C-Kfv"/>
+                        <outlet property="nameLabel" destination="mwf-12-ACN" id="s4d-YV-GG6"/>
+                        <outlet property="photoImageView" destination="92e-Tp-sWZ" id="6vG-fV-FUf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3V-Ob-KwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="460.5" y="173.5"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82136BC51C676EFD00A30281 /* Amanda Seyfried.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB01C676EFD00A30281 /* Amanda Seyfried.jpg */; };
+		82136BC61C676EFD00A30281 /* Amanda Seyfried.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB11C676EFD00A30281 /* Amanda Seyfried.txt */; };
+		82136BC71C676EFD00A30281 /* Charlize Theron.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB21C676EFD00A30281 /* Charlize Theron.jpg */; };
+		82136BC81C676EFD00A30281 /* Charlize Theron.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB31C676EFD00A30281 /* Charlize Theron.txt */; };
+		82136BCD1C676EFD00A30281 /* Keira Knightley.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB81C676EFD00A30281 /* Keira Knightley.jpg */; };
+		82136BCE1C676EFD00A30281 /* Keira Knightley.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BB91C676EFD00A30281 /* Keira Knightley.txt */; };
+		82136BCF1C676EFD00A30281 /* Megan Fox.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBA1C676EFD00A30281 /* Megan Fox.jpg */; };
+		82136BD01C676EFD00A30281 /* Megan Fox.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBB1C676EFD00A30281 /* Megan Fox.txt */; };
+		82136BD11C676EFD00A30281 /* Mila Kunis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBC1C676EFD00A30281 /* Mila Kunis.jpg */; };
+		82136BD21C676EFD00A30281 /* Mila Kunis.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBD1C676EFD00A30281 /* Mila Kunis.txt */; };
+		82136BD31C676EFD00A30281 /* namesList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBE1C676EFD00A30281 /* namesList.txt */; };
+		82136BD41C676EFD00A30281 /* Nicole Lilly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BBF1C676EFD00A30281 /* Nicole Lilly.jpg */; };
+		82136BD51C676EFD00A30281 /* Nicole Lilly.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BC01C676EFD00A30281 /* Nicole Lilly.txt */; };
+		82136BD61C676EFD00A30281 /* Olivia Wilde.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BC11C676EFD00A30281 /* Olivia Wilde.jpg */; };
+		82136BD71C676EFD00A30281 /* Olivia Wilde.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BC21C676EFD00A30281 /* Olivia Wilde.txt */; };
+		82136BD81C676EFD00A30281 /* Scarlett Johansson.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BC31C676EFD00A30281 /* Scarlett Johansson.jpg */; };
+		82136BD91C676EFD00A30281 /* Scarlett Johansson.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BC41C676EFD00A30281 /* Scarlett Johansson.txt */; };
+		82136BDE1C677B6C00A30281 /* Emma Stone.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BDD1C677B6C00A30281 /* Emma Stone.txt */; };
+		82136BE01C677B7200A30281 /* Jennifer Lawrence.txt in Resources */ = {isa = PBXBuildFile; fileRef = 82136BDF1C677B7200A30281 /* Jennifer Lawrence.txt */; };
+		82136BE31C677E7A00A30281 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 82136BE21C677E7A00A30281 /* Profile.m */; };
+		82136BE51C679CB700A30281 /* Emma Stone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BE41C679CB700A30281 /* Emma Stone.jpg */; };
+		82136BE71C679E4500A30281 /* Jennifer Lawrence.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82136BE61C679E4500A30281 /* Jennifer Lawrence.jpg */; };
+		8227FC061C67D7AF00B4D1A4 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8227FC051C67D7AF00B4D1A4 /* PhotoViewController.m */; };
 		82A4A77C1C63E833002853CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A77B1C63E833002853CF /* main.m */; };
 		82A4A77F1C63E833002853CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A77E1C63E833002853CF /* AppDelegate.m */; };
 		82A4A7821C63E833002853CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A7811C63E833002853CF /* ViewController.m */; };
@@ -16,6 +39,8 @@
 		82A4A7951C63E833002853CF /* MyTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A7941C63E833002853CF /* MyTableViewTests.m */; };
 		82A4A7A01C63E833002853CF /* MyTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A79F1C63E833002853CF /* MyTableViewUITests.m */; };
 		82A4A7AF1C63E971002853CF /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A4A7AE1C63E971002853CF /* FirstCell.m */; };
+		82B1D8EE1C67BA850075587A /* SecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B1D8ED1C67BA850075587A /* SecondCell.m */; };
+		82B1D8F11C67C4FF0075587A /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B1D8F01C67C4FF0075587A /* InfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +61,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82136BB01C676EFD00A30281 /* Amanda Seyfried.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Amanda Seyfried.jpg"; sourceTree = "<group>"; };
+		82136BB11C676EFD00A30281 /* Amanda Seyfried.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Amanda Seyfried.txt"; sourceTree = "<group>"; };
+		82136BB21C676EFD00A30281 /* Charlize Theron.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Charlize Theron.jpg"; sourceTree = "<group>"; };
+		82136BB31C676EFD00A30281 /* Charlize Theron.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Charlize Theron.txt"; sourceTree = "<group>"; };
+		82136BB81C676EFD00A30281 /* Keira Knightley.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Keira Knightley.jpg"; sourceTree = "<group>"; };
+		82136BB91C676EFD00A30281 /* Keira Knightley.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Keira Knightley.txt"; sourceTree = "<group>"; };
+		82136BBA1C676EFD00A30281 /* Megan Fox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Megan Fox.jpg"; sourceTree = "<group>"; };
+		82136BBB1C676EFD00A30281 /* Megan Fox.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Megan Fox.txt"; sourceTree = "<group>"; };
+		82136BBC1C676EFD00A30281 /* Mila Kunis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Mila Kunis.jpg"; sourceTree = "<group>"; };
+		82136BBD1C676EFD00A30281 /* Mila Kunis.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Mila Kunis.txt"; sourceTree = "<group>"; };
+		82136BBE1C676EFD00A30281 /* namesList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = namesList.txt; sourceTree = "<group>"; };
+		82136BBF1C676EFD00A30281 /* Nicole Lilly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Nicole Lilly.jpg"; sourceTree = "<group>"; };
+		82136BC01C676EFD00A30281 /* Nicole Lilly.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Nicole Lilly.txt"; sourceTree = "<group>"; };
+		82136BC11C676EFD00A30281 /* Olivia Wilde.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Olivia Wilde.jpg"; sourceTree = "<group>"; };
+		82136BC21C676EFD00A30281 /* Olivia Wilde.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Olivia Wilde.txt"; sourceTree = "<group>"; };
+		82136BC31C676EFD00A30281 /* Scarlett Johansson.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Scarlett Johansson.jpg"; sourceTree = "<group>"; };
+		82136BC41C676EFD00A30281 /* Scarlett Johansson.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Scarlett Johansson.txt"; sourceTree = "<group>"; };
+		82136BDD1C677B6C00A30281 /* Emma Stone.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Emma Stone.txt"; sourceTree = "<group>"; };
+		82136BDF1C677B7200A30281 /* Jennifer Lawrence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Jennifer Lawrence.txt"; sourceTree = "<group>"; };
+		82136BE11C677E7A00A30281 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		82136BE21C677E7A00A30281 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		82136BE41C679CB700A30281 /* Emma Stone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Emma Stone.jpg"; sourceTree = "<group>"; };
+		82136BE61C679E4500A30281 /* Jennifer Lawrence.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Jennifer Lawrence.jpg"; sourceTree = "<group>"; };
+		8227FC041C67D7AF00B4D1A4 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		8227FC051C67D7AF00B4D1A4 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		82A4A7771C63E833002853CF /* MyTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A4A77B1C63E833002853CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82A4A77D1C63E833002853CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +104,10 @@
 		82A4A7A11C63E833002853CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A4A7AD1C63E971002853CF /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
 		82A4A7AE1C63E971002853CF /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
+		82B1D8EC1C67BA850075587A /* SecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondCell.h; sourceTree = "<group>"; };
+		82B1D8ED1C67BA850075587A /* SecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondCell.m; sourceTree = "<group>"; };
+		82B1D8EF1C67C4FF0075587A /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		82B1D8F01C67C4FF0075587A /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +135,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82136B5B1C676E8800A30281 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				82136BB01C676EFD00A30281 /* Amanda Seyfried.jpg */,
+				82136BB11C676EFD00A30281 /* Amanda Seyfried.txt */,
+				82136BB21C676EFD00A30281 /* Charlize Theron.jpg */,
+				82136BB31C676EFD00A30281 /* Charlize Theron.txt */,
+				82136BE41C679CB700A30281 /* Emma Stone.jpg */,
+				82136BDD1C677B6C00A30281 /* Emma Stone.txt */,
+				82136BE61C679E4500A30281 /* Jennifer Lawrence.jpg */,
+				82136BDF1C677B7200A30281 /* Jennifer Lawrence.txt */,
+				82136BB81C676EFD00A30281 /* Keira Knightley.jpg */,
+				82136BB91C676EFD00A30281 /* Keira Knightley.txt */,
+				82136BBA1C676EFD00A30281 /* Megan Fox.jpg */,
+				82136BBB1C676EFD00A30281 /* Megan Fox.txt */,
+				82136BBC1C676EFD00A30281 /* Mila Kunis.jpg */,
+				82136BBD1C676EFD00A30281 /* Mila Kunis.txt */,
+				82136BBF1C676EFD00A30281 /* Nicole Lilly.jpg */,
+				82136BC01C676EFD00A30281 /* Nicole Lilly.txt */,
+				82136BC11C676EFD00A30281 /* Olivia Wilde.jpg */,
+				82136BC21C676EFD00A30281 /* Olivia Wilde.txt */,
+				82136BC31C676EFD00A30281 /* Scarlett Johansson.jpg */,
+				82136BC41C676EFD00A30281 /* Scarlett Johansson.txt */,
+				82136BBE1C676EFD00A30281 /* namesList.txt */,
+			);
+			name = Data;
+			path = MyTableView;
+			sourceTree = "<group>";
+		};
 		82A4A76E1C63E832002853CF = {
 			isa = PBXGroup;
 			children = (
+				82136B5B1C676E8800A30281 /* Data */,
 				82A4A7791C63E833002853CF /* MyTableView */,
 				82A4A7931C63E833002853CF /* MyTableViewTests */,
 				82A4A79E1C63E833002853CF /* MyTableViewUITests */,
@@ -106,10 +190,18 @@
 			children = (
 				82A4A77D1C63E833002853CF /* AppDelegate.h */,
 				82A4A77E1C63E833002853CF /* AppDelegate.m */,
-				82A4A7801C63E833002853CF /* ViewController.h */,
-				82A4A7811C63E833002853CF /* ViewController.m */,
+				82136BE11C677E7A00A30281 /* Profile.h */,
+				82136BE21C677E7A00A30281 /* Profile.m */,
 				82A4A7AD1C63E971002853CF /* FirstCell.h */,
 				82A4A7AE1C63E971002853CF /* FirstCell.m */,
+				82B1D8EC1C67BA850075587A /* SecondCell.h */,
+				82B1D8ED1C67BA850075587A /* SecondCell.m */,
+				8227FC041C67D7AF00B4D1A4 /* PhotoViewController.h */,
+				8227FC051C67D7AF00B4D1A4 /* PhotoViewController.m */,
+				82B1D8EF1C67C4FF0075587A /* InfoViewController.h */,
+				82B1D8F01C67C4FF0075587A /* InfoViewController.m */,
+				82A4A7801C63E833002853CF /* ViewController.h */,
+				82A4A7811C63E833002853CF /* ViewController.m */,
 				82A4A7831C63E833002853CF /* Main.storyboard */,
 				82A4A7861C63E833002853CF /* Assets.xcassets */,
 				82A4A7881C63E833002853CF /* LaunchScreen.storyboard */,
@@ -251,9 +343,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82136BE01C677B7200A30281 /* Jennifer Lawrence.txt in Resources */,
+				82136BC71C676EFD00A30281 /* Charlize Theron.jpg in Resources */,
 				82A4A78A1C63E833002853CF /* LaunchScreen.storyboard in Resources */,
+				82136BC61C676EFD00A30281 /* Amanda Seyfried.txt in Resources */,
+				82136BCE1C676EFD00A30281 /* Keira Knightley.txt in Resources */,
+				82136BCF1C676EFD00A30281 /* Megan Fox.jpg in Resources */,
+				82136BE71C679E4500A30281 /* Jennifer Lawrence.jpg in Resources */,
+				82136BE51C679CB700A30281 /* Emma Stone.jpg in Resources */,
+				82136BD61C676EFD00A30281 /* Olivia Wilde.jpg in Resources */,
 				82A4A7871C63E833002853CF /* Assets.xcassets in Resources */,
 				82A4A7851C63E833002853CF /* Main.storyboard in Resources */,
+				82136BD81C676EFD00A30281 /* Scarlett Johansson.jpg in Resources */,
+				82136BD31C676EFD00A30281 /* namesList.txt in Resources */,
+				82136BD51C676EFD00A30281 /* Nicole Lilly.txt in Resources */,
+				82136BD11C676EFD00A30281 /* Mila Kunis.jpg in Resources */,
+				82136BD21C676EFD00A30281 /* Mila Kunis.txt in Resources */,
+				82136BC81C676EFD00A30281 /* Charlize Theron.txt in Resources */,
+				82136BD91C676EFD00A30281 /* Scarlett Johansson.txt in Resources */,
+				82136BDE1C677B6C00A30281 /* Emma Stone.txt in Resources */,
+				82136BCD1C676EFD00A30281 /* Keira Knightley.jpg in Resources */,
+				82136BC51C676EFD00A30281 /* Amanda Seyfried.jpg in Resources */,
+				82136BD71C676EFD00A30281 /* Olivia Wilde.txt in Resources */,
+				82136BD01C676EFD00A30281 /* Megan Fox.txt in Resources */,
+				82136BD41C676EFD00A30281 /* Nicole Lilly.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +392,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A4A7821C63E833002853CF /* ViewController.m in Sources */,
+				8227FC061C67D7AF00B4D1A4 /* PhotoViewController.m in Sources */,
+				82136BE31C677E7A00A30281 /* Profile.m in Sources */,
 				82A4A77F1C63E833002853CF /* AppDelegate.m in Sources */,
 				82A4A7AF1C63E971002853CF /* FirstCell.m in Sources */,
 				82A4A77C1C63E833002853CF /* main.m in Sources */,
+				82B1D8F11C67C4FF0075587A /* InfoViewController.m in Sources */,
+				82B1D8EE1C67BA850075587A /* SecondCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +624,7 @@
 				82A4A7A61C63E833002853CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82A4A7A71C63E833002853CF /* Build configuration list for PBXNativeTarget "MyTableViewTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +633,7 @@
 				82A4A7A91C63E833002853CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82A4A7AA1C63E833002853CF /* Build configuration list for PBXNativeTarget "MyTableViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +642,7 @@
 				82A4A7AC1C63E833002853CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
