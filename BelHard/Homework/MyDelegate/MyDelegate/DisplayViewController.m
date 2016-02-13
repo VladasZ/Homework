@@ -10,7 +10,7 @@
 #import "SettingsViewController.h"
 #import "Singleton.h"
 
-@interface DisplayViewController () /*<SettingsViewControllerProtocol>*/
+@interface DisplayViewController () <SettingsViewControllerProtocol>
 
 @end
 
@@ -48,6 +48,16 @@
     SettingsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SettingsViewController class])];
     
     controller.delegate = self;
+    
+    NSString *str = @"bbbbll";
+    
+    [controller setCompletionBlock:^(NSString *firstString, NSString *secondString)
+    {
+        
+        NSLog(@"%@ %@ %@", firstString, str, secondString);
+    }];
+    
+    
 
     [self.navigationController pushViewController:controller animated:YES];
 }

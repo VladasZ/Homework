@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^CompletionBlock)(NSString *, NSString *);
+
 @protocol SettingsViewControllerProtocol;
 
 
-
 @interface SettingsViewController : UIViewController
+
+@property (nonatomic, copy) CompletionBlock completionBlock;
 
 @property (nonatomic, strong) IBOutlet UITextField *textField;
 @property (nonatomic, strong) IBOutlet UITextField *secondTextField;

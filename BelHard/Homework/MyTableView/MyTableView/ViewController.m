@@ -129,7 +129,10 @@ const NSUInteger sectionCount = 2;
 
 - (void)didPressOnCellImage:(FirstCell *)sender
 {
+    
+    
     self.photoViewController.photoImage = sender.photoImageView.image;
+    
     [self.navigationController pushViewController:self.photoViewController animated:YES];
 }
 

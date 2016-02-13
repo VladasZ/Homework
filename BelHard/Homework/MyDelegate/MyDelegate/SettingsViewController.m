@@ -20,6 +20,10 @@
 {
     [super viewDidLoad];
     
+    if (self.completionBlock) {
+        self.completionBlock(@"bla1", @"bla2");
+    }
+    
 }
 
 

@@ -109,9 +109,9 @@
 			children = (
 				827A65A61C517823009BC965 /* AppDelegate.h */,
 				827A65A71C517823009BC965 /* AppDelegate.m */,
-				827A65D61C5178BD009BC965 /* DisplayViewController.h */,
 				8292FFC81C611F8800E54E12 /* Singleton.h */,
 				8292FFC91C611F8800E54E12 /* Singleton.m */,
+				827A65D61C5178BD009BC965 /* DisplayViewController.h */,
 				827A65D71C5178BD009BC965 /* DisplayViewController.m */,
 				827A65D91C5178D7009BC965 /* SettingsViewController.h */,
 				827A65DA1C5178D7009BC965 /* SettingsViewController.m */,
