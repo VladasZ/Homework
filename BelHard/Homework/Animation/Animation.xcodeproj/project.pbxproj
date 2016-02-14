@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8236AF901C70E54600EA1FA7 /* gunFire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8236AF8F1C70E54600EA1FA7 /* gunFire.png */; };
 		8274FD491C6F9559007CCA68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8274FD481C6F9559007CCA68 /* main.m */; };
 		8274FD4C1C6F9559007CCA68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8274FD4B1C6F9559007CCA68 /* AppDelegate.m */; };
 		8274FD4F1C6F9559007CCA68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8274FD4E1C6F9559007CCA68 /* ViewController.m */; };
@@ -15,7 +16,9 @@
 		8274FD571C6F9559007CCA68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8274FD551C6F9559007CCA68 /* LaunchScreen.storyboard */; };
 		8274FD621C6F9559007CCA68 /* AnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8274FD611C6F9559007CCA68 /* AnimationTests.m */; };
 		8274FD6D1C6F9559007CCA68 /* AnimationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8274FD6C1C6F9559007CCA68 /* AnimationUITests.m */; };
-		8274FD7B1C6F96BC007CCA68 /* gun.png in Resources */ = {isa = PBXBuildFile; fileRef = 8274FD7A1C6F96BC007CCA68 /* gun.png */; };
+		8274FD7F1C6FB1FD007CCA68 /* gun.png in Resources */ = {isa = PBXBuildFile; fileRef = 8274FD7E1C6FB1FD007CCA68 /* gun.png */; };
+		8274FD811C6FB293007CCA68 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 8274FD801C6FB293007CCA68 /* bullet.png */; };
+		8274FD831C6FC79C007CCA68 /* shotSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8274FD821C6FC79C007CCA68 /* shotSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8236AF8F1C70E54600EA1FA7 /* gunFire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gunFire.png; sourceTree = "<group>"; };
 		8274FD441C6F9558007CCA68 /* Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274FD481C6F9559007CCA68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8274FD4A1C6F9559007CCA68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,7 +56,9 @@
 		8274FD681C6F9559007CCA68 /* AnimationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274FD6C1C6F9559007CCA68 /* AnimationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimationUITests.m; sourceTree = "<group>"; };
 		8274FD6E1C6F9559007CCA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8274FD7A1C6F96BC007CCA68 /* gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gun.png; sourceTree = "<group>"; };
+		8274FD7E1C6FB1FD007CCA68 /* gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gun.png; sourceTree = "<group>"; };
+		8274FD801C6FB293007CCA68 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		8274FD821C6FC79C007CCA68 /* shotSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +109,10 @@
 		8274FD461C6F9558007CCA68 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				8274FD7A1C6F96BC007CCA68 /* gun.png */,
+				8274FD7E1C6FB1FD007CCA68 /* gun.png */,
+				8274FD801C6FB293007CCA68 /* bullet.png */,
+				8236AF8F1C70E54600EA1FA7 /* gunFire.png */,
+				8274FD821C6FC79C007CCA68 /* shotSound.mp3 */,
 				8274FD4A1C6F9559007CCA68 /* AppDelegate.h */,
 				8274FD4B1C6F9559007CCA68 /* AppDelegate.m */,
 				8274FD4D1C6F9559007CCA68 /* ViewController.h */,
@@ -112,7 +121,6 @@
 				8274FD531C6F9559007CCA68 /* Assets.xcassets */,
 				8274FD551C6F9559007CCA68 /* LaunchScreen.storyboard */,
 				8274FD581C6F9559007CCA68 /* Info.plist */,
-				8274FD471C6F9558007CCA68 /* Supporting Files */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 				8274FD481C6F9559007CCA68 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = ../Animation;
 			sourceTree = "<group>";
 		};
 		8274FD601C6F9559007CCA68 /* AnimationTests */ = {
@@ -137,6 +146,7 @@
 		8274FD6B1C6F9559007CCA68 /* AnimationUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8274FD471C6F9558007CCA68 /* Supporting Files */,
 				8274FD6C1C6F9559007CCA68 /* AnimationUITests.m */,
 				8274FD6E1C6F9559007CCA68 /* Info.plist */,
 			);
@@ -250,8 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8274FD571C6F9559007CCA68 /* LaunchScreen.storyboard in Resources */,
-				8274FD7B1C6F96BC007CCA68 /* gun.png in Resources */,
+				8236AF901C70E54600EA1FA7 /* gunFire.png in Resources */,
+				8274FD811C6FB293007CCA68 /* bullet.png in Resources */,
+				8274FD7F1C6FB1FD007CCA68 /* gun.png in Resources */,
 				8274FD541C6F9559007CCA68 /* Assets.xcassets in Resources */,
+				8274FD831C6FC79C007CCA68 /* shotSound.mp3 in Resources */,
 				8274FD521C6F9559007CCA68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +435,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Animation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Animation";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.AnimationApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -433,7 +446,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Animation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Animation";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.AnimationApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -505,6 +518,7 @@
 				8274FD731C6F9559007CCA68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8274FD741C6F9559007CCA68 /* Build configuration list for PBXNativeTarget "AnimationTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +527,7 @@
 				8274FD761C6F9559007CCA68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8274FD771C6F9559007CCA68 /* Build configuration list for PBXNativeTarget "AnimationUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +536,7 @@
 				8274FD791C6F9559007CCA68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
