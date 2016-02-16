@@ -13,4 +13,10 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic) NSUInteger age;
 
++ (instancetype)studentWithName:(NSString *)name
+                            age:(NSUInteger)age;
+
+- (instancetype)initWintName:(NSString *)name
+                         age:(NSUInteger)age;
+
 @end

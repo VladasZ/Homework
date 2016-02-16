@@ -16,6 +16,7 @@
 		8236AFB81C70FBBE00EA1FA7 /* CoreDataLesson1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8236AFB71C70FBBE00EA1FA7 /* CoreDataLesson1Tests.m */; };
 		8236AFC31C70FBBE00EA1FA7 /* CoreDataLesson1UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8236AFC21C70FBBE00EA1FA7 /* CoreDataLesson1UITests.m */; };
 		8236AFD21C70FBD500EA1FA7 /* VZStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8236AFD11C70FBD400EA1FA7 /* VZStudent.m */; };
+		8236AFD51C71166600EA1FA7 /* VZGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8236AFD41C71166600EA1FA7 /* VZGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		8236AFC41C70FBBE00EA1FA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8236AFD01C70FBD400EA1FA7 /* VZStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VZStudent.h; sourceTree = "<group>"; };
 		8236AFD11C70FBD400EA1FA7 /* VZStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZStudent.m; sourceTree = "<group>"; };
+		8236AFD31C71166600EA1FA7 /* VZGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VZGroup.h; sourceTree = "<group>"; };
+		8236AFD41C71166600EA1FA7 /* VZGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				8236AFA11C70FBBE00EA1FA7 /* AppDelegate.m */,
 				8236AFA31C70FBBE00EA1FA7 /* ViewController.h */,
 				8236AFA41C70FBBE00EA1FA7 /* ViewController.m */,
+				8236AFD31C71166600EA1FA7 /* VZGroup.h */,
+				8236AFD41C71166600EA1FA7 /* VZGroup.m */,
 				8236AFD01C70FBD400EA1FA7 /* VZStudent.h */,
 				8236AFD11C70FBD400EA1FA7 /* VZStudent.m */,
 				8236AFA61C70FBBE00EA1FA7 /* Main.storyboard */,
@@ -281,6 +286,7 @@
 				8236AFA51C70FBBE00EA1FA7 /* ViewController.m in Sources */,
 				8236AFD21C70FBD500EA1FA7 /* VZStudent.m in Sources */,
 				8236AFA21C70FBBE00EA1FA7 /* AppDelegate.m in Sources */,
+				8236AFD51C71166600EA1FA7 /* VZGroup.m in Sources */,
 				8236AF9F1C70FBBE00EA1FA7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +513,7 @@
 				8236AFC91C70FBBE00EA1FA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8236AFCA1C70FBBE00EA1FA7 /* Build configuration list for PBXNativeTarget "CoreDataLesson1Tests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +522,7 @@
 				8236AFCC1C70FBBE00EA1FA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8236AFCD1C70FBBE00EA1FA7 /* Build configuration list for PBXNativeTarget "CoreDataLesson1UITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +531,7 @@
 				8236AFCF1C70FBBE00EA1FA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

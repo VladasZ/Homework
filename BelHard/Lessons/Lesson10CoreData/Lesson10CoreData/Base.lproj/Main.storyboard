@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FZw-iv-oPz"/>
+                        <viewControllerLayoutGuide type="bottom" id="QFw-sl-fqD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1eI-xk-rpr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5qu-xt-TlN">
+                                <rect key="frame" x="0.0" y="63" width="320" height="417"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="odl-2T-gYU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pyd-n8-DNo"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVY-Tj-Qif">
+                                <rect key="frame" x="196" y="15" width="104" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add user"/>
+                                <connections>
+                                    <action selector="didPressAddUserButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yTg-5C-ZRA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lVY-Tj-Qif" firstAttribute="top" secondItem="1eI-xk-rpr" secondAttribute="topMargin" constant="15" id="6eT-3e-EbI"/>
+                            <constraint firstItem="QFw-sl-fqD" firstAttribute="top" secondItem="5qu-xt-TlN" secondAttribute="bottom" id="InY-Lw-PSs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5qu-xt-TlN" secondAttribute="trailing" constant="-20" id="RkB-c6-Olw"/>
+                            <constraint firstItem="5qu-xt-TlN" firstAttribute="top" secondItem="lVY-Tj-Qif" secondAttribute="bottom" constant="18" id="biW-6A-hVb"/>
+                            <constraint firstItem="5qu-xt-TlN" firstAttribute="leading" secondItem="1eI-xk-rpr" secondAttribute="leadingMargin" constant="-20" id="efN-cx-VFe"/>
+                            <constraint firstItem="lVY-Tj-Qif" firstAttribute="trailing" secondItem="1eI-xk-rpr" secondAttribute="trailingMargin" id="q1p-ve-Im9"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="5qu-xt-TlN" id="hUK-Ig-pCG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200" y="327"/>
+        </scene>
+    </scenes>
+</document>

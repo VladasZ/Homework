@@ -10,6 +10,23 @@
 
 @implementation VZStudent
 
++ (instancetype)studentWithName:(NSString *)name
+                            age:(NSUInteger)age
+{
+    return [[VZStudent alloc] initWintName:name age:age];
+}
+
+- (instancetype)initWintName:(NSString *)name
+                         age:(NSUInteger)age
+{
+    self = [super init];
+    if (self) {
+        _name = name;
+        _age = age;
+    }
+    return self;
+}
+
 - (void)setName:(NSString *)name
 {
     _name = name;
@@ -24,6 +41,7 @@
     NSLog(@"student setAge %lu", (unsigned long)age);
 }
 
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@, %lu", self.name, self.age];
@@ -35,5 +53,14 @@
     
     [super setValue:value forKey:key];
 }
+
+- (BOOL)validateName:(inout id  _Nullable __autoreleasing *)ioValue error:(out NSError * _Nullable __autoreleasing *)outError
+{
+    
+    NSLog(@"Validate name");
+    
+    return NO;
+}
+
 
 @end

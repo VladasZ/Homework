@@ -123,8 +123,6 @@ const CGFloat BulletSpeed = 0.5;
     self.gunImageView.transform =
     CGAffineTransformMakeRotation([self tapRotateAngle:tapLocation]);
     
-    NSLog(@"%f %f", [self tapRotateAngle:tapLocation], self.cornerAngle);
-
     
 }
 
@@ -152,6 +150,11 @@ const CGFloat BulletSpeed = 0.5;
     
     [bulletImageView setImage:[UIImage imageNamed:@"bullet.png"]];
     
+    [bulletImageView addObserver:self
+                      forKeyPath:@"frame"
+                         options:NSKeyValueObservingOptionNew
+                         context:nil];
+    
     
     
     
@@ -177,6 +180,8 @@ const CGFloat BulletSpeed = 0.5;
         frame.origin.y = self.view.frame.size.height + 30;
         
     }
+    
+    //frame.origin.x =
     
     CGFloat bulletDistance =
     sqrt(pow(frame.origin.x - self.gunRotatePoint.x, 2) +
@@ -211,13 +216,15 @@ const CGFloat BulletSpeed = 0.5;
 
         
         [UIView animateWithDuration:1 animations:^{
+            
             bulletImageView.frame = frame;
+            
         } completion:^(BOOL finished) {
+            
+            [bulletImageView removeObserver:self forKeyPath:@"frame"];
             [bulletImageView removeFromSuperview];
             
-            
-            
-            
+ 
         }];
         
         
@@ -234,6 +241,17 @@ const CGFloat BulletSpeed = 0.5;
     
     
     return bulletImageView;
+}
+
+#pragma mark - Bullet observer
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context
+{
+    NSLog(@"%@", [object valueForKey:keyPath]);
+    
 }
 
 
