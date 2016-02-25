@@ -1,0 +1,10 @@
+platform :ios, '7.0'
+
+target 'Cocoapods' do
+
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'MagicalRecord'
+pod 'SVProgressHUD'
+
+end

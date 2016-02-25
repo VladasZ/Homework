@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82E4531F1C7612750038193D /* VZStudent+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E4531C1C7612750038193D /* VZStudent+CoreDataProperties.m */; };
+		82E453201C7612750038193D /* VZStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E4531E1C7612750038193D /* VZStudent.m */; };
 		82FB7A111C713C9500774431 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FB7A101C713C9500774431 /* main.m */; };
 		82FB7A141C713C9500774431 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FB7A131C713C9500774431 /* AppDelegate.m */; };
 		82FB7A171C713C9500774431 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FB7A161C713C9500774431 /* ViewController.m */; };
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82E4531B1C7612750038193D /* VZStudent+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VZStudent+CoreDataProperties.h"; sourceTree = "<group>"; };
+		82E4531C1C7612750038193D /* VZStudent+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VZStudent+CoreDataProperties.m"; sourceTree = "<group>"; };
+		82E4531D1C7612750038193D /* VZStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VZStudent.h; sourceTree = "<group>"; };
+		82E4531E1C7612750038193D /* VZStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VZStudent.m; sourceTree = "<group>"; };
 		82FB7A0C1C713C9500774431 /* CoreDataLesson2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataLesson2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82FB7A101C713C9500774431 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82FB7A121C713C9500774431 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -107,6 +113,10 @@
 				82FB7A131C713C9500774431 /* AppDelegate.m */,
 				82FB7A151C713C9500774431 /* ViewController.h */,
 				82FB7A161C713C9500774431 /* ViewController.m */,
+				82E4531B1C7612750038193D /* VZStudent+CoreDataProperties.h */,
+				82E4531C1C7612750038193D /* VZStudent+CoreDataProperties.m */,
+				82E4531D1C7612750038193D /* VZStudent.h */,
+				82E4531E1C7612750038193D /* VZStudent.m */,
 				82FB7A181C713C9500774431 /* Main.storyboard */,
 				82FB7A1E1C713C9500774431 /* Assets.xcassets */,
 				82FB7A201C713C9500774431 /* LaunchScreen.storyboard */,
@@ -277,7 +287,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82FB7A171C713C9500774431 /* ViewController.m in Sources */,
+				82E453201C7612750038193D /* VZStudent.m in Sources */,
 				82FB7A1D1C713C9500774431 /* CoreDataLesson2.xcdatamodeld in Sources */,
+				82E4531F1C7612750038193D /* VZStudent+CoreDataProperties.m in Sources */,
 				82FB7A141C713C9500774431 /* AppDelegate.m in Sources */,
 				82FB7A111C713C9500774431 /* main.m in Sources */,
 			);
@@ -505,6 +517,7 @@
 				82FB7A3E1C713C9600774431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82FB7A3F1C713C9600774431 /* Build configuration list for PBXNativeTarget "CoreDataLesson2Tests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +526,7 @@
 				82FB7A411C713C9600774431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82FB7A421C713C9600774431 /* Build configuration list for PBXNativeTarget "CoreDataLesson2UITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +535,7 @@
 				82FB7A441C713C9600774431 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

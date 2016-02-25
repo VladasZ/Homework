@@ -11,8 +11,12 @@
 #import "MUser.h"
 #import "CoreDataManager.h"
 #import "MCar.h"
+#import "DataManager.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController ()
+<UITableViewDelegate,
+UITableViewDataSource,
+NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *usersArray;
 
@@ -20,7 +24,7 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
-- (IBAction)didPressAddUserButton:(UIButton *)sender;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultController;
 
 @end
 
@@ -31,16 +35,30 @@
     [super viewDidLoad];
     
     
-    [self getUserFromDatabase];
-
+    self.contex = [[CoreDataManager sharedManager] managedObjectContext];
+    
+    DataManager *dataManager = [[DataManager alloc] init];
+    
+    [dataManager addDataToDatabase];
+   
+    //[self getUsersFromDatabaseWithFetchedResultsController];
+    
+    [self getUsersFromDatabase];
+    
+    NSLog(@"%@", [dataManager valueForKey:@"privateName"]);
+    
+    [dataManager setValue:@"NEW BLA" forKey:@"privateName"];
+    
+    NSLog(@"%@", [dataManager valueForKey:@"privateName"]);
     
 }
-
+ 
 #pragma mark - Table view properties
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.usersArray.count;
+  //  return [self.fetchedResultController sections].count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
@@ -48,13 +66,19 @@
     MUser *user = [self.usersArray objectAtIndex:section];
     
     return user.rlsCars.count;
+    
+    //id<NSFetchedResultsSectionInfo> sectionInfo =
+   // [self.fetchedResultController.sections objectAtIndex:section];
+    
+    //return [sectionInfo numberOfObjects];
+    
 }
 
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     MUser *user = [self.usersArray objectAtIndex:section];
     
-    return user.mobName;
+    return [NSString stringWithFormat:@"%@, age - %@", user.mobName, user.mobAge];
 }
 
 
@@ -75,7 +99,8 @@
             
         }
         
-        [self getUserFromDatabase];
+        
+        [self getUsersFromDatabase];
 
     }
 }
@@ -91,17 +116,39 @@
     MCar *car = (MCar *)[user.rlsCars.allObjects objectAtIndex:indexPath.row];
     
     //cell.textLabel.text = [NSString stringWithFormat:@"Name - %@", user.mobName];
-    cell.textLabel.text = [NSString stringWithFormat:@"Car - %@", car.mobName];
+    cell.textLabel.text = [car valueForKey:@"mobName"];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Number - %@", car.mobNumber];
     cell.imageView.image = [UIImage imageWithData:user.mobAvatar];
+    
+    //MUser *user = [self.fetchedResultController objectAtIndexPath:indexPath];
+    
+   // cell.textLabel.text = user.mobName;
+    //cell.imageView.image = [UIImage imageWithData:user.mobAvatar];
     
     return cell;
 }
 
-- (void)getUserFromDatabase
+- (void)getUsersFromDatabase
 {
     NSFetchRequest *fetchRequest =
-    [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([MUser class])];
+    [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([MCar class])];
+    
+    
+//    NSPredicate *predicate =
+//    [NSPredicate predicateWithFormat:
+//     @"mobAge == %@ OR mobAge == %@", @"Roberto", @"Marina"];
+    
+//    NSPredicate *predicate =
+//    [NSPredicate predicateWithFormat:
+//     @"mobAge > %@ AND mobAge < %@", @20, @30];
+    
+    
+    
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:
+     @"mobName == %@", @"BMW"];
+    
+    [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
     
@@ -109,64 +156,65 @@
     [self.contex executeFetchRequest:fetchRequest error:&error];
     
     if (error == nil) {
-        self.usersArray = array.mutableCopy;
+        
+        NSMutableSet *tempSet = [NSMutableSet set];
+        
+        for (MCar *car in array) {
+            [tempSet addObject:car.rlsUser];
+        }
+        
+        self.usersArray = tempSet.allObjects.mutableCopy;
         [self.tableView reloadData];
     }
 
     
 }
 
+- (void)getUsersFromDatabaseWithFetchedResultsController
+{
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription =
+    [NSEntityDescription entityForName:NSStringFromClass([MUser class])
+                inManagedObjectContext:self.contex];
+    
+    [fetchRequest setEntity:entityDescription];
+    
+    NSSortDescriptor *nameDiscriptor =
+    [[NSSortDescriptor alloc] initWithKey:@"mobName"ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[nameDiscriptor]];
+    
+    self.fetchedResultController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.contex
+                                          sectionNameKeyPath:nil cacheName:nil];
+    
+    self.fetchedResultController.delegate = self;
+    
+    NSError *error = nil;
+    
+    if ([self.fetchedResultController performFetch:&error]) {
+        
+        [self.tableView reloadData];
+        
+    } else {
+        
+        NSLog(@"%@", error);
+        
+    }
+  
+}
+
+
 #pragma mark - Actions
 
 - (void)didPressAddUserButton:(UIButton *)sender
 {
-    self.contex = [[CoreDataManager sharedManager] managedObjectContext];
-    
-    MUser *newUser = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([MUser class]) inManagedObjectContext:self.contex];
-
     
     
-    if (newUser != nil) {
-        
-        newUser.mobName =       @"Peter";
-        newUser.mobHeight =     @189.7;
-        newUser.mobAge =        @35;
-        newUser.mobSelected =   @NO;
-        newUser.mobBirthDate =  [NSDate date];
-        newUser.mobAvatar =     UIImagePNGRepresentation([UIImage imageNamed:@"1.png"]);
-        
-        MCar *carOne = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([MCar class]) inManagedObjectContext:self.contex];
-        
-        if (carOne != nil) {
-            carOne.mobName = @"BMW";
-            carOne.mobColor = [UIColor blackColor];
-            carOne.mobNumber = @1234;
-            carOne.mobYear = [NSDate date];
-            
-            carOne.rlsUser = newUser;
-
-        }
-        
-        
-        MCar *carTwo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([MCar class]) inManagedObjectContext:self.contex];
-        
-        if (carTwo != nil) {
-            carTwo.mobName = @"Audi";
-            carTwo.mobColor = [UIColor whiteColor];
-            carTwo.mobNumber = @4321;
-            carTwo.mobYear = [NSDate date];
-            
-            carTwo.rlsUser = newUser;
-        }
-        
-        [newUser addRlsCarsObject:carOne];
-        [newUser addRlsCarsObject:carTwo];
-        
-    
-        [[CoreDataManager sharedManager] saveContext];
-    }
-    
-    [self getUserFromDatabase];
+    [self getUsersFromDatabase];
 }
 
 @end

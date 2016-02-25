@@ -19,10 +19,11 @@
 		826DA3691C73888000D398D4 /* NSString+CheckEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3681C73888000D398D4 /* NSString+CheckEmail.m */; };
 		826DA36C1C738B3400D398D4 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA36B1C738B3400D398D4 /* CoreDataManager.m */; };
 		826DA36E1C73903B00D398D4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 826DA36D1C73903B00D398D4 /* 1.png */; };
-		826DA3771C739B9200D398D4 /* MUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3701C739B9200D398D4 /* MUser+CoreDataProperties.m */; };
-		826DA3781C739B9200D398D4 /* MUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3721C739B9200D398D4 /* MUser.m */; };
-		826DA3791C739B9200D398D4 /* MCar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3741C739B9200D398D4 /* MCar+CoreDataProperties.m */; };
-		826DA37A1C739B9200D398D4 /* MCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 826DA3761C739B9200D398D4 /* MCar.m */; };
+		82E453291C7616780038193D /* MCar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E453221C7616780038193D /* MCar+CoreDataProperties.m */; };
+		82E4532A1C7616780038193D /* MCar.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E453241C7616780038193D /* MCar.m */; };
+		82E4532B1C7616780038193D /* MUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E453261C7616780038193D /* MUser+CoreDataProperties.m */; };
+		82E4532C1C7616780038193D /* MUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E453281C7616780038193D /* MUser.m */; };
+		82E4532F1C7623BD0038193D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E4532E1C7623BD0038193D /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,14 +66,16 @@
 		826DA36A1C738B3400D398D4 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		826DA36B1C738B3400D398D4 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		826DA36D1C73903B00D398D4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		826DA36F1C739B9200D398D4 /* MUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUser+CoreDataProperties.h"; sourceTree = "<group>"; };
-		826DA3701C739B9200D398D4 /* MUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUser+CoreDataProperties.m"; sourceTree = "<group>"; };
-		826DA3711C739B9200D398D4 /* MUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUser.h; sourceTree = "<group>"; };
-		826DA3721C739B9200D398D4 /* MUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUser.m; sourceTree = "<group>"; };
-		826DA3731C739B9200D398D4 /* MCar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MCar+CoreDataProperties.h"; sourceTree = "<group>"; };
-		826DA3741C739B9200D398D4 /* MCar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MCar+CoreDataProperties.m"; sourceTree = "<group>"; };
-		826DA3751C739B9200D398D4 /* MCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCar.h; sourceTree = "<group>"; };
-		826DA3761C739B9200D398D4 /* MCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCar.m; sourceTree = "<group>"; };
+		82E453211C7616780038193D /* MCar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MCar+CoreDataProperties.h"; sourceTree = "<group>"; };
+		82E453221C7616780038193D /* MCar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MCar+CoreDataProperties.m"; sourceTree = "<group>"; };
+		82E453231C7616780038193D /* MCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCar.h; sourceTree = "<group>"; };
+		82E453241C7616780038193D /* MCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCar.m; sourceTree = "<group>"; };
+		82E453251C7616780038193D /* MUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		82E453261C7616780038193D /* MUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		82E453271C7616780038193D /* MUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MUser.h; sourceTree = "<group>"; };
+		82E453281C7616780038193D /* MUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MUser.m; sourceTree = "<group>"; };
+		82E4532D1C7623BD0038193D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		82E4532E1C7623BD0038193D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				826DA36D1C73903B00D398D4 /* 1.png */,
+				82E4532D1C7623BD0038193D /* DataManager.h */,
+				82E4532E1C7623BD0038193D /* DataManager.m */,
 				826DA3671C73888000D398D4 /* NSString+CheckEmail.h */,
 				826DA3681C73888000D398D4 /* NSString+CheckEmail.m */,
 				826DA36A1C738B3400D398D4 /* CoreDataManager.h */,
@@ -132,15 +137,15 @@
 				826DA32F1C737F1100D398D4 /* AppDelegate.m */,
 				826DA3311C737F1100D398D4 /* ViewController.h */,
 				826DA3321C737F1100D398D4 /* ViewController.m */,
-				826DA36F1C739B9200D398D4 /* MUser+CoreDataProperties.h */,
-				826DA3701C739B9200D398D4 /* MUser+CoreDataProperties.m */,
-				826DA3711C739B9200D398D4 /* MUser.h */,
-				826DA3721C739B9200D398D4 /* MUser.m */,
-				826DA3731C739B9200D398D4 /* MCar+CoreDataProperties.h */,
-				826DA3741C739B9200D398D4 /* MCar+CoreDataProperties.m */,
-				826DA3751C739B9200D398D4 /* MCar.h */,
-				826DA3761C739B9200D398D4 /* MCar.m */,
 				826DA3341C737F1100D398D4 /* Main.storyboard */,
+				82E453211C7616780038193D /* MCar+CoreDataProperties.h */,
+				82E453221C7616780038193D /* MCar+CoreDataProperties.m */,
+				82E453231C7616780038193D /* MCar.h */,
+				82E453241C7616780038193D /* MCar.m */,
+				82E453251C7616780038193D /* MUser+CoreDataProperties.h */,
+				82E453261C7616780038193D /* MUser+CoreDataProperties.m */,
+				82E453271C7616780038193D /* MUser.h */,
+				82E453281C7616780038193D /* MUser.m */,
 				826DA33A1C737F1100D398D4 /* Assets.xcassets */,
 				826DA33C1C737F1100D398D4 /* LaunchScreen.storyboard */,
 				826DA33F1C737F1100D398D4 /* Info.plist */,
@@ -310,15 +315,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				826DA37A1C739B9200D398D4 /* MCar.m in Sources */,
-				826DA3771C739B9200D398D4 /* MUser+CoreDataProperties.m in Sources */,
 				826DA36C1C738B3400D398D4 /* CoreDataManager.m in Sources */,
 				826DA3331C737F1100D398D4 /* ViewController.m in Sources */,
+				82E4532C1C7616780038193D /* MUser.m in Sources */,
+				82E4532B1C7616780038193D /* MUser+CoreDataProperties.m in Sources */,
 				826DA3391C737F1100D398D4 /* Lesson10CoreData.xcdatamodeld in Sources */,
 				826DA3301C737F1100D398D4 /* AppDelegate.m in Sources */,
+				82E4532A1C7616780038193D /* MCar.m in Sources */,
 				826DA3691C73888000D398D4 /* NSString+CheckEmail.m in Sources */,
-				826DA3791C739B9200D398D4 /* MCar+CoreDataProperties.m in Sources */,
-				826DA3781C739B9200D398D4 /* MUser.m in Sources */,
+				82E453291C7616780038193D /* MCar+CoreDataProperties.m in Sources */,
+				82E4532F1C7623BD0038193D /* DataManager.m in Sources */,
 				826DA32D1C737F1100D398D4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,6 +551,7 @@
 				826DA35A1C737F1200D398D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		826DA35B1C737F1200D398D4 /* Build configuration list for PBXNativeTarget "Lesson10CoreDataTests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +560,7 @@
 				826DA35D1C737F1200D398D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		826DA35E1C737F1200D398D4 /* Build configuration list for PBXNativeTarget "Lesson10CoreDataUITests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +569,7 @@
 				826DA3601C737F1200D398D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

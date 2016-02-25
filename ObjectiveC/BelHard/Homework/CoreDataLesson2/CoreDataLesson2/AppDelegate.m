@@ -17,7 +17,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.managedObjectContext;
+    //NSLog(@"%@", [self.managedObjectModel entitiesByName]);
+    
+    NSManagedObject *student = [NSEntityDescription insertNewObjectForEntityForName:@"VZStudent" inManagedObjectContext:self.managedObjectContext];
+    
+//    [student setValue:@"Peter"      forKey:@"firstName"];
+//    [student setValue:@"Petrovich"  forKey:@"lastName"];
+//    [student setValue:[NSDate date] forKey:@"dateOfBirth"];
+//    [student setValue:@4            forKey:@"score"];
+//    
+    //NSError *error = nil;
+    
+   // [self.managedObjectContext save:&error];
+    
+      
+
     
     return YES;
 }

@@ -105,7 +105,6 @@ const CGFloat BulletSpeed = 0.5;
     [self.view addSubview:[self shotBulletAtAngle:tapRotateAngle]];
     
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.audioUrl error:nil];
-    [self.audioPlayer setVolume:0.01];
     [self.audioPlayer play];
     
 }
