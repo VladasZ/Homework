@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstDatabase", "FirstDatabase\FirstDatabase.csproj", "{769980E7-F496-4B23-B9F0-509D10AE74F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C3EasyRandom", "..\..\..\..\EasyRandom\C3EasyRandom\C3EasyRandom\C3EasyRandom.csproj", "{4E42C323-B2CE-48D0-A001-3E4EA7276396}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{769980E7-F496-4B23-B9F0-509D10AE74F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769980E7-F496-4B23-B9F0-509D10AE74F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769980E7-F496-4B23-B9F0-509D10AE74F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769980E7-F496-4B23-B9F0-509D10AE74F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E42C323-B2CE-48D0-A001-3E4EA7276396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E42C323-B2CE-48D0-A001-3E4EA7276396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E42C323-B2CE-48D0-A001-3E4EA7276396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E42C323-B2CE-48D0-A001-3E4EA7276396}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
