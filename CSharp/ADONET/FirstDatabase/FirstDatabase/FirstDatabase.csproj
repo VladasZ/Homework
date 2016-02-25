@@ -49,12 +49,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\EasyRandom\C3EasyRandom\C3EasyRandom\C3EasyRandom.csproj">
-      <Project>{4e42c323-b2ce-48d0-a001-3e4ea7276396}</Project>
-      <Name>C3EasyRandom</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
