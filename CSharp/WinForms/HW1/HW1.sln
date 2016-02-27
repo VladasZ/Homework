@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW1", "HW1\HW1.csproj", "{775F6B97-868A-4A1C-9590-CA14073EC981}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C3EasyRandom", "..\..\..\..\EasyRandom\C3EasyRandom\C3EasyRandom.csproj", "{FB8A960A-9266-45D6-B005-8AA9D41AB127}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{775F6B97-868A-4A1C-9590-CA14073EC981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{775F6B97-868A-4A1C-9590-CA14073EC981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{775F6B97-868A-4A1C-9590-CA14073EC981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{775F6B97-868A-4A1C-9590-CA14073EC981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8A960A-9266-45D6-B005-8AA9D41AB127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8A960A-9266-45D6-B005-8AA9D41AB127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8A960A-9266-45D6-B005-8AA9D41AB127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8A960A-9266-45D6-B005-8AA9D41AB127}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
