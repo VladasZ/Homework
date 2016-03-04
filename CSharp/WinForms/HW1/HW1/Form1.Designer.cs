@@ -29,35 +29,39 @@
         private void InitializeComponent()
         {
             this.phonesListBox = new System.Windows.Forms.ListBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.manufacturerTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.priceTextBox = new System.Windows.Forms.TextBox();
+            this.cpuTextBox = new System.Windows.Forms.TextBox();
+            this.osTextBox = new System.Windows.Forms.TextBox();
+            this.modelTextBox_ = new System.Windows.Forms.TextBox();
             this.phonePictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.modelTextBox_ = new System.Windows.Forms.TextBox();
-            this.osTextBox = new System.Windows.Forms.TextBox();
-            this.cpuTextBox = new System.Windows.Forms.TextBox();
-            this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.priceEditBox = new System.Windows.Forms.NumericUpDown();
+            this.cleanButton = new System.Windows.Forms.Button();
+            this.saveInfoButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.photoEditBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cpuEditBox = new System.Windows.Forms.TextBox();
             this.osEditBox = new System.Windows.Forms.TextBox();
-            this.modelEditBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.photoEditBox = new System.Windows.Forms.TextBox();
-            this.saveInfoButton = new System.Windows.Forms.Button();
-            this.cleanButton = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.manufacturerTextBox = new System.Windows.Forms.TextBox();
             this.manufacturerEditBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.priceEditBox = new System.Windows.Forms.NumericUpDown();
-            this.tabControl1.SuspendLayout();
+            this.modelEditBox = new System.Windows.Forms.TextBox();
+            this.saveDataButton = new System.Windows.Forms.Button();
+            this.loadDataButton = new System.Windows.Forms.Button();
+            this.deletePhoneButton = new System.Windows.Forms.Button();
+            this.addPhoneButton = new System.Windows.Forms.Button();
+            this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phonePictureBox)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -73,15 +77,15 @@
             this.phonesListBox.TabIndex = 0;
             this.phonesListBox.SelectedIndexChanged += new System.EventHandler(this.phonesListBox_SelectedIndexChanged);
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(215, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(508, 428);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Location = new System.Drawing.Point(215, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(508, 428);
+            this.tabControl.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -103,6 +107,91 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Информация о телефоне";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(224, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Производитель";
+            // 
+            // manufacturerTextBox
+            // 
+            this.manufacturerTextBox.Location = new System.Drawing.Point(316, 6);
+            this.manufacturerTextBox.Name = "manufacturerTextBox";
+            this.manufacturerTextBox.ReadOnly = true;
+            this.manufacturerTextBox.Size = new System.Drawing.Size(178, 20);
+            this.manufacturerTextBox.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(224, 113);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Цена";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(224, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Процессор";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(224, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(22, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "ОС";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(224, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Модель";
+            // 
+            // priceTextBox
+            // 
+            this.priceTextBox.Location = new System.Drawing.Point(316, 110);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.ReadOnly = true;
+            this.priceTextBox.Size = new System.Drawing.Size(178, 20);
+            this.priceTextBox.TabIndex = 4;
+            // 
+            // cpuTextBox
+            // 
+            this.cpuTextBox.Location = new System.Drawing.Point(316, 84);
+            this.cpuTextBox.Name = "cpuTextBox";
+            this.cpuTextBox.ReadOnly = true;
+            this.cpuTextBox.Size = new System.Drawing.Size(178, 20);
+            this.cpuTextBox.TabIndex = 3;
+            // 
+            // osTextBox
+            // 
+            this.osTextBox.Location = new System.Drawing.Point(316, 58);
+            this.osTextBox.Name = "osTextBox";
+            this.osTextBox.ReadOnly = true;
+            this.osTextBox.Size = new System.Drawing.Size(178, 20);
+            this.osTextBox.TabIndex = 2;
+            // 
+            // modelTextBox_
+            // 
+            this.modelTextBox_.Location = new System.Drawing.Point(316, 32);
+            this.modelTextBox_.Name = "modelTextBox_";
+            this.modelTextBox_.ReadOnly = true;
+            this.modelTextBox_.Size = new System.Drawing.Size(178, 20);
+            this.modelTextBox_.TabIndex = 1;
             // 
             // phonePictureBox
             // 
@@ -137,73 +226,59 @@
             this.tabPage2.Text = "Редактирование информации";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // modelTextBox_
+            // priceEditBox
             // 
-            this.modelTextBox_.Location = new System.Drawing.Point(316, 32);
-            this.modelTextBox_.Name = "modelTextBox_";
-            this.modelTextBox_.ReadOnly = true;
-            this.modelTextBox_.Size = new System.Drawing.Size(178, 20);
-            this.modelTextBox_.TabIndex = 1;
+            this.priceEditBox.Increment = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
+            this.priceEditBox.Location = new System.Drawing.Point(93, 112);
+            this.priceEditBox.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.priceEditBox.Name = "priceEditBox";
+            this.priceEditBox.Size = new System.Drawing.Size(323, 20);
+            this.priceEditBox.TabIndex = 21;
+            this.priceEditBox.ThousandsSeparator = true;
             // 
-            // osTextBox
+            // cleanButton
             // 
-            this.osTextBox.Location = new System.Drawing.Point(316, 58);
-            this.osTextBox.Name = "osTextBox";
-            this.osTextBox.ReadOnly = true;
-            this.osTextBox.Size = new System.Drawing.Size(178, 20);
-            this.osTextBox.TabIndex = 2;
+            this.cleanButton.Location = new System.Drawing.Point(422, 4);
+            this.cleanButton.Name = "cleanButton";
+            this.cleanButton.Size = new System.Drawing.Size(72, 23);
+            this.cleanButton.TabIndex = 20;
+            this.cleanButton.Text = "Очистить";
+            this.cleanButton.UseVisualStyleBackColor = true;
+            this.cleanButton.Click += new System.EventHandler(this.cleanButton_Click);
             // 
-            // cpuTextBox
+            // saveInfoButton
             // 
-            this.cpuTextBox.Location = new System.Drawing.Point(316, 84);
-            this.cpuTextBox.Name = "cpuTextBox";
-            this.cpuTextBox.ReadOnly = true;
-            this.cpuTextBox.Size = new System.Drawing.Size(178, 20);
-            this.cpuTextBox.TabIndex = 3;
+            this.saveInfoButton.Location = new System.Drawing.Point(93, 164);
+            this.saveInfoButton.Name = "saveInfoButton";
+            this.saveInfoButton.Size = new System.Drawing.Size(323, 34);
+            this.saveInfoButton.TabIndex = 19;
+            this.saveInfoButton.Text = "Сохранить информацию";
+            this.saveInfoButton.UseVisualStyleBackColor = true;
+            this.saveInfoButton.Click += new System.EventHandler(this.saveInfoButton_Click);
             // 
-            // priceTextBox
+            // label9
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(316, 110);
-            this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.ReadOnly = true;
-            this.priceTextBox.Size = new System.Drawing.Size(178, 20);
-            this.priceTextBox.TabIndex = 4;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 140);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Фото URL";
             // 
-            // label1
+            // photoEditBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Модель";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(224, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "ОС";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(224, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Процессор";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(224, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Цена";
+            this.photoEditBox.Location = new System.Drawing.Point(93, 137);
+            this.photoEditBox.Name = "photoEditBox";
+            this.photoEditBox.Size = new System.Drawing.Size(323, 20);
+            this.photoEditBox.TabIndex = 17;
             // 
             // label5
             // 
@@ -232,6 +307,15 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "ОС";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(86, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Производитель";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -255,66 +339,6 @@
             this.osEditBox.Size = new System.Drawing.Size(323, 20);
             this.osEditBox.TabIndex = 10;
             // 
-            // modelEditBox
-            // 
-            this.modelEditBox.Location = new System.Drawing.Point(93, 33);
-            this.modelEditBox.Name = "modelEditBox";
-            this.modelEditBox.Size = new System.Drawing.Size(323, 20);
-            this.modelEditBox.TabIndex = 9;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 140);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Фото URL";
-            // 
-            // photoEditBox
-            // 
-            this.photoEditBox.Location = new System.Drawing.Point(93, 137);
-            this.photoEditBox.Name = "photoEditBox";
-            this.photoEditBox.Size = new System.Drawing.Size(323, 20);
-            this.photoEditBox.TabIndex = 17;
-            // 
-            // saveInfoButton
-            // 
-            this.saveInfoButton.Location = new System.Drawing.Point(93, 164);
-            this.saveInfoButton.Name = "saveInfoButton";
-            this.saveInfoButton.Size = new System.Drawing.Size(323, 34);
-            this.saveInfoButton.TabIndex = 19;
-            this.saveInfoButton.Text = "Сохранить информацию";
-            this.saveInfoButton.UseVisualStyleBackColor = true;
-            this.saveInfoButton.Click += new System.EventHandler(this.saveInfoButton_Click);
-            // 
-            // cleanButton
-            // 
-            this.cleanButton.Location = new System.Drawing.Point(422, 4);
-            this.cleanButton.Name = "cleanButton";
-            this.cleanButton.Size = new System.Drawing.Size(72, 23);
-            this.cleanButton.TabIndex = 20;
-            this.cleanButton.Text = "Очистить";
-            this.cleanButton.UseVisualStyleBackColor = true;
-            this.cleanButton.Click += new System.EventHandler(this.cleanButton_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(224, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Производитель";
-            // 
-            // manufacturerTextBox
-            // 
-            this.manufacturerTextBox.Location = new System.Drawing.Point(316, 6);
-            this.manufacturerTextBox.Name = "manufacturerTextBox";
-            this.manufacturerTextBox.ReadOnly = true;
-            this.manufacturerTextBox.Size = new System.Drawing.Size(178, 20);
-            this.manufacturerTextBox.TabIndex = 9;
-            // 
             // manufacturerEditBox
             // 
             this.manufacturerEditBox.Location = new System.Drawing.Point(93, 7);
@@ -322,44 +346,67 @@
             this.manufacturerEditBox.Size = new System.Drawing.Size(323, 20);
             this.manufacturerEditBox.TabIndex = 9;
             // 
-            // label11
+            // modelEditBox
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Производитель";
+            this.modelEditBox.Location = new System.Drawing.Point(93, 33);
+            this.modelEditBox.Name = "modelEditBox";
+            this.modelEditBox.Size = new System.Drawing.Size(323, 20);
+            this.modelEditBox.TabIndex = 9;
             // 
-            // priceEditBox
+            // saveDataButton
             // 
-            this.priceEditBox.Increment = new decimal(new int[] {
-            50000,
-            0,
-            0,
-            0});
-            this.priceEditBox.Location = new System.Drawing.Point(93, 112);
-            this.priceEditBox.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.priceEditBox.Name = "priceEditBox";
-            this.priceEditBox.Size = new System.Drawing.Size(323, 20);
-            this.priceEditBox.TabIndex = 21;
-            this.priceEditBox.ThousandsSeparator = true;
+            this.saveDataButton.Location = new System.Drawing.Point(12, 328);
+            this.saveDataButton.Name = "saveDataButton";
+            this.saveDataButton.Size = new System.Drawing.Size(197, 30);
+            this.saveDataButton.TabIndex = 2;
+            this.saveDataButton.Text = "Сохранить в файл";
+            this.saveDataButton.UseVisualStyleBackColor = true;
+            this.saveDataButton.Click += new System.EventHandler(this.saveDataButton_Click);
+            // 
+            // loadDataButton
+            // 
+            this.loadDataButton.Location = new System.Drawing.Point(12, 364);
+            this.loadDataButton.Name = "loadDataButton";
+            this.loadDataButton.Size = new System.Drawing.Size(197, 30);
+            this.loadDataButton.TabIndex = 3;
+            this.loadDataButton.Text = "Загрузить из файла";
+            this.loadDataButton.UseVisualStyleBackColor = true;
+            this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
+            // 
+            // deletePhoneButton
+            // 
+            this.deletePhoneButton.Location = new System.Drawing.Point(12, 292);
+            this.deletePhoneButton.Name = "deletePhoneButton";
+            this.deletePhoneButton.Size = new System.Drawing.Size(197, 30);
+            this.deletePhoneButton.TabIndex = 4;
+            this.deletePhoneButton.Text = "Удалить";
+            this.deletePhoneButton.UseVisualStyleBackColor = true;
+            // 
+            // addPhoneButton
+            // 
+            this.addPhoneButton.Location = new System.Drawing.Point(12, 256);
+            this.addPhoneButton.Name = "addPhoneButton";
+            this.addPhoneButton.Size = new System.Drawing.Size(197, 30);
+            this.addPhoneButton.TabIndex = 5;
+            this.addPhoneButton.Text = "Добавить";
+            this.addPhoneButton.UseVisualStyleBackColor = true;
+            this.addPhoneButton.Click += new System.EventHandler(this.addPhoneButton_Click);
             // 
             // modelTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 447);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.addPhoneButton);
+            this.Controls.Add(this.deletePhoneButton);
+            this.Controls.Add(this.loadDataButton);
+            this.Controls.Add(this.saveDataButton);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.phonesListBox);
             this.Name = "modelTextBox";
             this.Text = "Mobile store";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phonePictureBox)).EndInit();
@@ -373,7 +420,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox phonesListBox;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox phonePictureBox;
         private System.Windows.Forms.TabPage tabPage2;
@@ -401,6 +448,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox manufacturerEditBox;
         private System.Windows.Forms.NumericUpDown priceEditBox;
+        private System.Windows.Forms.Button saveDataButton;
+        private System.Windows.Forms.Button loadDataButton;
+        private System.Windows.Forms.Button deletePhoneButton;
+        private System.Windows.Forms.Button addPhoneButton;
     }
 }
 

@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using C3EasyRandom;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace HW1
 {
     public partial class modelTextBox : Form
     {
-        List<Smartphone> smartphones;
+        BindingList<Smartphone> smartphones;
+        const string dataPath = "smartphones.xml";
 
         public modelTextBox()
         {
@@ -78,9 +81,46 @@ namespace HW1
             selectedPhone.image = 
                 DataManager.downloadImage(selectedPhone.imageURL);
 
-
+            phonesListBox.Refresh();
 
             phonesListBox_SelectedIndexChanged(null, null);
+        }
+
+        private void saveDataButton_Click(object sender, EventArgs e)
+        {
+            XmlSerializer mySerializer = new XmlSerializer(typeof(BindingList<Smartphone>));
+
+
+            StreamWriter myWriter = new StreamWriter(dataPath);
+            mySerializer.Serialize(myWriter, smartphones);
+            myWriter.Close();
+        }
+
+        private void loadDataButton_Click(object sender, EventArgs e)
+        {
+            XmlSerializer mySerializer = new XmlSerializer(typeof(BindingList<Smartphone>));
+
+
+            StreamReader myReader = new StreamReader(dataPath);
+
+            smartphones = (BindingList<Smartphone>)mySerializer.Deserialize(myReader);
+
+            myReader.Close();
+
+            foreach(Smartphone smartphone in smartphones)
+            {
+                smartphone.image = DataManager.downloadImage(smartphone.imageURL);
+            }
+
+        }
+
+        private void addPhoneButton_Click(object sender, EventArgs e)
+        {
+            smartphones.Add(new Smartphone());
+
+            phonesListBox.SelectedIndex = smartphones.Count - 1;
+
+            tabControl.SelectedIndex = 1;
         }
     }
 }
