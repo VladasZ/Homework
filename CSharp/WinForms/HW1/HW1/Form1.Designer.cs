@@ -381,6 +381,7 @@
             this.deletePhoneButton.TabIndex = 4;
             this.deletePhoneButton.Text = "Удалить";
             this.deletePhoneButton.UseVisualStyleBackColor = true;
+            this.deletePhoneButton.Click += new System.EventHandler(this.deletePhoneButton_Click);
             // 
             // addPhoneButton
             // 

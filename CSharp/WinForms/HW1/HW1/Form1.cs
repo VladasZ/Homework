@@ -122,5 +122,10 @@ namespace HW1
 
             tabControl.SelectedIndex = 1;
         }
+
+        private void deletePhoneButton_Click(object sender, EventArgs e)
+        {
+            smartphones.RemoveAt(phonesListBox.SelectedIndex);
+        }
     }
 }
