@@ -14,8 +14,7 @@ namespace Authorization
         public string LastName  { get; set; }
         public string PhotoURL  { get; set; }
 
-        public User(int    ID,
-                    string UserName,
+        public User(string UserName,
                     string Password,
                     string FirstName,
                     string LastName,

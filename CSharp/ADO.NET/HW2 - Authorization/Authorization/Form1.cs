@@ -14,6 +14,14 @@ namespace Authorization
         public AuthorizationForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void registrationButton_Click(object sender, EventArgs e)
+        {
+            RegistrationForm registratoonForm = new RegistrationForm();
+            registratoonForm.StartPosition = FormStartPosition.CenterParent;
+            registratoonForm.ShowDialog();
         }
     }
 }

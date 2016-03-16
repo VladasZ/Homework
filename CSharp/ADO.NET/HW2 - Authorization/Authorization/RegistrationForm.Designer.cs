@@ -1,6 +1,6 @@
 ﻿namespace Authorization
 {
-    partial class NewUserForm
+    partial class RegistrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -147,8 +147,9 @@
             this.button2.TabIndex = 12;
             this.button2.Text = "Готово";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // NewUserForm
+            // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +166,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "NewUserForm";
+            this.Name = "RegistrationForm";
             this.Text = "Регистрация нового пользователя";
             this.ResumeLayout(false);
             this.PerformLayout();

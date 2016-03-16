@@ -32,12 +32,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.registrationButton = new System.Windows.Forms.Button();
             this.logInButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.registrationButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -77,6 +77,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Параметры авторизации";
+            // 
+            // registrationButton
+            // 
+            this.registrationButton.Location = new System.Drawing.Point(11, 221);
+            this.registrationButton.Name = "registrationButton";
+            this.registrationButton.Size = new System.Drawing.Size(90, 23);
+            this.registrationButton.TabIndex = 5;
+            this.registrationButton.Text = "Регистрация";
+            this.registrationButton.UseVisualStyleBackColor = true;
+            this.registrationButton.Click += new System.EventHandler(this.registrationButton_Click);
             // 
             // logInButton
             // 
@@ -122,15 +132,6 @@
             this.label1.Size = new System.Drawing.Size(199, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя пользователя:";
-            // 
-            // registrationButton
-            // 
-            this.registrationButton.Location = new System.Drawing.Point(11, 221);
-            this.registrationButton.Name = "registrationButton";
-            this.registrationButton.Size = new System.Drawing.Size(90, 23);
-            this.registrationButton.TabIndex = 5;
-            this.registrationButton.Text = "Регистрация";
-            this.registrationButton.UseVisualStyleBackColor = true;
             // 
             // AuthorizationForm
             // 
