@@ -1,6 +1,6 @@
 ﻿namespace Authorization
 {
-    partial class AuthorizationForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -96,6 +96,7 @@
             this.logInButton.TabIndex = 4;
             this.logInButton.Text = "Войти";
             this.logInButton.UseVisualStyleBackColor = true;
+            this.logInButton.Click += new System.EventHandler(this.logInButton_Click);
             // 
             // passwordTextBox
             // 
@@ -133,7 +134,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя пользователя:";
             // 
-            // AuthorizationForm
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,8 +142,9 @@
             this.ClientSize = new System.Drawing.Size(525, 327);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "AuthorizationForm";
+            this.Name = "LoginForm";
             this.Text = "Авторизация";
+            this.Enter += new System.EventHandler(this.LoginForm_Enter);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);

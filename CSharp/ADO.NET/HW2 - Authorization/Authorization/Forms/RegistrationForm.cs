@@ -18,7 +18,7 @@ namespace Authorization
 
         private void cleanButton_Click(object sender, EventArgs e)
         {
-            DatabaseManager.cleanAllNewUsers();
+            DatabaseManager.wipeAllNewUsers();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

@@ -34,13 +34,44 @@ namespace Authorization
             commandInsert.ExecuteNonQuery();
         }
 
-        public static void cleanAllNewUsers()
+        public static void wipeAllNewUsers()
         {
             SqlCommand commandClean = connection.CreateCommand();
 
             commandClean.CommandText = @"DELETE FROM Users WHERE id > 0";
             commandClean.ExecuteNonQuery();
             usersCount = 1;
+        }
+
+        public static User logIn(string userName, string password)
+        {
+            SqlCommand commangLogIn = connection.CreateCommand();
+            commangLogIn.CommandText = "SELECT firstName, lastName, photoURL FROM Users WHERE userName = '" + userName + "' AND password = '" + password + "'";
+
+            SqlDataReader reader = commangLogIn.ExecuteReader();
+
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+    
+
+            User currentUser = null;
+
+            while (reader.Read())
+            {
+                currentUser =
+                    new User(userName,
+                             password,
+                             (string)reader["firstName"],
+                             (string)reader["lastName"],
+                             (string)reader["photoURL"]);
+            }
+
+
+            reader.Close();
+            return currentUser;
         }
     }
 }

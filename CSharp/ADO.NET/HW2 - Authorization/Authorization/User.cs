@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Authorization
 {
-    class User
+    public class User
     {
         public int    ID        { get; set; }
         public string UserName  { get; set; }
