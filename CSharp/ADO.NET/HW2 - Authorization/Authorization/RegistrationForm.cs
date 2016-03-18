@@ -16,15 +16,28 @@ namespace Authorization
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cleanButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
+            DatabaseManager.cleanAllNewUsers();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
-            DatabaseManager.insertUser(new User("146100", "12345678", "Vladas", "Zakrevskis", "http://cs317019.vk.me/v317019207/9726/UHafxj2-ueQ.jpg"));
+            DialogResult = DialogResult.Cancel;
+
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            DatabaseManager.insertUser(
+                new User(userNameTextBox.Text,
+                         passwordTextBox.Text, 
+                         firstNameTextBox.Text,
+                         lastNameTextBox.Text, 
+                         photoURLTextBox.Text));
+
             DialogResult = DialogResult.OK;
+            
         }
     }
 }
