@@ -41,7 +41,17 @@ namespace Authorization
 
         private void LoginForm_Enter(object sender, EventArgs e)
         {
-            logInButton_Click(sender, e);
+            User currentUser = DatabaseManager.logIn(userNameTextBox.Text, passwordTextBox.Text);
+
+            if (currentUser == null)
+            {
+                MessageBox.Show("Wrong password or username!");
+                return;
+            }
+
+            UserInfoForm userInfoForm = new UserInfoForm(currentUser);
+            userInfoForm.StartPosition = FormStartPosition.CenterParent;
+            userInfoForm.ShowDialog();
         }
     }
 }
