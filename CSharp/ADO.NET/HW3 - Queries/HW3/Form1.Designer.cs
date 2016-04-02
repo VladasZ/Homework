@@ -140,6 +140,7 @@
             this.producerAlbumsCount.TabIndex = 11;
             this.producerAlbumsCount.Text = "Количества альбомов у продюссера 1988-1990";
             this.producerAlbumsCount.UseVisualStyleBackColor = true;
+            this.producerAlbumsCount.Click += new System.EventHandler(this.producerAlbumsCount_Click);
             // 
             // lastAwardProducer
             // 

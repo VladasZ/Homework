@@ -105,8 +105,9 @@ namespace HW3
 
         private void companyAlbumsCount_Click(object sender, EventArgs e)
         {
-            var allCompanies = from cd in cds
-                               select new { cd.COMPANY };
+            var allCompanies = cds
+                .Select(cd => new { cd.COMPANY, cd.YEAR })
+                .GroupBy(cd => cd.YEAR);
 
             dataGridView.DataSource = allCompanies.Distinct().ToArray();
         }
@@ -130,6 +131,12 @@ namespace HW3
 
 
             dataGridView.DataSource = new List<PRODUCER>() { lastAwardProducer };
+        }
+
+        private void producerAlbumsCount_Click(object sender, EventArgs e)
+        {
+           // var producerAlbumsCount - cds
+
         }
     }
 }
