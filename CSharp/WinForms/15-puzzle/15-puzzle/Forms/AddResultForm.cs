@@ -35,37 +35,7 @@ namespace _15_puzzle.Forms
                 Time = GameManager.GameDuration
             };
 
-
-            Gamer gamer = (from g in DatabaseManager.context.Gamers
-                           where g.Name == nameTextBox.Text
-                           select g).FirstOrDefault();
-
-            if (gamer == null)
-            {
-                gamer = new Gamer()
-                {
-                    Name = nameTextBox.Text
-                };
-
-                gamer.GameResults.Add(newResult);
-
-                DatabaseManager.context.Gamers.Add(gamer);
-
-                DatabaseManager.context.SaveChanges();
-
-                DialogResult = DialogResult.OK;
-
-                return;
-            }
-
-
-
-            DatabaseManager.context.GameResults.Add(newResult);
-
-            gamer.GameResults.Add(newResult);
-
-
-            DatabaseManager.context.SaveChanges();
+            DatabaseManager.addResult(newResult, nameTextBox.Text);
 
             DialogResult = DialogResult.OK;
         }

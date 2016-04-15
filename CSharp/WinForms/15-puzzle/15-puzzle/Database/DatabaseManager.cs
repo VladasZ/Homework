@@ -37,5 +37,29 @@ namespace _15_puzzle
                    where g.Name == name
                    select g).FirstOrDefault();
         }
+
+        public static void addResult(GameResult result, string name)
+        {
+            Gamer gamer = findGamer(name);
+
+            if (gamer == null)
+            {
+                gamer = new Gamer()
+                {
+                    Name = name,
+                    GameResults = new List<GameResult>() { result }
+                };
+
+                context.Gamers.Add(gamer);
+
+                context.SaveChanges();
+
+                return;
+            }
+
+            gamer.GameResults.Add(result);
+
+            context.SaveChanges();
+        }
     }
 }
