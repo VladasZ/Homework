@@ -19,7 +19,7 @@ namespace _15_puzzle
             {
                 foreach(GameResult result in gamer.GameResults)
                 {
-                    string resultString = result.Gamer.Name + " " + result.Moves + " " + result.Time;
+                    string resultString = result.Gamer.Name + " " + result.Moves + " ходов, " + result.Time.Seconds + " сек.";
 
                     records.Add(resultString);
                 }

@@ -39,7 +39,6 @@
             this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.recordsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.gfdgfdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,8 +49,7 @@
             this.shuffleMenu,
             this.solveMenu,
             this.recordsMenu,
-            this.settingsMenu,
-            this.gfdgfdToolStripMenuItem});
+            this.settingsMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1120, 24);
@@ -138,13 +136,6 @@
             this.recordsMenu.Text = "Рекорды";
             this.recordsMenu.Click += new System.EventHandler(this.recordsMenu_Click);
             // 
-            // gfdgfdToolStripMenuItem
-            // 
-            this.gfdgfdToolStripMenuItem.Name = "gfdgfdToolStripMenuItem";
-            this.gfdgfdToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.gfdgfdToolStripMenuItem.Text = "gfdgfd";
-            this.gfdgfdToolStripMenuItem.Click += new System.EventHandler(this.gfdgfdToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,7 +167,6 @@
         private System.Windows.Forms.ToolStripTextBox imageURLTextBoxMenu;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem recordsMenu;
-        private System.Windows.Forms.ToolStripMenuItem gfdgfdToolStripMenuItem;
     }
 }
 
