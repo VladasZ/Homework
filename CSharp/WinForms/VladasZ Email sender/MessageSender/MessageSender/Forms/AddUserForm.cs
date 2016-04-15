@@ -12,7 +12,6 @@ namespace MessageSender
 {
     public partial class AddUserForm : Form
     {
-
         UserType newUserType;
         MainForm mainForm;
 
@@ -50,7 +49,6 @@ namespace MessageSender
             }
 
             mainForm = (MainForm)Application.OpenForms[0];
-
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -65,7 +63,9 @@ namespace MessageSender
             try
             {
                 if (string.IsNullOrEmpty(emailTextBox.Text))
+                {
                     throw new FormatException();
+                }
 
                 userMailAddress = new MailAddress(emailTextBox.Text);
             }

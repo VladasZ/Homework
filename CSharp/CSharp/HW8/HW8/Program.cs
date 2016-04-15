@@ -15,7 +15,12 @@ namespace HW8
         static int maxTemperature = -273;
         static string hottestCity;
 
-        static List<string> init(string iniPath = "settings.ini")
+        //паттерны для регулярных выражений
+        const string TemperaturePattern = @"-?\d+..-?\d+";
+        const string DateTimePattern = @"\w+ \d+ \w+, \w+";
+        const string MaxTempPattern = @"\.\.-?\d+";
+
+        static List<string> getCitiesCodeList(string iniPath = "settings.ini")
         {
             FileStream iniFile = new FileStream(iniPath, FileMode.Open, FileAccess.Read);
             StreamReader initRead = new StreamReader(iniFile);
@@ -23,17 +28,19 @@ namespace HW8
 
             MatchCollection cityCodes = Regex.Matches(data, @"#\d{5}");
 
-            List<string> cities = new List<string>();
+            List<string> citiesCode = new List<string>();
 
             foreach (Match code in cityCodes)
-                cities.Add(Regex.Replace(code.ToString(), "#", ""));
-                       
-            return cities;
+            {
+                citiesCode.Add(Regex.Replace(code.ToString(), "#", ""));
+            }
+
+            return citiesCode;
         }
 
-        static void showWeatherForCity(string code)
+        static void showWeatherForCity(string cityCode)
         {
-            string xmlPath = @"http://informer.gismeteo.by/rss/" + code + ".xml";
+            string xmlPath = @"http://informer.gismeteo.by/rss/" + cityCode + ".xml";
             
             XDocument doc = XDocument.Load(xmlPath);
 
@@ -43,17 +50,13 @@ namespace HW8
 
             string city = Regex.Match(cityInfo.Value, @"\w+:").ToString();// получаем название города
 
-            Console.WriteLine(city);// получаем название города
-            
-            string TempPattern = @"-?\d+..-?\d+";
-            string DateTimePattern = @"\w+ \d+ \w+, \w+";
-            string MaxTempPattern = @"\.\.-?\d+";
+            Console.WriteLine(city);
 
+            //парсим XML-ку полученную с сайта gismeteo.by
             foreach (XElement elem in weather)
             {
                 if (elem.Name == "item")
                 {
-
                     Console.Write("{0,20}{1}",
                         Regex.Match(
                             elem.Element("title").Value,
@@ -64,20 +67,21 @@ namespace HW8
                     Console.WriteLine("{0,6}",
                         Regex.Match(
                             elem.Element("description").Value,
-                            TempPattern
+                            TemperaturePattern
                         ).ToString()
                     );
 
-                    int temp = int.Parse(
+                    int temperature = int.Parse(
                         Regex.Match(
                             Regex.Match(
                                 elem.Element("description").Value,
                                 MaxTempPattern).ToString(),
                         @"-?\d+").ToString());
 
-                    if (temp > maxTemperature)
+                    // переписываем самый теплый город
+                    if (temperature > maxTemperature)
                     {
-                        maxTemperature = temp;
+                        maxTemperature = temperature;
                         hottestCity = city.Trim(':');
                     }
 
@@ -85,8 +89,6 @@ namespace HW8
             }
 
             Console.WriteLine();
-                
-
         }
 
         static void showHottestCity()
@@ -98,21 +100,20 @@ namespace HW8
             }
 
             Console.WriteLine("Самый теплый город из выбранных - " + hottestCity + ". Днём: " + maxTemperature + "°C.");
-
         }
 
         static void Main(string[] args)
         {                     
-
-            List<string> cityCodes = init();
+            List<string> cityCodes = getCitiesCodeList();
 
             foreach(string code in cityCodes)
-               showWeatherForCity(code);
+            {
+                showWeatherForCity(code);
+            }
 
             showHottestCity();
 
-            // doc.Save("weather.xml");
-
+            Console.ReadKey();
         }
     }
 }

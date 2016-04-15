@@ -51,12 +51,6 @@
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataManager.cs" />
-    <Compile Include="Forms\EditEvents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EditEvents.Designer.cs">
-      <DependentUpon>EditEvents.cs</DependentUpon>
-    </Compile>
     <Compile Include="EMailManager.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -70,9 +64,6 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Forms\AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditEvents.resx">
-      <DependentUpon>EditEvents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

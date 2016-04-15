@@ -19,12 +19,12 @@ namespace MessageSender
 
     public class User
     {
-        public uint ID { get; set; }
-        public string Name { get; set; }
+        public uint ID { get; }
+        public string Name { get; }
         [XmlIgnore]
-        public MailAddress Email { get; set; }
-        public string StringMailAddress { get; set; }
-        public UserType UserType { get; set; }
+        public MailAddress Email { get; }
+        public string StringMailAddress { get; }
+        public UserType UserType { get; }
 
         public User(uint id, string name, MailAddress email, UserType userType)
         {

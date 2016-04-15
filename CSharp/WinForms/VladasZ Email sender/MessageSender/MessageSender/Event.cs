@@ -20,12 +20,12 @@ namespace MessageSender
 
     public class Event
     {
-        public DateTime SendDate { set; get; }
-        public List<uint> UsersID { set; get; }
-        public EventType Type { set; get; }
-        public string Comment { set; get; }
-        public string MessageText { set; get; }
-        public string AttachedFilePath { set; get; }
+        public DateTime SendDate { get; }
+        public List<uint> UsersID { get; }
+        public EventType Type { get; }
+        public string Comment { get; }
+        public string MessageText { get; }
+        public string AttachedFilePath {  get; }
 
         public Event()
         {

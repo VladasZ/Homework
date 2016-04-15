@@ -12,9 +12,9 @@ namespace MessageSender
     {
         static SmtpClient Smtp = new SmtpClient("smtp.mail.ru", 25);
 
-
         static EMailManager()
         {
+            //почта нашего преподавателя по C# специально заведенная для тестов
             Smtp.Credentials = new NetworkCredential("ivanitstep@mail.ru", "ivan123456789");
             Smtp.EnableSsl = true;
         }
@@ -24,12 +24,9 @@ namespace MessageSender
             MailMessage message = new MailMessage();
 
             message.From = new MailAddress("ivanitstep@mail.ru");
-
             message.To.Add(new MailAddress(to));
-
-            message.Subject = "First letter";
-
-            message.Body = "Hello email world!";
+            message.Subject = "Test letter";
+            message.Body = "Test Test Test Test Test Test Test Test Test";
 
             Smtp.Send(message);
         }
@@ -46,7 +43,6 @@ namespace MessageSender
             }
 
             message.Subject = subject;
-
             message.Body = body;
 
             Smtp.Send(message);
@@ -60,8 +56,9 @@ namespace MessageSender
                         
             message.To.Add("146100@gmail.com");// поменяйте для проверки на свое
             
-            message.Subject = "Тест";
+            message.Subject = "Тест тест Тест";
 
+            //добавляем адреса из расписания в текст нашего письма
             foreach(string mail in to)
             {
                 message.Body += mail + "\n";
@@ -74,20 +71,3 @@ namespace MessageSender
 
     }
 }
-// Прикрепление файла
-
-// Attachment attach = new Attachment(&lt; имя файла&gt;, MediaTypeNames.Application.Pdf);
-
-// Добавляем информацию для файла (дополнительно!)
-
-//    ContentDisposition disposition = attach.ContentDisposition;
-
-// указываем дату создания
-
-//  disposition.CreationDate = System.IO.File.GetCreationTime(file);
-
-//добавление вложения
-
-// message.Attachments.Add(attach);
-
-//отправка письма
