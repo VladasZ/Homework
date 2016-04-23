@@ -15,27 +15,27 @@ namespace _15_puzzle
         {
             List<string> records = new List<string>();
 
-            foreach(Gamer gamer in context.Gamers)
+
+            var qGames = from a in context.Gamers.Include("GameResults") select a;
+
+            foreach(Gamer gamer in qGames)
             {
                 foreach(GameResult result in gamer.GameResults)
                 {
-                    string resultString = result.Gamer.Name + " " + result.Moves + " ходов, " + result.Time.Seconds + " сек.";
+                    string resultString = result.Gamer.Name + " " + 
+                                          result.Moves + " ходов, " + 
+                                          result.Time.Seconds + " сек. Сложность: " + 
+                                          result.Difficulty + "x" + result.Difficulty;
 
                     records.Add(resultString);
                 }
-
-                MessageBox.Show(gamer.Name);
-
             }
-
             return records;
         }
 
         public static Gamer findGamer(string name)
         {
-           return (from g in context.Gamers
-                   where g.Name == name
-                   select g).FirstOrDefault();
+            return context.Gamers.Include("GameResults").FirstOrDefault(u => u.Name == name);
         }
 
         public static void addResult(GameResult result, string name)

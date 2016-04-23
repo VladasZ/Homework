@@ -36,9 +36,9 @@
             this.imageURLTextBoxMenu = new System.Windows.Forms.ToolStripTextBox();
             this.shuffleMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.solveMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.recordsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsComboMenu = new System.Windows.Forms.ToolStripComboBox();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,33 +108,35 @@
             this.solveMenu.Text = "Восстановить";
             this.solveMenu.Click += new System.EventHandler(this.clearForm);
             // 
-            // settingsMenu
-            // 
-            this.settingsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1});
-            this.settingsMenu.Name = "settingsMenu";
-            this.settingsMenu.Size = new System.Drawing.Size(79, 20);
-            this.settingsMenu.Text = "Настройки";
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Items.AddRange(new object[] {
-            "3x3",
-            "4x4",
-            "5x5",
-            "6x6",
-            "7x7",
-            "8x8"});
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
-            // 
             // recordsMenu
             // 
             this.recordsMenu.Name = "recordsMenu";
             this.recordsMenu.Size = new System.Drawing.Size(67, 20);
             this.recordsMenu.Text = "Рекорды";
             this.recordsMenu.Click += new System.EventHandler(this.recordsMenu_Click);
+            // 
+            // settingsMenu
+            // 
+            this.settingsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsComboMenu});
+            this.settingsMenu.Name = "settingsMenu";
+            this.settingsMenu.Size = new System.Drawing.Size(79, 20);
+            this.settingsMenu.Text = "Настройки";
+            // 
+            // settingsComboMenu
+            // 
+            this.settingsComboMenu.Items.AddRange(new object[] {
+            "2x2",
+            "3x3",
+            "4x4",
+            "5x5",
+            "6x6",
+            "7x7",
+            "8x8"});
+            this.settingsComboMenu.Name = "settingsComboMenu";
+            this.settingsComboMenu.Size = new System.Drawing.Size(121, 23);
+            this.settingsComboMenu.SelectedIndexChanged += new System.EventHandler(this.settingsComboMenu_SelectedIndexChanged);
+            this.settingsComboMenu.Click += new System.EventHandler(this.gfdgfdToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -146,6 +148,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Мозаика";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -165,7 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem openMenu;
         private System.Windows.Forms.ToolStripMenuItem openURLMenu;
         private System.Windows.Forms.ToolStripTextBox imageURLTextBoxMenu;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox settingsComboMenu;
         private System.Windows.Forms.ToolStripMenuItem recordsMenu;
     }
 }

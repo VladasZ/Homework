@@ -14,17 +14,17 @@ namespace _15_puzzle
 {
     static class GameManager
     {
-        public static MainForm mainForm { get; set; } = (MainForm)Application.OpenForms[0];
+        public static MainForm mainForm { get; set; }
 
         public static Bitmap fullImage { get; set; }
 
         public static List<PuzzlePiece> imagePieces = new List<PuzzlePiece>();
 
-        public static int Difficulty { get; set; } = 3;
+        public static int Difficulty { get; set; }
 
         public static DateTime StartTime { get; set; }
         public static TimeSpan GameDuration { get; set; }
-        public static int MovesCount { get; set; } = 0;
+        public static int MovesCount { get; set; }
 
         public static Random random = new Random();
 
@@ -32,6 +32,13 @@ namespace _15_puzzle
 
         //все картинки будут подгоняться под эту высоту с сохранением пропорций
         const int windowHeight = 500;
+
+        static GameManager()
+        {
+            mainForm = (MainForm)Application.OpenForms[0];
+            Difficulty = 3;
+            MovesCount = 0;
+        }
 
         public static void loadImage(string path)
         {
@@ -59,27 +66,28 @@ namespace _15_puzzle
             return new Size((int)(windowHeight / ratio), windowHeight);
         }
 
-        public static void splitImage(int numberOfSideParts)
+        public static void splitImage()
         {
-            int pieceWidth = fullImage.Width / numberOfSideParts;
-            int pieceHeight = fullImage.Height / numberOfSideParts;
+            int pieceWidth = fullImage.Width / Difficulty;
+            int pieceHeight = fullImage.Height / Difficulty;
+
 
             int pieceId = 0;
 
-            for (int x = 0; x < numberOfSideParts; x++)
+            for (int x = 0; x < Difficulty; x++)
             {
-                for (int y = 0; y < numberOfSideParts; y++)
+                for (int y = 0; y < Difficulty; y++)
                 {
                     PuzzlePiece newPictureBox = new PuzzlePiece()
                     {
                         Image = fullImage.Clone(
                             new Rectangle(x * pieceWidth,
-                                            y * pieceHeight,
-                                            pieceWidth,
-                                            pieceHeight), PixelFormat.DontCare),
+                                          y * pieceHeight,
+                                          pieceWidth,
+                                          pieceHeight), PixelFormat.DontCare),
 
                         Location = new Point(x * pieceWidth,
-                                                 y * pieceHeight),
+                                             y * pieceHeight),
 
                         Size = new Size(pieceWidth, pieceHeight),
 

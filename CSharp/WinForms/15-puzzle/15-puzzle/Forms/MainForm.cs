@@ -21,6 +21,12 @@ namespace _15_puzzle
             InitializeComponent();
 
             StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+            settingsComboMenu.SelectedIndex = 0;
 
             graphics = CreateGraphics();
         }
@@ -80,7 +86,9 @@ namespace _15_puzzle
                 return;
             }
 
-            GameManager.splitImage(2);
+            clearForm(sender, e);
+
+            GameManager.splitImage();
             
             graphics.Clear(Color.White);
 
@@ -95,13 +103,13 @@ namespace _15_puzzle
 
         }
 
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void clearForm(object sender, EventArgs e)
         {
+            if (GameManager.fullImage == null)
+            {
+                MessageBox.Show("Сначала выберите картинку");
+                return;
+            }
 
             List<Control> controlsToRemove = new List<Control>();
 
@@ -118,8 +126,10 @@ namespace _15_puzzle
                 Controls.Remove(control);
             }
 
-
             GameManager.imagePieces.Clear();
+            GameManager.endGame();
+
+            graphics.DrawImage(GameManager.fullImage, new Rectangle(new Point(0, 0), this.Size));
         }
 
         private void recordsMenu_Click(object sender, EventArgs e)
@@ -133,5 +143,12 @@ namespace _15_puzzle
         {
         
         }
+
+        private void settingsComboMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GameManager.Difficulty = settingsComboMenu.SelectedIndex + 2;
+        }
+
+
     }
 }
