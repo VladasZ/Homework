@@ -15,7 +15,6 @@ namespace _15_puzzle
         {
             List<string> records = new List<string>();
 
-
             var qGames = from a in context.Gamers.Include("GameResults") select a;
 
             foreach(Gamer gamer in qGames)

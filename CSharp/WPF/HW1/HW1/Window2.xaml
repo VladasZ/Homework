@@ -1,0 +1,37 @@
+﻿<Window x:Class="HW1.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW1"
+        mc:Ignorable="d"
+        Title="Window2" Height="348.326" Width="385.355" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <WrapPanel Margin="0,0,0,20" MaxWidth="200" Background="#FFD8D35A" HorizontalAlignment="Left">
+            <Label>Ф.И.О.</Label>
+            <TextBox/>
+            <Label>Возраст</Label>
+            <TextBox Width="124"/>
+            <Label>Семейное положение</Label>
+            <TextBox Width="124"/>
+            <Label>Ф.И.О.</Label>
+            <TextBox Width="124"/>
+            <Label>Ф.И.О.</Label>
+            <TextBox Width="124"/>
+            <Label>Ф.И.О.</Label>
+            <TextBox Width="124"/>
+
+        </WrapPanel>
+        <DockPanel Margin="169,0,0,20" Background="#FFEAD6D6">
+            <RadioButton DockPanel.Dock="Top" Content="М"></RadioButton>
+            <RadioButton DockPanel.Dock="Top" Content="Ж"></RadioButton>
+            <CheckBox DockPanel.Dock="Top" Content="Курит"></CheckBox>
+            <CheckBox DockPanel.Dock="Top" Content="Пьёт"></CheckBox>
+            <CheckBox DockPanel.Dock="Top" Content="Играет в азартные игры"></CheckBox>
+        </DockPanel>
+        <StackPanel  VerticalAlignment="Bottom" Orientation="Horizontal" Background="#FFB8ACDA" >
+            <Button Content="Cancel" HorizontalAlignment="Right"/>
+            <Button Content="OK" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </Grid>
+</Window>
