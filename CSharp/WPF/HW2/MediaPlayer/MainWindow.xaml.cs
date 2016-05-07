@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,11 +25,11 @@ namespace MediaPlayer
     public partial class MainWindow : Window
     {
 
-        bool isPlaying = false;
+        bool isPlaying;
         DispatcherTimer timer = new DispatcherTimer();
 
-        List<string> filePaths = new List<string>();
-        List<string> fileNames = new List<string>();
+        List<string> filePaths;
+        BindingList<string> fileNames = new BindingList<string>();
 
         public MainWindow()
         {
@@ -52,6 +53,7 @@ namespace MediaPlayer
             if (dialogResult.HasValue && (bool)dialogResult)
             {
                 filePaths = openFileDialog.FileNames.ToList();
+                fileNames.Clear();
                 
                 //достаем из пути только название файла для красивого отображения в списке файлов
                 foreach (string path in filePaths)
@@ -73,27 +75,24 @@ namespace MediaPlayer
 
             if (!isPlaying)
             {
-                playButton.Content = "Pause";
-
-                invokeWithDelay(() => timer.Start(), 100);
-
+                playButtonLabel.Content = "Pause";
+                playButtonImage.Source = new BitmapImage(new Uri("/images/pause.png", UriKind.Relative));
                 mediaElement.Play();
+                timer.Start();
                 isPlaying = true;
             }
             else
             {
-                playButton.Content = "Play";
-                mediaElement.Pause();
-                timer.Stop();
-                isPlaying = false;
+                stopButton_Click(null, null);
             }            
         }
 
         private void stopButton_Click(object sender, RoutedEventArgs e)
         {
-            mediaElement.Stop();
             timer.Stop();
-            playButton.Content = "Play";
+            mediaElement.Stop();
+            playButtonLabel.Content = "Play";
+            playButtonImage.Source = new BitmapImage(new Uri("/images/play.png", UriKind.Relative));
             isPlaying = false;
         }
 
@@ -114,13 +113,10 @@ namespace MediaPlayer
             mediaElement.Volume = volumeSlider.Value;
         }
 
-        private void progressSlider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            mediaElement.SetProgress((int)progressSlider.Value);
-        }
-
         private void nextButton_Click(object sender, RoutedEventArgs e)
         {
+            if (fileNames.Count == 0) return;
+
             if (filePaths[filesListBox.SelectedIndex] == filePaths.Last())
             {
                 filesListBox.SelectedIndex = 0;
@@ -135,6 +131,8 @@ namespace MediaPlayer
 
         private void prevButton_Click(object sender, RoutedEventArgs e)
         {
+            if (fileNames.Count == 0) return;
+
             if (filePaths[filesListBox.SelectedIndex] == filePaths.First())
             {
                 filesListBox.SelectedIndex = filePaths.Count() - 1;
@@ -155,27 +153,25 @@ namespace MediaPlayer
         private void changeFile()
         {
             timer.Stop();
-            mediaElement.Source = new Uri(filePaths[filesListBox.SelectedIndex], UriKind.RelativeOrAbsolute);
-            invokeWithDelay(() => timer.Start(), 100);
-            durationLabel.Content = mediaElement.NaturalDuration.TimeSpan.ToLabel();
-        }
-
-        //google
-        public void invokeWithDelay(Action todo, int delay)
-        {
-            Timer timer = null;
-            timer = new Timer((obj) =>
-            {
-                todo();
-                timer.Dispose();
-            },
-                    null, delay, Timeout.Infinite);
+            mediaElement.Source = new Uri(filePaths[filesListBox.SelectedIndex]);
+            timer.Start();
         }
 
         private void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
             nextButton_Click(null, null);
         }
+
+        private void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            durationLabel.Content = mediaElement.NaturalDuration.TimeSpan.ToLabel();
+        }
+
+        private void progressSlider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            mediaElement.SetProgress((int)progressSlider.Value);
+        }
+
     }
 
 }

@@ -11,12 +11,16 @@ namespace MediaPlayer
     {
         public static int ProgressPercentage(this MediaElement mediaElement)
         {
-            return (int)(mediaElement.Position.TotalSeconds / (double)mediaElement.NaturalDuration.TimeSpan.TotalSeconds * 100);
+            if (mediaElement.NaturalDuration.HasTimeSpan)
+                return (int)(mediaElement.Position.TotalSeconds / (double)mediaElement.NaturalDuration.TimeSpan.TotalSeconds * 100);
+
+            return 0;
         }
 
         public static void SetProgress(this MediaElement mediaElement, int percent)
         {
-            mediaElement.Position = TimeSpan.FromSeconds(mediaElement.NaturalDuration.TimeSpan.TotalSeconds * ((double)percent / 100));
+            if (mediaElement.NaturalDuration.HasTimeSpan)
+                mediaElement.Position = TimeSpan.FromSeconds(mediaElement.NaturalDuration.TimeSpan.TotalSeconds * ((double)percent / 100));
         }
     }
 }

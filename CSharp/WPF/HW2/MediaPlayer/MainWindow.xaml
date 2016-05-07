@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="489.333" Width="746.167"
-        MinWidth="470" MinHeight="125"
-        WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="504.333" Width="839.167"
+        MinWidth="490" MinHeight="125"
+        WindowStartupLocation="CenterScreen" Background="#FFC9C9C9">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="763*"/>
@@ -21,7 +21,7 @@
             <MediaElement Grid.Column="0"
             LoadedBehavior="Manual"
             Name="mediaElement"
-            MediaFailed="mediaElement_MediaFailed" MediaEnded="mediaElement_MediaEnded"/>
+            MediaFailed="mediaElement_MediaFailed" MediaEnded="mediaElement_MediaEnded" MediaOpened="mediaElement_MediaOpened"/>
             <Expander Grid.Column="1" ExpandDirection="Left">
                 <ListBox Grid.Column="1" Name="filesListBox" MouseDoubleClick="filesListBox_MouseDoubleClick"/>
             </Expander>
@@ -29,28 +29,51 @@
         <Grid VerticalAlignment="Bottom" Height="58" Margin="5,0,5,5" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="53"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="53"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="openButton" Grid.Column="0" Margin="5" Click="openButton_Click">Open</Button>
-            <Button Name="prevButton" Grid.Column="1" Margin="5" Click="prevButton_Click" >Prev</Button>
-            <Button Name="playButton" Grid.Column="2" Margin="5" Click="playButton_Click">Play</Button>
-            <Button Name="nextButton" Grid.Column="3" Margin="5" Click="nextButton_Click" >Next</Button>
-            <Button Name="stopButton" Grid.Column="4" Margin="5" Click="stopButton_Click">Stop</Button>
+            <Button Name="openButton" Grid.Column="0" Margin="5" Click="openButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/open.png" Height="35"/>
+                    <Label>Open</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="prevButton" Grid.Column="1" Margin="5" Click="prevButton_Click" >
+                <Image Source="/Images/prev.png" Height="35"/>
+            </Button>
+            <Button Name="playButton" Grid.Column="2" Margin="5" Click="playButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="playButtonImage" Source="/Images/play.png" Height="35"/>
+                    <Label Name="playButtonLabel">Play</Label>
+                </StackPanel>
+            </Button>
+            <Button Name="nextButton" Grid.Column="3" Margin="5" Click="nextButton_Click">
+                <Image Source="/Images/next.png" Height="35"/>
+            </Button>
+            <Button Name="stopButton" Grid.Column="4" Margin="5" Click="stopButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/stop.png" Height="35"/>
+                    <Label>Stop</Label>
+                </StackPanel>
+            </Button>
         </Grid>
         <Grid VerticalAlignment="Bottom" Height="25" Margin="0,0,0,58" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                <ColumnDefinition Width="25"></ColumnDefinition>
                 <ColumnDefinition Width="0.3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label  Name="progressTimeLabel" Grid.Column="0" HorizontalAlignment="Center" Content="00:00:00"/>
             <Slider Name="progressSlider"    Grid.Column="1" Maximum="100" PreviewMouseLeftButtonUp="progressSlider_PreviewMouseLeftButtonUp"/>
             <Label  Name="durationLabel"     Grid.Column="2" HorizontalAlignment="Center" Content="00:00:00"/>
-            <Slider Name="volumeSlider"      Grid.Column="3" ValueChanged="volumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.05" TickFrequency="0.05" Value="0.5"/>
+            <Button Name="muteButton"        Grid.Column="3" Margin="3">
+                <Image Source="/Images/notMute.png"></Image>
+            </Button>
+            <Slider Name="volumeSlider"      Grid.Column="4" ValueChanged="volumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.05" TickFrequency="0.05" Value="0.5"/>
         </Grid>
 
     </Grid>
