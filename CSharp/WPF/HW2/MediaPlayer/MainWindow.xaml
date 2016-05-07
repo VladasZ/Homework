@@ -15,14 +15,16 @@
         </Grid.ColumnDefinitions>
         <Grid Margin="0,0,0,83" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <MediaElement Grid.Column="0"
-            Name="mediaElement"
             LoadedBehavior="Manual"
-            MediaFailed="mediaElement_MediaFailed" MediaOpened="mediaElement_MediaOpened"/>
-            <ListBox Grid.Column="1" Name="filesListBox" MouseDoubleClick="filesListBox_MouseDoubleClick"/>
+            Name="mediaElement"
+            MediaFailed="mediaElement_MediaFailed" MediaEnded="mediaElement_MediaEnded"/>
+            <Expander Grid.Column="1" ExpandDirection="Left">
+                <ListBox Grid.Column="1" Name="filesListBox" MouseDoubleClick="filesListBox_MouseDoubleClick"/>
+            </Expander>
         </Grid>
         <Grid VerticalAlignment="Bottom" Height="58" Margin="5,0,5,5" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>

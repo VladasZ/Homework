@@ -102,12 +102,6 @@ namespace MediaPlayer
             MessageBox.Show("Не удалось воспроизвести файл!");
         }
 
-        private void mediaElement_MediaOpened(object sender, RoutedEventArgs e)
-        {
-            mediaElement.Play();
-            durationLabel.Content = mediaElement.NaturalDuration.TimeSpan.ToLabel();
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             progressTimeLabel.Content = mediaElement.Position.ToLabel();
@@ -163,7 +157,7 @@ namespace MediaPlayer
             timer.Stop();
             mediaElement.Source = new Uri(filePaths[filesListBox.SelectedIndex], UriKind.RelativeOrAbsolute);
             invokeWithDelay(() => timer.Start(), 100);
-            durationLabel.Content = mediaElement.NaturalDuration.ToString();
+            durationLabel.Content = mediaElement.NaturalDuration.TimeSpan.ToLabel();
         }
 
         //google
@@ -176,6 +170,11 @@ namespace MediaPlayer
                 timer.Dispose();
             },
                     null, delay, Timeout.Infinite);
+        }
+
+        private void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            nextButton_Click(null, null);
         }
     }
 
