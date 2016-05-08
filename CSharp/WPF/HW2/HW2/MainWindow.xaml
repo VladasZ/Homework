@@ -8,7 +8,7 @@
         Title="Секундомер" Height="377.2" Width="275.988" 
         MinWidth="260" MinHeight="200"
         WindowStartupLocation="CenterScreen" StateChanged="window_StateChanged"
-        Icon="Images\timer.ico">
+        Icon="Images\timer.ico" Closing="Window_Closing">
 
     
     <Grid>
@@ -41,7 +41,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Name="startButton" Grid.Column="0" Margin="5" Click="startButton_Click">Запуск</Button>
+            <Button Name="startButton" Grid.Column="0" Margin="5" Click="startButton_Click">Старт</Button>
             <Button Name="resetButton" Grid.Column="1" Margin="5" Click="resetButton_Click">Сброс</Button>
             <Button Name="lapButton" Grid.Column="2" Margin="5" Click="lapButton_Click">Круг</Button>
         </Grid>

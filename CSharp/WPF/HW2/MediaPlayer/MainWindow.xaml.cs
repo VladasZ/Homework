@@ -83,7 +83,11 @@ namespace MediaPlayer
             }
             else
             {
-                stopButton_Click(null, null);
+                timer.Stop();
+                mediaElement.Pause();
+                playButtonLabel.Content = "Play";
+                playButtonImage.Source = new BitmapImage(new Uri("/images/play.png", UriKind.Relative));
+                isPlaying = false;
             }            
         }
 
@@ -110,6 +114,12 @@ namespace MediaPlayer
 
         private void volumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (mediaElement.Volume == 0)
+                muteButtonImage.Source = new BitmapImage(new Uri("/images/notMute.png", UriKind.Relative));
+            
+            if (volumeSlider.Value == 0)
+                muteButtonImage.Source = new BitmapImage(new Uri("/images/mute.png", UriKind.Relative));
+            
             mediaElement.Volume = volumeSlider.Value;
         }
 
@@ -152,9 +162,7 @@ namespace MediaPlayer
 
         private void changeFile()
         {
-            timer.Stop();
             mediaElement.Source = new Uri(filePaths[filesListBox.SelectedIndex]);
-            timer.Start();
         }
 
         private void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
@@ -172,6 +180,35 @@ namespace MediaPlayer
             mediaElement.SetProgress((int)progressSlider.Value);
         }
 
+        //полноэкранный режим по двойному щелчку
+        private void mediaElement_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2 && WindowState == WindowState.Normal)
+            {
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+            }
+            else if (e.ClickCount == 2 && WindowState == WindowState.Maximized)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+            }
+        }
+
+        private void muteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(mediaElement.Volume != 0)
+            {
+                mediaElement.Volume = 0;
+                muteButtonImage.Source = new BitmapImage(new Uri("/images/mute.png", UriKind.Relative));
+            }
+            else if (volumeSlider.Value != 0)
+            {
+                mediaElement.Volume = volumeSlider.Value;
+                muteButtonImage.Source = new BitmapImage(new Uri("/images/notMute.png", UriKind.Relative));
+            }
+
+        }
     }
 
 }

@@ -30,6 +30,8 @@ namespace HW2
         NotifyIcon notifyIcon = new NotifyIcon();
         ContextMenu notifyContextMenu = new ContextMenu();
 
+        bool isReseted = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +51,7 @@ namespace HW2
             notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
             notifyIcon.ContextMenu = notifyContextMenu;
 
-            addContextMenuItem("Запуск",     (oo, ee) => startButton_Click(null, null));
+            addContextMenuItem("Старт",      (oo, ee) => startButton_Click(null, null));
             addContextMenuItem("Сброс",      (oo, ee) => resetButton_Click(null, null));
             addContextMenuItem("Круг",       (oo, ee) => lapButton_Click(null, null));
             addContextMenuItem("Развернуть", (oo, ee) => WindowState = WindowState.Normal);
@@ -87,16 +89,36 @@ namespace HW2
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            timerStart = DateTime.Now;
-            timer.Start();
-            laps.Clear();
+            if (isReseted)
+            {
+                timerStart = DateTime.Now;
+                timer.Start();
+                isReseted = false;
+            }
+            else
+            {
+                timer.Start();
+            }
+
+            resetButton.Content = "Стоп";
+            notifyContextMenu.MenuItems[1].Text = "Стоп";
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
-            timer.Stop();
-            timeTextBox.Text = "00:00:00:000";
-            laps.Clear();
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+                resetButton.Content = "Сброс";
+                notifyContextMenu.MenuItems[1].Text = "Сброс";
+            }
+            else
+            {
+                timer.Stop();
+                timeTextBox.Text = "00:00:00:000";
+                laps.Clear();
+                isReseted = true;
+            }
         }
 
         private void lapButton_Click(object sender, RoutedEventArgs e)
@@ -111,5 +133,9 @@ namespace HW2
             return string.Format("{0:00}:{1:00}:{2:00}:{3:000}", time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            notifyIcon.Visible = false;
+        }
     }
 }

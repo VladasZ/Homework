@@ -21,7 +21,7 @@
             <MediaElement Grid.Column="0"
             LoadedBehavior="Manual"
             Name="mediaElement"
-            MediaFailed="mediaElement_MediaFailed" MediaEnded="mediaElement_MediaEnded" MediaOpened="mediaElement_MediaOpened"/>
+            MediaFailed="mediaElement_MediaFailed" MediaEnded="mediaElement_MediaEnded" MediaOpened="mediaElement_MediaOpened" MouseLeftButtonDown="mediaElement_MouseLeftButtonDown"/>
             <Expander Grid.Column="1" ExpandDirection="Left">
                 <ListBox Grid.Column="1" Name="filesListBox" MouseDoubleClick="filesListBox_MouseDoubleClick"/>
             </Expander>
@@ -70,8 +70,8 @@
             <Label  Name="progressTimeLabel" Grid.Column="0" HorizontalAlignment="Center" Content="00:00:00"/>
             <Slider Name="progressSlider"    Grid.Column="1" Maximum="100" PreviewMouseLeftButtonUp="progressSlider_PreviewMouseLeftButtonUp"/>
             <Label  Name="durationLabel"     Grid.Column="2" HorizontalAlignment="Center" Content="00:00:00"/>
-            <Button Name="muteButton"        Grid.Column="3" Margin="3">
-                <Image Source="/Images/notMute.png"></Image>
+            <Button Name="muteButton"        Grid.Column="3" Margin="3" Click="muteButton_Click">
+                <Image Name="muteButtonImage" Source="/Images/notMute.png"></Image>
             </Button>
             <Slider Name="volumeSlider"      Grid.Column="4" ValueChanged="volumeSlider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.05" TickFrequency="0.05" Value="0.5"/>
         </Grid>
